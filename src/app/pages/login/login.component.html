@@ -72,35 +72,5 @@
             </form>
         </div>
 
-        <div class="installColumn align-items-center" *ngIf="!hasExtension">
-            <div class="install-content align-items-center justify-content-center flex-column">
-                <h2 class="mt-2 text-center">
-                    <app-extensions-title>Install wallet extension</app-extensions-title>
-                </h2>
-                <div class="mt-3 text-center">
-                    <button mat-raised-button class="connect" (click)="install()">Install</button>
-                </div>
-            </div>
-            <div class="terms-and-conditions">
-                <h4 class="mt-5 text-center">
-                    By connecting your wallet to dVITA you agree to<br> our <a routerLink="/terms">Terms of Service</a>. View our <a routerLink="/policy">Privacy Policy</a>.
-                </h4>
-            </div>
-        </div>
-        <div class="installColumn align-items-center" *ngIf="hasExtension">
-            <div class="install-content align-items-center justify-content-center flex-column">
-                <h2 class="mt-2 text-center">
-                    <app-extensions-title>Connect wallet</app-extensions-title>
-                </h2>
-                <div class="mt-3 text-center">
-                    <button mat-raised-button class="connect" (click)="connect()">Connect</button>
-                </div>
-            </div>
-            <div class="terms-and-conditions">
-                <h4 class="mt-5 text-center">
-                    By connecting your wallet to dVITA you agree to<br> our <a routerLink="/terms">Terms of Service</a>. View our <a routerLink="/policy">Privacy Policy</a>.
-                </h4>
-            </div>
-        </div>
     </div>
 </div>

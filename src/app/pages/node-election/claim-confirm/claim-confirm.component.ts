@@ -4,8 +4,6 @@ import { environment } from '@app/../environments/environment';
 import { TransactionService } from '@app/shared/services/transaction.service';
 import Decimal from 'decimal.js';
 
-const dVITATokenHash = '0xb34e1025391e953a918231df11478ec21b039e5f';
-
 @Component({
   selector: 'app-claim-confirm',
   templateUrl: './claim-confirm.component.html',

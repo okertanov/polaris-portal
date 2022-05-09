@@ -425,8 +425,8 @@ export class WalletComponent implements OnInit {
           })
           .sort((a, b) => {
             // put DVITA and DVG at the beginning
-            const orderA = a.name === 'DVITA' ? 2 : a.name === 'DVG' ? 1 : 0;
-            const orderB = b.name === 'DVITA' ? 2 : b.name === 'DVG' ? 1 : 0;
+            const orderA = a.name === 'NEO' ? 2 : a.name === 'GAS' ? 1 : 0;
+            const orderB = b.name === 'NEO' ? 2 : b.name === 'GAS' ? 1 : 0;
             return orderB - orderA;
           });
       })
@@ -435,16 +435,16 @@ export class WalletComponent implements OnInit {
         // probably address doesn't exist, show zeros for DVITA and DVG
         return [
           {
-            name: 'DVITA',
+            name: 'NEO',
             icon: 'assets/icons/token_dvita.png',
-            type: this.tokenType('DVITA'),
+            type: this.tokenType('NEO'),
             amount: String(0),
             decimals: '0',
           },
           {
-            name: 'DVG',
+            name: 'GAS',
             icon: 'assets/icons/token_dvg.png',
-            type: this.tokenType('DVG'),
+            type: this.tokenType('GAS'),
             amount: String(0),
             decimals: '18',
           },
@@ -452,8 +452,8 @@ export class WalletComponent implements OnInit {
       })
       .then(assetsList => {
         this.assetsList = assetsList;
-        this.amountDVITA = this.assetsList.find(asset => asset.name === 'DVITA')?.amount ?? String(0);
-        this.amountDVG = this.assetsList.find(asset => asset.name === 'DVG')?.amount ?? String(0);
+        this.amountDVITA = this.assetsList.find(asset => asset.name === 'NEO')?.amount ?? String(0);
+        this.amountDVG = this.assetsList.find(asset => asset.name === 'GAS')?.amount ?? String(0);
         this.assetsDataSource = new MatTableDataSource(this.assetsList);
         this.assetsDataSource.sort = this.assetsSort;
         this.assetNames = this.assetsList.map(asset => ({ name: asset.name }));

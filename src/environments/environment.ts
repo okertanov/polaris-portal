@@ -15,7 +15,7 @@ export const environment = {
   fileAwsBaseUrl: 'https://s3tantalisuploader-s3uploadbucket-135xglh7pwq91.s3.eu-central-1.amazonaws.com',
   timeZone: 'UTC',
   tokenHashDVG: '0xd2a4cff31913016155e38e474a2c06d08be276cf',
-  tokenHashDVITA: '0xb34e1025391e953a918231df11478ec21b039e5f',
+  tokenHashDVITA: '0xef4073a0f2b305a38ec4050e4d3d28bc40ea63f5',
   dvgDecimals: 8,
 };
 
