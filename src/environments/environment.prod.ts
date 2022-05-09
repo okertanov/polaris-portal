@@ -2,7 +2,7 @@ import { Network } from '@app/shared/services/api.service';
 
 export const environment = {
   production: true,
-  baseURL: (net: Network) => `http://nxa-open-api:4000/api`,
+  baseURL: (net: Network) => `https://openapi.teamxi.cloud/api`,
   helperBaseURL: (net: Network) => `https://portal-helper-api.testnet.dvita.com`,
   wsURL: (net: Network) => `wss://portal-helper-api.testnet.dvita.com`,
   extensionDownloadURL: 'https://chrome.google.com/webstore/detail/dvita-wallet/nggheophiekocmlbklkefdenogendehj',
