@@ -1,0 +1,43 @@
+variables:
+  REGISTRY_IMAGE: ${HARBOR_REGISTRY}/dvita/dvita-foundation
+  DOCKER_TLS_CERTDIR: "/certs"
+  REMOTE_HOST: 3.70.31.148
+
+stages:
+  - build
+  - deploy
+  - deploy_prod
+
+build-dvita-foundation:
+  allow_failure: false
+  image: docker:19.03.12
+  services:
+   - docker:19.03.12-dind
+  stage: build
+  tags:
+    - docker
+    - build
+  only:
+    - tags
+  before_script:
+    - echo $HARBOR_USERNAME
+    - echo $HARBOR_REGISTRY
+    - echo -n $HARBOR_PASSWORD | docker login -u $HARBOR_USERNAME --password-stdin $HARBOR_REGISTRY
+  after_script:
+    - docker logout $HARBOR_REGISTRY
+  script:
+    - docker pull $REGISTRY_IMAGE:latest || true
+    - >
+      docker build -f Dockerfile
+      --pull
+      --cache-from $REGISTRY_IMAGE:latest
+      --tag $REGISTRY_IMAGE:$CI_COMMIT_TAG
+      --tag $REGISTRY_IMAGE:latest
+      .
+    - docker push $REGISTRY_IMAGE:$CI_COMMIT_TAG
+    - docker push $REGISTRY_IMAGE:latest
+
+
+include:
+  - local: /gitlab-ci/jobs-before-merge.yml
+  - local: /gitlab-ci/prod-pipeline.yml

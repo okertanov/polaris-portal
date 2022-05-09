@@ -1,0 +1,89 @@
+<div class="container-fluid customContainer" *ngIf="asset">
+  <!-- Top Section -->
+  <div class="row my-3 py-3 py-lg-5">
+    <div class="col-12 col-lg-4">
+      <app-page-title>Assets information</app-page-title>
+    </div>
+    <div
+      class="col-12 col-lg-8 text-start text-sm-end d-block d-sm-flex d-lg-block align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-end my-2">
+        <div class="input-group search">
+          <input type="text" class="form-control" placeholder="Block height, hash, adress or transaction id"
+            [(ngModel)]="searchValue" (keydown.enter)="makeSearch()">
+          <span class="input-group-text">
+            <mat-icon (click)="makeSearch()">search</mat-icon>
+          </span>
+        </div>
+        <div class="dropdownDiv">
+          <app-network-select></app-network-select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Assets hash Section -->
+  <div class="row">
+    <div class="col-12" >
+      <div class="grayCard flex-column d-sm-flex p-5 py-4">
+        <div class="m-0 me-3 label"> Assets address </div>
+        <div class="m-0 fw-bold textPurple"> {{asset.address}} </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Section -->
+  <div class="row">
+    <div class="col-12 pt-5">
+      <app-details-title>Details</app-details-title>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-3"> Name </div>
+        <div class="m-0 fw-bold textPurple value"> {{asset.name}} </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-3"> Code </div>
+        <div class="m-0 fw-bold textPurple value"> {{asset.code}} </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-3"> Type </div>
+        <div class="m-0 fw-bold textPurple value"> {{asset.token.type}} </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-3"> Token </div>
+        <div class="m-0 fw-bold textPurple value"> {{asset.token.name}} </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-3"> Decimals </div>
+        <div class="m-0 fw-bold textPurple value"> {{asset.token.decimals}} </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-0"> Created on </div>
+        <div class="m-0 fw-bold textPurple value"> {{asset.createdDate}} </div>
+      </div>
+    </div>
+    <div class="col-12 py-5">
+      <div class="m-0 fw-bold label"> Script </div>
+      <div class="scriptCard p-3">
+        <div class="m-0 breakWord label">
+          {{asset.scriptHash}}
+        </div>
+        <div class="align-self-center copy-content mb-2">
+          <button mat-icon-button>
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

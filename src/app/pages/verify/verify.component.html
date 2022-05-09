@@ -1,0 +1,72 @@
+<div class="container-fluid customContainer verify">
+  <div class="row my-3 py-3 py-lg-4">
+    <div class="col-12 col-lg-12">
+      <app-page-title>Verify and Sign</app-page-title>
+      <h5 class="textPurple my-4">This tool allows to verify raw transactions and add signatures to transactions</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <form (submit)="submit($event)" ngNativeValidate #form>
+      <div class="col-12 mb-4">
+        <h5 class="textPurple">Enter raw transaction to verify it</h5>
+        <textarea required name="raw" class="roundInput flex-grow-1 col-lg-9 col-12"></textarea>
+      </div>
+      <ng-container *ngIf="loading">
+        <mat-spinner color="black"></mat-spinner>
+      </ng-container>
+      <ng-container *ngIf="!loading">
+        <button mat-raised-button type="submit">Verify</button>
+        <span class="textPurple mx-4">After verification you can add signatures</span>
+      </ng-container>
+    </form>
+  </div>
+
+  <div class="row" *ngIf="transaction && transactionJSON && signatureData" class="result">
+    <ng-container *ngIf="transfer">
+      <h3 class="purple my-3">Transfer details</h3>
+      <p><span>From</span>{{transfer.from}}</p>
+      <p><span>To</span>{{transfer.to}}</p>
+      <p><span>Asset</span>{{transfer.amountFormatted}}<br />{{transfer.assetHash}}</p>
+    </ng-container>
+    <h3 class="purple my-3">Transaction Details</h3>
+    <p><span>Size</span>{{transaction.size}}</p>
+    <p><span>Nonce</span>{{transaction.nonce}}</p>
+    <p><span>Sender</span>{{wallet.getAddressFromScriptHash(transaction.sender.toBigEndian())}}</p>
+    <p><span>System Fee</span>{{transaction.systemFee}}</p>
+    <p><span>Network Fee</span>{{transaction.networkFee}}</p>
+    <p><span>Valid Until Block</span>{{transaction.validUntilBlock}}</p>
+    <p><span>Script</span>{{transaction.script.toBase64()}}</p>
+    <p><span>Disassembled Script</span>{{disassemble(transaction.script.toBase64())}}</p>
+    <ng-container *ngFor="let signer of transactionJSON.signers; let i = index">
+      <p><span>Signer {{ i + 1 }} Address</span>{{transactionJSON.signers[i].account}}</p>
+      <p><span>Signer {{ i + 1 }} Scopes</span>{{transactionJSON.signers[i].scopes}}</p>
+    </ng-container>
+    <ng-container *ngFor="let signer of transaction.witnesses; let i = index">
+      <p><span>Witness {{ i + 1 }} Invocation Script</span>{{transaction.witnesses[i].invocationScript.toBase64()}}</p>
+      <p><span>Witness {{ i + 1 }} Invocation Script Disassembled</span>{{disassemble(transaction.witnesses[i].invocationScript.toBase64())}}</p>
+      <ng-container *ngFor="let sig of signatureData[i]; let j = index">
+        <p><span>Witness {{ i + 1 }} Public Key {{ j + 1 }}</span>{{sig.pubKey}}</p>
+        <p><span>Witness {{ i + 1 }} Address {{ j + 1 }}</span>{{wallet.getAddressFromScriptHash(wallet.getScriptHashFromPublicKey(sig.pubKey))}}</p>
+        <p><span>Witness {{ i + 1 }} Signature {{ j + 1 }}</span>{{sig.signature}}</p>
+        <p *ngIf="sig.valid"><span>Witness {{ i + 1 }} Signature {{ j + 1 }} validation</span>✅ Signature is valid for network {{sig.valid[0]}} (network magic {{sig.valid[1]}})</p>
+        <p *ngIf="!sig.valid"><span>Witness {{ i + 1 }} Signature {{ j + 1 }} validation</span>❌ Signature is invalid (or it might be valid for an unknown network)</p>
+      </ng-container>
+      <p><span>Witness {{ i + 1 }} Verification Script</span>{{transaction.witnesses[i].verificationScript.toBase64()}}</p>
+      <p><span>Witness {{ i + 1 }} Verification Script Disassembled</span>{{disassemble(transaction.witnesses[i].verificationScript.toBase64())}}</p>
+    </ng-container>
+    <button mat-raised-button type="button" (click)="sign(transaction)">Sign this transaction</button>
+    <button class="textButton mx-2" (click)="multiFormVisible = !multiFormVisible" *ngIf="transaction.witnesses.length > 1">Convert to multi-signature witness</button>
+  </div>
+
+  <div class="row my-4" *ngIf="transaction && transaction.witnesses.length > 1 && multiFormVisible">
+    <form (submit)="convertToMultiWitness($event)" ngNativeValidate>
+      <div class="col-12 mb-4">
+        <h3 class="fw-bold">Verification Script</h3>
+        <p>Enter the verification script of multi-signature wallet</p>
+        <textarea required name="multiVerificationScript" class="roundInput flex-grow-1 col-lg-9 col-12"></textarea>
+      </div>
+      <button mat-raised-button type="submit">Convert signatures</button>
+    </form>
+  </div>
+</div>

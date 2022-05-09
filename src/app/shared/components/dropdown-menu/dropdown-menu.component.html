@@ -1,0 +1,18 @@
+<div class="customDropdown" [class.opened]="dropdownExpand.menuOpen">
+    <button
+        mat-raised-button
+        [matMenuTriggerFor]="menu"
+        #dropdownExpand="matMenuTrigger"
+        [class.opened]="dropdownExpand.menuOpen"
+        type="button">
+        {{ value }}
+        <mat-icon> {{ open ? 'expand_less' : 'expand_more' }} </mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" class="customMatMenu">
+        <button mat-menu-item *ngFor="let v of values"
+                [disabled]="v.disabled"
+                (click)="onSelect(v.name)" type="button">
+            <span> {{ v.name }} </span>
+        </button>
+    </mat-menu>
+</div>

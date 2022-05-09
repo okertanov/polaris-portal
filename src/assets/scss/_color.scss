@@ -1,0 +1,32 @@
+/*** !!!important!!! Please use color variables like this example! ***/
+:root {
+  --purple-color: #742D80;
+  --main-bg-color: #ffff;
+  --purple:#36163c;
+  --green:#43AE44;
+  --grey-color: #f3f3f3;
+  --grey:#bdb8be;
+  --dark-grey: #848484;
+  --white:#FFFF;
+  --black:#000000;
+  --grey-text: #848484;
+}
+.textGrey{
+  color: #bdb8be;
+}
+
+.textPurple {
+  color: #36163c;
+}
+
+.textGreen {
+  color: #43AE44;
+}
+
+.bgPurple {
+  background-color: #36163c;
+}
+
+.bgGreen {
+  background-color: #43AE44;
+}

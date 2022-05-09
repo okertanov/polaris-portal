@@ -1,0 +1,7 @@
+<div class="input-group search">
+    <input type="text" class="form-control" placeholder="Block height, hash, adress or transaction id"
+        [(ngModel)]="searchValue" (keydown.enter)="makeSearch()">
+    <span class="input-group-text">
+        <mat-icon (click)="makeSearch()">search</mat-icon>
+    </span>
+</div>

@@ -1,0 +1,61 @@
+<div class="customPaginator d-flex align-items-center justify-content-center justify-content-sm-between my-4">
+    <h4 class="m-0 d-none d-sm-block">
+        Page {{ pageIndex }} of {{ length }}
+    </h4>
+    <div class="d-flex align-items-center justify-content-between">
+        <button class="first" (click)="firstPage()">
+            <span>&laquo;</span>
+        </button>
+        <button class="prev" (click)="onPrev()">
+            <span>&lsaquo;</span>
+        </button>
+
+        <div *ngIf="pageIndexs.length <= 4;else largePages">
+            <button *ngFor="let page of pageIndexs" class="pages" [class.active]="pageIndex === page" (click)="setPage(page)">
+                <span> {{ page }} </span>
+            </button>
+        </div>
+        <ng-template #largePages>
+            <button *ngFor="let page of prePageIndexs" class="pages" [class.active]="pageIndex === page" (click)="setPage(page)">
+                <span> {{ page }} </span>
+            </button>
+            <div>
+                <span> ... </span>
+            </div>
+            <button *ngFor="let page of postPageIndexs" class="pages" [class.active]="pageIndex === page" (click)="setPage(page)">
+                <span> {{ page }} </span>
+            </button>
+        </ng-template>
+
+        <button class="next" (click)="onNext()">
+            <span>&rsaquo;</span>
+        </button>
+        <button class="last" (click)="lastPage()">
+            &raquo;
+        </button>
+    </div>
+    <div class="d-none d-sm-flex align-items-center justify-content-between"> 
+        <h4 class="m-0 me-2"> Show </h4>
+        <select [value]="pageSize" (change)="changePageSize($event)">
+            <option *ngFor="let pageSize of pageSizeOption" [value]="pageSize"> {{ pageSize }} </option>
+        </select>
+        <h4 class="m-0 ms-2">
+            on page
+        </h4>
+    </div>
+</div>
+
+<div class="d-flex d-sm-none align-items-center justify-content-between">
+    <h5 class="m-0">
+        Page {{ pageIndex }} of {{ length }}
+    </h5>
+    <div class="d-flex align-items-center justify-content-between">
+        <h4 class="m-0 me-2"> Show </h4>
+        <select [value]="pageSize" (change)="changePageSize($event)">
+            <option *ngFor="let pageSize of pageSizeOption" [value]="pageSize"> {{ pageSize }} </option>
+        </select>
+        <h4 class="m-0 ms-2">
+            on page
+        </h4>
+    </div>
+</div>

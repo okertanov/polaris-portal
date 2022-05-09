@@ -1,0 +1,84 @@
+<div class="container-fluid customContainer">
+  <!-- Top Section -->
+  <div class="row my-3 py-3 py-lg-4">
+    <div class="col-12 col-lg-4">
+      <app-page-title>Contracts</app-page-title>
+    </div>
+    <div
+      class="col-12 col-lg-8 text-start text-sm-end d-block d-sm-flex d-lg-block align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-end my-2">
+        <app-search></app-search>
+        <div class="dropdownDiv">
+          <app-network-select></app-network-select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contracts Table Section -->
+  <div class="row pb-5">
+    <div class="col-12">
+      <table mat-table [dataSource]="assetsDataSource" class="mat-elevation-z8 w-100">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex align-items-center text-truncate">
+              <div class="leftMark" [class]="'grid'"></div>
+              <img [src]="'assets/icons/grid.svg'" class="me-2">
+              <span>{{element.name}}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Type Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> Type</th>
+          <td mat-cell *matCellDef="let element">
+            <span>{{'Utility Token'}}</span>
+          </td>
+        </ng-container>
+
+        <!-- Blocks Column -->
+        <ng-container matColumnDef="code">
+          <th mat-header-cell *matHeaderCellDef> Code</th>
+          <td mat-cell *matCellDef="let element">
+            <span>{{element.code | noWhiteSpace}}</span>
+          </td>
+        </ng-container>
+
+        <!-- Created on Column -->
+        <ng-container matColumnDef="hash">
+          <th mat-header-cell *matHeaderCellDef> Hash</th>
+          <td class="hash-block" mat-cell *matCellDef="let element">
+            <span>{{element.scriptHash}}
+              <!-- <mat-icon>content_copy</mat-icon> -->
+            </span>
+          </td>
+        </ng-container>
+
+        <!-- Transactions Column -->
+        <ng-container matColumnDef="createdOn">
+          <th mat-header-cell *matHeaderCellDef> Created on (UTC)</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex align-items-center justify-content-between w-100">
+              <div class="fw-bold">
+                {{element.createdDate | momentPipe: 'DD.MM.YYYY | hh:mm:ss'}}
+              </div>
+              <button mat-icon-button>
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="assetsDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: assetsDisplayedColumns" (click)="goContract(row)"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="pageSizeOption" [showFirstLastButtons]="true"></mat-paginator>
+      <app-paginator [dataLength]="dataLength" [pageSizeOption]="pageSizeOption" [pageSize]="pageSize"
+        (onPage)="pageChange($event)"></app-paginator>
+    </div>
+  </div>
+</div>

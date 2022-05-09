@@ -1,0 +1,11 @@
+<div class="topSection" [@slideInOut] *ngIf="visible">
+    <div [ngSwitch]="field">
+        <app-dvita *ngSwitchCase="'dvita'" [subItem]="bigMenuItem"></app-dvita>
+        <app-explorer *ngSwitchCase="'explorer'" [subItem]="bigMenuItem"></app-explorer>
+        <app-enterprise *ngSwitchCase="'enterprise'" [subItem]="bigMenuItem"></app-enterprise>
+        <app-platform *ngSwitchCase="'platform'" [subItem]="bigMenuItem"></app-platform>
+        <app-developer *ngSwitchCase="'developer'" [subItem]="bigMenuItem"></app-developer>
+        <app-partners *ngSwitchCase="'partners'" [subItem]="bigMenuItem"></app-partners>
+        <app-about-us *ngSwitchCase="'about-us'" [subItem]="bigMenuItem"></app-about-us>
+    </div>
+</div>

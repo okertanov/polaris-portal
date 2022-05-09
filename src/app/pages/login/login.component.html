@@ -1,0 +1,106 @@
+<div class="container-fluid customContainer py-0 py-sm-4 py-lg-5">
+    <div class="row justify-content-between">
+        <div class="loginColumn">
+            <form (submit)="onLoginSubmit($event)" ngNativeValidate *ngIf="loginForm === 'new'">
+                <div class="mobileLog text-center">
+                    <app-sub-title>Log In Web3 Account</app-sub-title>
+                </div>
+                <div class="my-2 pt-2">
+                    <div class="m-0 mb-1 credentials"> Email </div>
+                    <input type="email" name="email" placeholder="Enter your email" class="email w-100" required>
+                </div>
+
+                <div class="my-3">
+                    <div class="m-0 mb-1 credentials"> Password </div>
+                    <div class="input-group">
+                        <input [type]="passwordType" class="form-control" name="password"
+                            placeholder="Enter your password" required minlength="8" autocomplete="new-password">
+                        <span class="input-group-text">
+                            <mat-icon class="material-icons-outlined" (click)="toggleType()"> {{ passwordType ===
+                                'password' ? 'visibility_off' : 'visibility' }} </mat-icon>
+                        </span>
+                    </div>
+                </div>
+
+                <footer>
+                    <button mat-raised-button class="my-1 px-1" type="submit"
+                        [disabled]="creatingWallet">
+                        {{ creatingWallet ? 'Creating...' : 'Create new Web3 Account' }}
+                    </button>
+                    <button class="mx-1 my-1 plainButton" type="button" (click)="loginForm = 'existing'"
+                        *ngIf="savedWallets.length > 0"> Use saved W3 account </button>
+                    <button class="mx-1 my-1 plainButton" type="button" mat-button [matMenuTriggerFor]="menu">Import wallet</button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            <label>
+                                Import wallet JSON file
+                                <input type="file" accept="application/json" (change)="onImportJSON($event)" style="display: none" />
+                            </label>
+                        </button>
+                        <button mat-menu-item (click)="onImportPrivateKey()">Import private key</button>
+                    </mat-menu>
+                </footer>
+            </form>
+
+            <form class="useExisting" (submit)="onUseExistingWalletSubmit($event)" ngNativeValidate
+                *ngIf="loginForm === 'existing'">
+                <div class="mobileLog text-center">
+                    <app-sub-title>Log In Web3 Account</app-sub-title>
+                </div>
+                <div class="my-5 pt-4">
+                    <div class="m-0 mb-1 credentials"> Select wallet </div>
+                    <select name="address" class="w-100">
+                        <option *ngFor="let savedWallet of savedWallets" [value]="savedWallet.walletJSON.address">
+                            {{savedWallet.walletJSON.address}}</option>
+                    </select>
+                </div>
+
+                <footer>
+                    <button mat-raised-button class="my-1" type="submit"> Use this Web3 account </button>
+                    <button class="mx-1 my-1 plainButton" type="button" (click)="loginForm = 'new'">Create new W3 account</button>
+                    <button class="mx-1 my-1 plainButton" type="button" mat-button [matMenuTriggerFor]="menu">Import wallet</button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>
+                            <label>
+                                Import wallet JSON file
+                                <input type="file" accept="application/json" (change)="onImportJSON($event)" style="display: none" />
+                            </label>
+                        </button>
+                        <button mat-menu-item (click)="onImportPrivateKey()">Import private key</button>
+                    </mat-menu>
+                </footer>
+            </form>
+        </div>
+
+        <div class="installColumn align-items-center" *ngIf="!hasExtension">
+            <div class="install-content align-items-center justify-content-center flex-column">
+                <h2 class="mt-2 text-center">
+                    <app-extensions-title>Install wallet extension</app-extensions-title>
+                </h2>
+                <div class="mt-3 text-center">
+                    <button mat-raised-button class="connect" (click)="install()">Install</button>
+                </div>
+            </div>
+            <div class="terms-and-conditions">
+                <h4 class="mt-5 text-center">
+                    By connecting your wallet to dVITA you agree to<br> our <a routerLink="/terms">Terms of Service</a>. View our <a routerLink="/policy">Privacy Policy</a>.
+                </h4>
+            </div>
+        </div>
+        <div class="installColumn align-items-center" *ngIf="hasExtension">
+            <div class="install-content align-items-center justify-content-center flex-column">
+                <h2 class="mt-2 text-center">
+                    <app-extensions-title>Connect wallet</app-extensions-title>
+                </h2>
+                <div class="mt-3 text-center">
+                    <button mat-raised-button class="connect" (click)="connect()">Connect</button>
+                </div>
+            </div>
+            <div class="terms-and-conditions">
+                <h4 class="mt-5 text-center">
+                    By connecting your wallet to dVITA you agree to<br> our <a routerLink="/terms">Terms of Service</a>. View our <a routerLink="/policy">Privacy Policy</a>.
+                </h4>
+            </div>
+        </div>
+    </div>
+</div>

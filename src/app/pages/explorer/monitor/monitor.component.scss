@@ -1,0 +1,180 @@
+.container-fluid {
+    .input-group.search {
+        border-radius: 24px;
+        max-width: 400px;
+        width: 400px;
+        input {
+            border-right: 0;
+            height: 48px;
+            border-top-left-radius: 24px;
+            border-bottom-left-radius: 24px;
+            padding: 0 20px;
+            &:focus {
+                box-shadow: none;
+                border-color: #ced4da;
+            }
+        }
+        .input-group-text {
+            background: transparent;
+            height: 48px;
+            border-top-right-radius: 24px;
+            border-bottom-right-radius: 24px;
+        }
+    }
+    .dropdownDiv {
+        float: right;
+    }
+    table {
+        box-shadow: none;
+        width: 100%;
+        .mat-header-cell, .mat-cell {
+            width: 20%;
+            display: flex;
+            align-items: center;
+            border: none;
+        }
+    
+        .mat-footer-row, .mat-header-row, .mat-row {
+            min-width: 100%;
+            display: inline-flex;
+            margin: 4px 0;
+        }
+
+        .mat-header-row {
+            margin: 6px 0;
+            background: #E3D5E6;
+            height: 48px;
+            .mat-header-cell {
+                font-weight: bold;
+            }
+        }
+
+        .mat-row {
+            background: #FCFBFC;
+            border-radius: 2px 0px 0px 2px;
+            height: 60px;
+            cursor: pointer;
+            &:hover {
+                box-shadow: 0px 2px 12px rgb(116 45 128 / 15%);
+            }
+        }
+
+        th.mat-sort-header-sorted {
+            color: black;
+        }
+
+        .mat-column-endpoint {
+            width: 30%;
+            position: relative;
+            .leftMark {
+                width: 4px;
+                height: 100%;
+                background: #43AE44;
+                position: absolute;
+                left: 0;
+                top: 0;
+                border-radius: 2px 0 0 2px;
+            }
+            .leftMark.green {
+                background: #43AE44;
+            }
+            .leftMark.yellow {
+                background: #FFAB48;
+            }
+        }
+
+        .mat-column-type {
+            width: 10%;
+        }
+        .mat-column-isItUp {
+            width: 10%;
+        }
+        .mat-column-availability {
+            width: 10%;
+        }
+        .mat-column-stateHeight {
+            width: 10%;
+        }
+        .mat-column-blockHeight {
+            width: 10%;
+        }
+        .mat-column-version {
+            width: 10%;
+        }
+        .mat-column-peers {
+            width: 10%;
+        }
+    }
+    mat-paginator {
+        visibility: hidden;
+        height: 0;
+    }
+}
+
+.largeText {
+    font-size: 96px;
+}
+
+.greenCard {
+    background: #FCFBFC;
+}
+
+
+@media screen and (max-width: 991px) {
+    .container-fluid {
+        table {
+            .mat-column-endpoint {
+                width: 45%;
+            }
+            .mat-column-type {
+                display: none;
+            }
+            .mat-column-isItUp {
+                width: 10%;
+            }
+            .mat-column-availability {
+                display: none;
+            }
+            .mat-column-stateHeight {
+                display: none;
+            }
+            .mat-column-blockHeight {
+                width: 15%;
+            }
+            .mat-column-version {
+                width: 20%;
+            }
+            .mat-column-peers {
+                width: 10%;
+            }
+        }
+    }
+    .largeText {
+        font-size: 72px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .container-fluid {
+        table {
+            .mat-column-endpoint {
+                width: 80%;
+            }
+            .mat-column-isItUp {
+                width: 20%;
+            }
+            .mat-column-blockHeight {
+                display: none;
+            }
+            .mat-column-version {
+                display: none;
+            }
+            .mat-column-peers {
+                display: none;
+            }
+        }
+    }
+    .largeText {
+        font-size: 48px;
+    }
+}

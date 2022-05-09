@@ -1,0 +1,6 @@
+<div class="expansion-wrapper">
+    <button *ngIf="!isOpen" (click)="isOpen = !isOpen">Show More</button>
+    <div [@openClose]="isOpen ? 'open' : 'closed'" *ngIf="isOpen" (click)="isOpen=!isOpen">
+        <ng-content></ng-content>
+    </div>
+</div>

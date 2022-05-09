@@ -1,0 +1,97 @@
+<div class="container-fluid customContainer">
+  <div class="row py-3 py-lg-5">
+    <div class="col-12 col-lg-4">
+      <!-- <div class="largeText"> Blocks. </div> -->
+      <app-page-title>Blocks</app-page-title>
+    </div>
+    <div
+      class="col-12 col-lg-8 text-start text-sm-end d-block d-sm-flex d-lg-block align-items-center justify-content-between">
+      <!-- <div class="dropdownDiv">
+        <div class="customDropdown" [class.opened]="netDropdownExpand.menuOpen">
+          <button mat-raised-button [matMenuTriggerFor]="menu" #netDropdownExpand="matMenuTrigger"
+            [class.opened]="netDropdownExpand.menuOpen" aria-label="Example icon-button with a menu">
+            {{ netValue }}
+            <mat-icon> {{ netDropdownExpand.menuOpen ? 'expand_less' : 'expand_more' }} </mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" class="customMatMenu">
+            <button mat-menu-item *ngFor="let menuItem of netValues" (click)="netValue = menuItem">
+              <span> {{ menuItem }} </span>
+            </button>
+          </mat-menu>
+        </div>
+      </div> -->
+      <div class="dropdownDiv">
+        <app-network-select></app-network-select>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-end">
+        <app-search></app-search>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 my-4">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">
+        <!-- Height Column -->
+        <ng-container matColumnDef="height">
+          <th mat-header-cell *matHeaderCellDef> Height </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex align-items-center text-truncate">
+              <div class="leftMark" [class]="element.icon"></div>
+              {{element.height}}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Time Column -->
+        <ng-container matColumnDef="time">
+          <th mat-header-cell *matHeaderCellDef> Time </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.time}}
+          </td>
+        </ng-container>
+
+        <!-- Size Column -->
+        <ng-container matColumnDef="size">
+          <th mat-header-cell *matHeaderCellDef> Size </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.size}}
+          </td>
+        </ng-container>
+
+        <!-- Created on Column -->
+        <ng-container matColumnDef="createdOn">
+          <th mat-header-cell *matHeaderCellDef> Created on (UTC) </th>
+          <td mat-cell *matCellDef="let element">
+            {{element.createdOn}}
+          </td>
+        </ng-container>
+
+        <!-- Transactions Column -->
+        <ng-container matColumnDef="transactions">
+          <th mat-header-cell *matHeaderCellDef> Transactions </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex align-items-center justify-content-between w-100">
+              <div>
+                {{element.transactions}}
+              </div>
+              <button mat-icon-button>
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index" (click)="navigateTo(row)">
+        </tr>
+      </table>
+      <!-- (click)="goBlockInfo(i)" -->
+
+      <!-- <mat-paginator [pageSizeOptions]="pageSizeOption" [showFirstLastButtons]="true"></mat-paginator> -->
+      <app-paginator [dataLength]="dataLength" [pageSizeOption]="pageSizeOption" [pageSize]="pageSize"
+        (onPage)="pageChange($event)"></app-paginator>
+    </div>
+  </div>
+</div>

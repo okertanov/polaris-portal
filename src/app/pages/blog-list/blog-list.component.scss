@@ -1,0 +1,60 @@
+.blog {
+    .customBorder {
+        border: 1px solid #B996BF;
+    }
+    .customContainer {
+        .card {
+            background: #FCFBFC;
+            h3 {
+                font-weight: 800 !important;
+                line-height: 150% !important;
+                color: #742D80;
+            }
+            a {
+                text-decoration: none;
+                color: #43AE44;
+                font-size: 16px;
+                h5 {
+                    font-weight: 500 !important;
+                    line-height: 150% !important;
+                }
+                mat-icon {
+                    font-size: 16px;
+                    height: 16px;
+                }
+            }
+            h5.date {
+                font-weight: 200 !important;
+                line-height: 150% !important;
+                text-align: right;
+                color: #B996BF;
+            }
+        }
+    }
+
+    .largeText {
+        font-size: 124px;
+        font-weight: 800;
+        line-height: 100% !important;
+        color: #742D80;
+        margin-top: -42px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .blog {
+        .largeText {
+            font-size: 96px;
+            line-height: 120% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .blog {
+        .largeText {
+            font-size: 56px;
+            line-height: 120% !important;
+        }
+    }
+}

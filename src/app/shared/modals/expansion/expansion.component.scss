@@ -1,0 +1,16 @@
+.expansion-wrapper {
+    display: flex;
+    flex-direction: column;
+    button {
+        cursor: pointer;
+        display: inline-block;
+        background: var(--grey-color);
+        overflow:auto;
+        width:auto;
+        border:solid #e6e6e6;
+        border-width:.1em .1em .1em .8em;
+        padding:.2em .6em;
+        width: 100%;
+        font-size: 14px;
+    }
+}

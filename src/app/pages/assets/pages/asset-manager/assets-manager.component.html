@@ -1,0 +1,170 @@
+<div class="container-fluid customContainer">
+
+  <div class="row">
+    <div class="col-12 py-3 py-lg-4">
+      <app-page-title>Assets</app-page-title>
+
+      <div class="fw-bold textPurple mb-3">Use dVITA one click contract form and create Your own token</div>
+    </div>
+  </div>
+
+  <section class="form-wrapper" *ngIf="assetsForm">
+    <form [class.disabled]="formState !== 'idle'"
+          [formGroup]="assetsForm"
+          [ngSwitch]="formType$ | async"
+          (ngSubmit)="submitForm()">
+
+      <div class="form-field" [class.error]="tokenForm.type?.errors && tokenForm.symbol.touched">
+        <label for="type">Type</label>
+        <select class="disabled" name="select" formControlName="type" id="type" required>
+          <option *ngFor="let data of formTypes" [value]="data.type">{{data.name}}</option>
+        </select>
+      </div>
+
+      <ng-container *ngSwitchCase="'token'" formGroupName="token">
+        <div class="form-field" [class.error]="tokenForm.name?.errors && tokenForm.name.touched">
+          <label for="name">Name of Token</label>
+          <input type="text" id="name"
+                 formControlName="name" placeholder="Name of Token"/>
+        </div>
+
+        <div class="form-field" [class.error]="tokenForm.symbol?.errors && tokenForm.symbol.touched">
+          <label for="symbol">Symbol</label>
+          <input type="text" id="symbol" formControlName="symbol" placeholder="Symbol of Token"/>
+        </div>
+
+        <div class="form-field" [class.error]="tokenForm.decimals?.errors && tokenForm.decimals.touched">
+          <label for="decimals">Decimals</label>
+          <input type="number" id="decimals" formControlName="decimals" placeholder="Decimals"/>
+        </div>
+
+        <div class="form-field" [class.error]="tokenForm.initial?.errors && tokenForm.symbol.touched">
+          <label for="initial">Initial supply</label>
+          <input type="number" id="initial" formControlName="initial" placeholder="Initial tokens supply"/>
+        </div>
+
+        <div class="form-field" [class.error]="tokenForm.iconUrl?.errors && tokenForm.iconUrl?.touched">
+          <label for="assertUrl">Token Icon URL</label>
+          <div class="upload-input">
+            <label for="assert-upload">Choose File</label>
+            <input type="file" class="d-none"
+                   id="assert-upload"
+                   accept="image/png, image/gif, image/jpeg"
+                   (change)="fileUpload($event, 'token')">
+            <input type="text" id="assertUrl" formControlName="iconUrl" placeholder="Token Icon URL"/>
+          </div>
+        </div>
+
+        <div class="form-field" [class.error]="tokenForm.description?.errors && tokenForm.symbol.touched">
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description" placeholder="Description"></textarea>
+        </div>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'nft'" formGroupName="nft">
+        <div class="form-field" [class.error]="nftForm.name?.errors && nftForm.name?.touched">
+          <label for="token-name">Name of Token</label>
+          <input type="text" id="token-name" formControlName="name" placeholder="Name of Token"/>
+        </div>
+
+        <div class="form-field" [class.error]="nftForm.symbol?.errors && nftForm.symbol?.touched">
+          <label for="nft-symbol">Symbol</label>
+          <input type="text" id="nft-symbol" formControlName="symbol" placeholder="Symbol of Token"/>
+        </div>
+
+        <div class="form-field" [class.error]="nftForm.iconUrl?.errors && nftForm.iconUrl?.touched">
+          <label for="nft-token">Token Icon URL</label>
+          <div class="upload-input">
+            <label for="icon-upload">Choose File</label>
+            <input type="file" class="d-none"
+                   id="icon-upload"
+                   accept="image/png, image/gif, image/jpeg"
+                   (change)="fileUpload($event, 'nft')">
+            <input type="text" id="nft-token" formControlName="iconUrl" placeholder="Token Icon URL"/>
+          </div>
+        </div>
+
+        <div class="form-field" [class.error]="tokenForm.description?.errors && tokenForm.symbol.touched">
+          <label for="nft-description">Description</label>
+          <textarea id="nft-description" formControlName="description" placeholder="Description"></textarea>
+        </div>
+      </ng-container>
+
+
+      <button mat-raised-button type="submit" class="submit-btn" [disabled]="formState !== 'idle'">
+        {{submitBtnName}}
+      </button>
+    </form>
+
+    <div class="loader" *ngIf="formState !== 'idle'">
+      <mat-spinner></mat-spinner>
+      <span class="counter" *ngIf="formState === 'waitingForConfirmation'">{{loadCounter}}</span>
+      <span class="status">Waiting for {{ formState === 'waitingForConfirmation' ? 'confirmation' : 'payment' }}...</span>
+    </div>
+  </section>
+
+  <div class="row py-5">
+    <div class="col-12">
+      <table mat-table [dataSource]="assetsDataSource" class="mat-elevation-z8 w-100">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex align-items-center text-truncate">
+              <div class="leftMark" [class]="'grid'"></div>
+              <img [src]="'assets/icons/grid.svg'" class="me-2">
+              <span>{{element.name}}</span>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Type Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> Type</th>
+          <td mat-cell *matCellDef="let element">
+            <span>{{'Utility Token'}}</span>
+          </td>
+        </ng-container>
+
+        <!-- Blocks Column -->
+        <ng-container matColumnDef="code">
+          <th mat-header-cell *matHeaderCellDef> Code</th>
+          <td mat-cell *matCellDef="let element">
+            <span>{{element.code | noWhiteSpace}}</span>
+          </td>
+        </ng-container>
+
+        <!-- Created on Column -->
+        <ng-container matColumnDef="hash">
+          <th mat-header-cell *matHeaderCellDef> Hash</th>
+          <td class="hash-block" mat-cell *matCellDef="let element">
+            <span [cdkCopyToClipboard]="element.scriptHash">{{element.scriptHash}}
+              <mat-icon>content_copy</mat-icon></span>
+          </td>
+        </ng-container>
+
+        <!-- Transactions Column -->
+        <ng-container matColumnDef="createdOn">
+          <th mat-header-cell *matHeaderCellDef> Created on (UTC)</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex align-items-center justify-content-between w-100">
+              <div class="fw-bold">
+                {{element.createdDate | momentPipe: 'DD.MM.YYYY | hh:mm:ss'}}
+              </div>
+              <button mat-icon-button>
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="assetsDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: assetsDisplayedColumns" (click)="goContract(row)"></tr>
+      </table>
+
+      <app-paginator *ngIf="dataLength" [dataLength]="dataLength" [pageSizeOption]="pageSizeOption"
+                     [pageSize]="pageSize"
+                     (onPage)="pageChange($event)"></app-paginator>
+    </div>
+  </div>
+</div>

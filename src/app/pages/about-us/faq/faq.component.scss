@@ -1,0 +1,94 @@
+.container-fluid {
+    strong {
+        color: var(--purple);
+    }
+
+    h3.subTitle {
+        line-height: 150% !important;
+        color: #742D80;
+    }
+    .checkIcon {
+        min-width: 32px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid #742D80;
+        box-sizing: border-box;
+        mat-icon {
+            font-size: 20px;
+            color: #742D80;
+            padding: 3px 0 0 3px;
+        }
+    }
+    .title {
+        font-weight: 800;
+        line-height: 120% !important;
+        font-size: 96px;
+    }
+    .input-group {
+        border-radius: 24px;
+        max-width: 400px;
+        input {
+            border-right: 0;
+            height: 48px;
+            border-top-left-radius: 24px;
+            border-bottom-left-radius: 24px;
+            padding: 0 20px;
+            &:focus {
+                box-shadow: none;
+                border-color: #ced4da;
+            }
+        }
+        .input-group-text {
+            background: transparent;
+            height: 48px;
+            border-top-right-radius: 24px;
+            border-bottom-right-radius: 24px;
+        }
+    }
+    .section {
+        background: #FCFBFC;
+        a {
+            text-decoration: none;
+            &:hover {
+                color: #B9D577;
+            }
+            &:focus {
+                color: #1C8D1D;
+            }
+            h5 {
+                font-weight: 500 !important;
+            }
+            mat-icon {
+                font-size: 16px;
+                height: 16px;
+            }
+        }
+        h3 {
+            font-weight: 800 !important;
+            color: #742D80;
+        }
+
+      img {
+        width: 310px;
+        height: 310px;
+        object-fit: cover;
+      }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .container-fluid {
+        .title {
+            font-size: 72px;
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .container-fluid {
+        .title {
+            font-size: 48px;
+        }
+    }
+}

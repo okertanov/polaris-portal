@@ -1,0 +1,253 @@
+.customContainer {
+    .largeText {
+        font-weight: 800;
+        font-size: 96px;
+        line-height: 120% !important;
+        color: #742D80;
+    }
+    .section {
+        padding: 40px 40px 40px 40px;
+        font-size: 24px;
+        height: 260px;
+        background: var(--grey-color);
+        mat-icon {
+            color: #43AE44;
+            font-size: 16px;
+            height: 16px;
+        }
+        mat-icon.negative {
+            color: red;
+        }
+        .toView{
+            font-size: 18px;
+        }
+        button.mat-raised-button.connect {
+            background: transparent;
+            border-radius: 4px;
+            color: var(--black);
+            font-weight: bold;
+            font-size: 16px;
+            border: 1px solid var(--black);
+            box-shadow: none;
+            height: 40px;
+        }
+    }
+    .description {
+        padding-right: 60px;
+    }
+    .votingRules {
+        font-weight: 800 !important;
+        line-height: 120% !important;
+        color: #742D80;
+    }
+    button.vote {
+        background: linear-gradient(90deg, #43AE44 0.04%, #B9D577 100%);
+        border-radius: 4px;
+        font-size: 18px;
+        font-weight: 800;
+        height: 48px;
+        width: 86px;
+        font-family: "FuturaPT" !important;
+    }
+    table {
+      .mat-column-no {
+        width: 10%;
+      }
+      .mat-column-publicKey {
+        width: 50%;
+      }
+      .mat-column-name {
+        width: 20%;
+      }
+      .mat-column-location {
+        display: none;
+      }
+      .mat-column-votes {
+        width: 20%;
+      }
+      .mat-column-percentageOfVotes {
+        display: none;
+      }
+    }
+    // table {
+    //     box-shadow: none;
+    //     width: 100%;
+    //     .mat-header-cell, .mat-cell {
+    //         width: 12%;
+    //         display: flex;
+    //         align-items: center;
+    //         border: none;
+
+    //         &.mat-column-publicKey {
+    //             width: 52%;
+    //         }
+
+    //         &.no-results {
+    //             width: 100%;
+    //             justify-content: center;
+    //         }
+    //     }
+
+    //     .mat-footer-row, .mat-header-row, .mat-row {
+    //         min-width: 100%;
+    //         display: inline-flex;
+    //         margin: 4px 0;
+    //     }
+
+    //     .mat-header-row {
+    //         margin: 6px 0;
+    //         background: #E3D5E6;
+    //         height: 48px;
+    //     }
+
+    //     .mat-row {
+    //         background: #FCFBFC;
+    //         border-radius: 2px 0px 0px 2px;
+    //         height: 60px;
+    //         cursor: pointer;
+    //         &:hover {
+    //             box-shadow: 0px 2px 12px rgb(116 45 128 / 15%);
+    //         }
+    //     }
+
+    //     .mat-column-no {
+    //         position: relative;
+    //         max-width: 100px;
+    //         .leftMark {
+    //             width: 4px;
+    //             height: 100%;
+    //             position: absolute;
+    //             left: 0;
+    //             top: 0;
+    //             border-radius: 2px 0 0 2px;
+    //         }
+    //         .leftMark.councilMember {
+    //             background: #D3DCE6;
+    //         }
+    //         .leftMark.consensusMaker {
+    //             background: #742D80;
+    //         }
+    //         .leftMark.checked {
+    //             background: #43AE44;
+    //         }
+    //         mat-checkbox {
+    //             ::ng-deep {
+    //                 .mat-checkbox-label {
+    //                     font-size: 16px !important;
+    //                     h5 {
+    //                         line-height: 24px !important;
+    //                     }
+    //                 }
+    //                 .mat-checkbox-frame {
+    //                     width: 24px;
+    //                     height: 24px;
+    //                     border-radius: 4px;
+    //                     border-color: #273443;
+    //                     border-width: 1px;
+    //                 }
+    //             }
+
+    //             ::ng-deep.mat-checkbox-layout{
+    //                 white-space: normal !important;
+    //             }
+
+    //             ::ng-deep.mat-checkbox-inner-container{
+    //                 width: 24px;
+    //                 height: 24px;
+    //                 margin-right: 24px;
+    //             }
+    //         }
+
+    //         mat-checkbox.mat-checkbox-checked {
+    //             ::ng-deep {
+    //                 .mat-checkbox-background {
+    //                     width: 24px;
+    //                     height: 24px;
+    //                     background: #43AE44;
+    //                     border-radius: 4px;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     .mat-column-percentageOfVotes {
+    //         button.mat-raised-button.voted {
+    //             background-color: #43AE44;
+    //             color: white;
+    //             font-size: 16px;
+    //             width: 90px;
+    //             height: 32px;
+    //             border-radius: 16px;
+    //             // display: none;
+    //             .mat-icon {
+    //                 height: 16px;
+    //                 font-size: 16px;
+    //             }
+    //         }
+    //     }
+    // }
+}
+
+.publicKeyOverflowContainer {
+    position: relative;
+    width: 100%;
+}
+
+.publicKeyOverflow {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-right: 1em;
+    // &:hover {
+    //   overflow: visible;
+    // }
+}
+
+.actions {
+    display: inline-flex;
+}
+
+.network-switch {
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+@media screen and (max-width: 991px) {
+  .customContainer {
+    .largeText {
+      font-size: 72px;
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .customContainer {
+    .largeText {
+      font-size: 56px;
+      line-height: 100% !important;
+    }
+    table {
+      .mat-column-no {
+        width: 20%;
+      }
+      .mat-column-name {
+        width: 40%;
+      }
+      .mat-column-publicKey {
+        display: none;
+      }
+      .mat-column-location {
+        display: none;
+      }
+      .mat-column-votes {
+        width: 40%;
+      }
+      .mat-column-percentageOfVotes {
+        display: none;
+      }
+    }
+  }
+
+  .actions {
+    display: inline-flex;
+    flex-direction: column;
+  }
+}

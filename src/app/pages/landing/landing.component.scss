@@ -1,0 +1,467 @@
+.rocket-block {
+  overflow: hidden;
+}
+
+.landingSection {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  
+  .video-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: hidden;
+  }
+  .video-container video {
+    /* Make video to at least 100% wide and tall */
+    min-width: 100%; 
+    min-height: 100%; 
+  
+    /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+    width: auto;
+    height: auto;
+  
+    /* Center the video */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .kenburnsBackground {
+    overflow: hidden;
+    animation: kenburns 20s infinite;
+    width: 100%;
+  }
+
+  .pcoded-wrapper {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  h1 {
+    font-family: "FuturaPT" !important;
+    color: white;
+    font-weight: 600 !important;
+    font-size: 62px !important;
+    line-height: 120% !important;
+  }
+
+  h3 {
+    font-family: "FuturaPT" !important;
+    color: white;
+    font-weight: 450 !important;
+    font-size: 24px !important;
+    line-height: 120% !important;
+  }
+
+  .speedUpBtn {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 120%;
+  }
+  .landing-box {
+    margin: 20px 20px;
+    padding: 15px 15px;
+    height: 120px;
+    width: 260px;
+    border-radius: 12px;
+    background: rgba(102, 101, 101, 0.887);
+    h3 {
+      color: white;
+    }
+  }
+}
+
+
+@keyframes kenburns {
+  0% {
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: scale3d(1.5, 1.5, 1.5) translate3d(0px, 0px, 0px);
+    animation-timing-function: ease-in;
+  }
+  //100% {
+  //  animation-timing-function: ease-in;
+  //  opacity: 0;
+  //}
+}
+
+.offerTools {
+  z-index: 999;
+  position: relative;
+  background: white;
+  img {
+    height: 56px;
+    // width: 119px;
+  }
+  h4 {
+    color: #43AE44;
+    font-family: "FuturaPT" !important;
+  }
+
+  h2 {
+    color: #36163C;
+    font-family: "FuturaPT" !important;
+  }
+
+  h5 {
+    color: #252525;
+    font-family: "OpenSans" !important;
+    font-size: 15px !important;
+  }
+
+  .tool {
+    h4 {
+      color: #36163C;
+      font-family: "FuturaPT" !important;
+    }
+
+    h5 {
+      color: #252525;
+    }
+  }
+}
+
+.video {
+  z-index: 9;
+  position: relative;
+  padding-bottom: 90px !important;
+
+  .customHR {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.1;
+    height: 1px;
+    background: #36163C;
+    width: 100%;
+  }
+
+  .videoPlayer {
+    z-index: 2;
+    position: relative;
+    width: 100%;
+    max-width: fit-content;
+  }
+
+  .moonRover {
+    width: 60px;
+    position: absolute;
+    left: calc(25vw - 189px);
+    top: calc(50% - 39.64px);
+    transform: translateX(-50%);
+  }
+}
+
+.build {
+  background: #36163c1a;
+  position: relative;
+
+  .customContainer {
+    position: relative;
+    z-index: 9;
+  }
+
+  h4 {
+    color: #43AE44;
+    font-family: "FuturaPT" !important;
+  }
+
+  h2 {
+    color: #36163C;
+    font-family: "FuturaPT" !important;
+  }
+
+  h5 {
+    color: #252525;
+    font-family: "OpenSans" !important;
+    font-size: 15px !important;
+  }
+
+  .launchBtn {
+    background: linear-gradient(90deg, #43AE44 0.04%, #B9D577 100%);
+    border-radius: 3px;
+    border: 0;
+    padding: 12px 36px;
+    font-family: "FuturaPT" !important;
+    font-size: 24px;
+  }
+
+  .codeBlock {
+    margin-top: 50px;
+    // margin: 160px 0 60px;
+
+    img {
+      //width: 100%;
+      max-height: 194px;
+      max-width: 96%;
+    }
+  }
+
+  .animationDiv {
+    img.stars {
+      position: absolute;
+      top: 0;
+      right: 100px;
+    }
+
+    .stars-animation {
+      animation: stars 2s forwards;
+    }
+
+    img.cloud1 {
+      position: absolute;
+      top: 50%;
+      right: 100px;
+      transform: translateY(-50%);
+    }
+
+    .cloud1-animation {
+      animation: cloud1 2s forwards;
+    }
+
+    img.cloud2 {
+      position: absolute;
+      top: calc(50% + 84px);
+      right: 234px;
+      transform: translateY(-50%);
+    }
+
+    .cloud2-animation {
+      animation: cloud2 2s forwards;
+    }
+
+    img.rocket {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+
+    .rocket-animation {
+      animation: rocket 2s forwards;
+    }
+
+    img.smoke1 {
+      position: absolute;
+      bottom: 0;
+      right: 640px;
+    }
+
+    .smoke1-animation {
+      animation: smoke1 2s forwards;
+    }
+
+    img.smoke2 {
+      position: absolute;
+      bottom: 0;
+      right: 476px;
+    }
+
+    .smoke2-animation {
+      animation: smoke2 2s forwards;
+    }
+  }
+}
+
+button {
+  background: linear-gradient(90deg, #43AE44 0.04%, #B9D577 100%);
+  border-radius: 3px;
+  border: 0;
+  padding: 12px 36px;
+  font-family: "FuturaPT" !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .square-animation {
+    animation: stars 2s forwards;
+  }
+}
+
+@keyframes stars {
+  0% {
+    top: -214px;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes cloud1 {
+  0% {
+    top: 204px;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes rocket {
+  0% {
+    bottom: -480px;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes cloud2 {
+  0% {
+    top: 412px;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes smoke1 {
+  0% {
+    bottom: -36px;
+    right: 160px;
+    animation-timing-function: ease-in;
+  }
+  70% {
+    bottom: -36px;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes smoke2 {
+  0% {
+    bottom: -26px;
+    right: 160px;
+    animation-timing-function: ease-in;
+  }
+  70% {
+    bottom: -26px;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    animation-timing-function: ease-in;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .landingSection {
+    height: 900px;
+    background-image: url(/assets/imgs/index/bgLarge.png);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .landingSection {
+    height: 1150px;
+    background-image: url(/assets/imgs/index/bgMedium.png);
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .landingSection {
+    height: 1250px;
+    background-image: url(/assets/imgs/index/bgSmall.png);
+    img {
+      height: 400px;
+    }
+  }
+  @media screen and (max-width: 325px) { 
+    .landingSection {
+      height: 1400px;
+    }
+  }
+
+  @keyframes kenburns {
+    0% {
+      background-size: auto 100%;
+      animation-timing-function: ease-in;
+    }
+    50% {
+      background-size: auto 160%;
+    }
+    100% {
+      background-size: auto 100%;
+      animation-timing-function: ease-in;
+    }
+  }
+  @keyframes stars {
+    0% {
+      top: -214px;
+      animation-timing-function: ease-in;
+    }
+    100% {
+      animation-timing-function: ease-in;
+    }
+  }
+  @keyframes cloud1 {
+    0% {
+      top: 204px;
+      animation-timing-function: ease-in;
+    }
+    100% {
+      animation-timing-function: ease-in;
+    }
+  }
+  @keyframes cloud2 {
+    0% {
+      top: 412px;
+      animation-timing-function: ease-in;
+    }
+    100% {
+      animation-timing-function: ease-in;
+    }
+  }
+  .build {
+    .animationDiv {
+      img.stars {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: stars 2s forwards;
+      }
+
+      img.cloud1 {
+        position: absolute;
+        top: 50%;
+        left: calc(50%);
+        transform: translateX(-50%);
+        animation: cloud1 2s forwards;
+      }
+
+      img.cloud2 {
+        position: absolute;
+        top: calc(50% + 84px);
+        left: calc(50% - 67px);
+        transform: translateX(-50%);
+        animation: cloud2 2s forwards;
+      }
+
+      img.rocket {
+        // right: -24px;
+      }
+
+      img.smoke1 {
+        display: none;
+      }
+
+      img.smoke2 {
+        display: none;
+      }
+    }
+  }
+}

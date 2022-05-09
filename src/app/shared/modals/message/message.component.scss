@@ -1,0 +1,20 @@
+.container-fluid {
+    align-items: center;
+    justify-content: center;
+    width: 420px;
+    height: 100px;
+    .close {
+        position: absolute;
+        top: 16px;
+        right: 10px;
+        mat-icon {
+            color: var(--dark-grey);
+            cursor: pointer;
+        }
+    }
+}
+::ng-deep {
+    .cdk-overlay-pane mat-dialog-container.mat-dialog-container {
+        background-color: var(--grey-color);
+    }
+}

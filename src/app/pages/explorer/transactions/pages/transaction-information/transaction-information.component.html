@@ -1,0 +1,93 @@
+<div class="container-fluid customContainer" *ngIf="transaction$ | async as transaction">
+    <!-- Top Section -->
+    <div class="row my-3 py-3 py-lg-5">
+        <div class="col-12 col-lg-6">
+            <app-page-title>Transaction information</app-page-title>
+        </div>
+        <!-- <div class="col-12 col-lg-6 text-start text-sm-end d-block d-sm-flex align-items-center">
+            <div class="d-flex align-items-center my-2">
+                <div class="input-group search">
+                    <input type="text" class="form-control" placeholder="Block height, hash, adress or transaction id"
+                           [(ngModel)]="searchValue"
+                           (keydown.enter)="makeSearch()">
+                    <span class="input-group-text">
+                        <mat-icon (click)="makeSearch()">search</mat-icon>
+                    </span>
+                </div>
+            </div>
+            <div class="dropdownDiv">
+                <app-network-select></app-network-select>
+            </div>
+        </div> -->
+        <div
+            class="col-12 col-lg-6 text-start text-sm-end d-block d-sm-flex d-lg-block align-items-center justify-content-between">
+            <div class="dropdownDiv">
+                <app-network-select></app-network-select>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-end">
+                <div class="input-group search mx-1">
+                    <input type="text" class="form-control" placeholder="Block height, hash, adress or transaction id">
+                    <span class="input-group-text">
+                        <mat-icon>search</mat-icon>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Section -->
+    <div class="row">
+        <div class="col-12 pt-5">
+            <app-details-title>Details</app-details-title>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 p-3">
+            <div class="grayCard p-3">
+                <h5> Type </h5>
+                <h5 class="m-0 fw-bold textPurple"> Invocation Transaction </h5>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 p-3">
+            <div class="grayCard p-3">
+                <h5> Included in Block </h5>
+                <h5 class="m-0 fw-bold textPurple"> {{transaction.blockIndex}} </h5>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 p-3">
+            <div class="grayCard p-3">
+                <h5> Created on </h5>
+                <h5 class="m-0 fw-bold textPurple">{{transaction.timestamp | momentPipe: 'DD.MM.YYYY | hh:mm:ss'}}</h5>
+            </div>
+        </div>
+        <div class="col-12 p-3">
+            <div class="grayCard p-3 d-flex">
+                <h5 class="m-0 me-3"> Block Hash </h5>
+                <h5 class="m-0 fw-bold breakWord textPurple"> {{transaction.blockHash}} </h5>
+            </div>
+            <div class="grayCard p-3 d-flex">
+                <h5 class="m-0 me-3"> Hash </h5>
+                <h5 class="m-0 fw-bold breakWord textPurple"> {{transaction.hash}} </h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bytecode -->
+    <div class="row">
+        <div class="col-12 pt-5">
+            <app-details-title>Bytecode</app-details-title>
+        </div>
+        <div class="col-12 col-lg-6 p-3">
+            <div class="cardSection p-3">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h5 class="m-0"> Invocation Script </h5>
+                </div>
+                <h5 class="m-0 fw-bold breakWord textPurple">
+                    {{transaction.script}}
+                </h5>
+                <div class="d-flex align-items-center justify-content-between">
+                    <mat-icon (click)="copyClipboard(transaction.script)">content_copy</mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

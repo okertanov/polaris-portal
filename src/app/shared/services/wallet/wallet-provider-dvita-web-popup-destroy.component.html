@@ -1,0 +1,10 @@
+<h2 mat-dialog-title class="purple">⚠️ Destory wallet</h2>
+<mat-dialog-content class="mat-typography py-3">
+  <p>Warning! This will <strong>permanently remove</strong> your wallet from local browser storage!</p>
+  <p>Please make sure you exported and saved the wallet file in a safe place, otherwise this wallet will be permanently destroyed (all funds will be lost).</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onConfirm()">Destroy wallet</button>
+  <button mat-button (click)="onExport()">Export wallet</button>
+  <button mat-raised-button cdkFocusInitial mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

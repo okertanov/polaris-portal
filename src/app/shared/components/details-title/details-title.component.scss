@@ -1,0 +1,15 @@
+span{
+    font-weight: 600;
+    font-size: 32px;
+    color: var(--purple-color);
+}
+
+.point{
+    color:var(--green);
+}
+
+@media screen and (max-width: 991px) {
+    span {
+        font-size: 32px;
+    }
+}

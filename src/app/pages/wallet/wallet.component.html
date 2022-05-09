@@ -1,0 +1,329 @@
+<div class="container-fluid customContainer">
+    <div class="row my-3 py-3">
+        <div class="col-12">
+            <app-page-title>{{ isMyWallet() ? 'My Web3 Account' : 'Web3 account' }}</app-page-title>
+            <h2 class="bold purple my-4">
+                
+            </h2>
+        </div>
+    </div>
+
+    <div class="row headerSection">
+        <div class="halfPanel col-12 col-lg-6 py-3">
+            <div class="walletAddress d-flex align-items-start align-items-sm-center py-2">
+                <p class="m-0"> Wallet </p>
+                <div class="d-flex align-items-start align-items-sm-center">
+                    <h4 class="fw-bold m-0">
+                        {{ address }}
+                    </h4>
+                    <button mat-icon-button class="ms-3" (click)="copy(address)" title="Copy address">
+                        <mat-icon>content_copy</mat-icon>
+                    </button>
+                    <ng-container *ngIf="isMyWallet()">
+                        <button mat-icon-button [matMenuTriggerFor]="menu" title="More details">
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item (click)="copy(address)">Copy address</button>
+                            <button mat-menu-item (click)="copyPublicKey()">Copy public key</button>
+                            <button mat-menu-item (click)="onExportClick()" *ngIf="isWebWallet"> Export wallet </button>
+                            <button mat-menu-item (click)="onDestroyClick()" *ngIf="isWebWallet"> Destroy wallet </button>
+                        </mat-menu>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="walletAddress d-flex align-items-center py-2">
+                <p class="m-0"> DVITA </p>
+                <h4 class="fw-bold m-0">
+                    {{ loading ? '⏳' : amountDVITA }}
+                </h4>
+            </div>
+            <div class="walletAddress d-flex align-items-center py-2">
+                <p class="m-0"> DVG </p>
+                <h4 class="fw-bold m-0">
+                    {{ loading ? '⏳' : amountDVG }}
+                </h4>
+            </div>
+        </div>
+        <div class="halfPanel col-12 col-lg-6 py-3" *ngIf="isMyWallet()">
+            <div class="dropdownDiv">
+                <app-network-select></app-network-select>
+            </div>
+        </div>
+        <div class="col-12" *ngIf="isMyWallet()">
+            <button mat-raised-button class="mx-1 my-1" (click)="onSettingsClick()"> Settings </button>
+            <button mat-raised-button class="mx-1 my-1" (click)="onLogOutClick()"> Log Out </button>
+            <button mat-raised-button class="mx-1 my-1" (click)="onRequestTestNetFundsClick()" *ngIf="net === 'TestNet'"> Send me TestNet funds DVITA and DVG </button>
+        </div>
+    </div>
+
+    <!-- List of assets -->
+    <div class="row assetsList">
+        <div class="col-12">
+            <table mat-table [dataSource]="assetsDataSource" class="mat-elevation-z8 w-100 my-4">
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center text-truncate">
+                            <div class="leftMark" [class]="element.type | toCamelCase"></div>
+                            <img [src]="sanitize(element.icon)" class="me-2 asset-icon">
+                            {{element.name}}
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                {{element.type}}
+                            </div>
+                            <button mat-icon-button class="d-flex d-sm-none">
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef> Amount </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                {{ loading ? '⏳' : element.amount }}
+                            </div>
+                            <button mat-icon-button>
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="assetsDisplayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: assetsDisplayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Transfer -->
+    <form (submit)="onTransfer($event)" *ngIf="isMyWallet()">
+        <div class="row transfer my-3 my-lg-5 py-5">
+            <div class="col-12">
+                <app-page-title>Transfer</app-page-title>
+            </div>
+            <div class="transfer-inputs">
+                <div class="transfer-input-container py-3 px-1">
+                    <div class="fw-bold m-0 mb-1"> To address </div>
+                    <input type="text" placeholder="Enter the address to send" class="roundInput w-100" name="recipient" [(ngModel)]="transferModel.recipient">
+                </div>
+                <div class="transfer-input-container py-3 px-1">
+                    <div class="fw-bold m-0 mb-1"> Amount <button type="button" (click)="onMaxClick()" class="maxButton">max</button></div>
+                    <input
+                        type="number"
+                        placeholder="Enter amount"
+                        class="roundInput w-100 num"
+                        name="amount"
+                        min="0"
+                        [max]="transferAssetMaximum"
+                        step="any"
+                        [(ngModel)]="transferModel.amount"
+                    >
+                </div>
+                <div class="transfer-input-container dropdown py-3 px-1">
+                    <div class="fw-bold m-0 mb-1"> Asset </div>
+                    <div class="input-group">
+                        <div *ngIf="assetNames.length" class="input-group-dropdown">
+                            <app-dropdown-menu [value]="assetNames[0].name" [values]="assetNames" (change)="onSelectTransferAsset($event)"></app-dropdown-menu>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 py-3">
+                <button mat-raised-button> Send </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Transactions -->
+    <div class="row transactions">
+        <div class="col-12 d-flex align-items-center justify-content-between">
+            <h3 class="bold purple m-0"> Transactions </h3>
+            <a routerLink="/#" class="d-none d-sm-flex align-items-center justify-content-center textGreen">
+                <h3 class="m-0 me-2"> All transactions </h3>
+                <mat-icon>chevron_right</mat-icon>
+            </a>
+        </div>
+        <div class="col-12">
+            <table mat-table [dataSource]="transactionsDataSource" class="mat-elevation-z8 w-100 my-4">
+                <!-- Name Column -->
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center text-truncate" [ngClass]="element.type | toCamelCase">
+                            <div class="leftMark" [class]="element.icon"></div>
+                            <img [src]="'assets/icons/' + element.icon + '.svg'" class="me-2">
+                            {{element.type}}
+                        </div>
+                    </td>
+                </ng-container>
+
+                <!-- Type Column -->
+                <ng-container matColumnDef="transactionId">
+                    <th mat-header-cell *matHeaderCellDef> Transaction ID </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="txid d-flex align-items-center justify-content-between">
+                            <div class="txid">
+                                {{element.transactionId}}
+                            </div>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <!-- Blocks Column -->
+                <ng-container matColumnDef="amount">
+                    <th mat-header-cell *matHeaderCellDef> Amount </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                {{element.amount}}
+                            </div>
+                            <button mat-icon-button class="d-flex d-sm-none">
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <!-- Transactions Column -->
+                <ng-container matColumnDef="completedOn">
+                    <th mat-header-cell *matHeaderCellDef> Completed on </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                {{element.completedOn}}
+                            </div>
+                            <button mat-icon-button>
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="transactionsDisplayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: transactionsDisplayedColumns;" (click)="navigateTo(row)"></tr>
+                <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="9999" valign="center" align="center">
+                        {{ loading ? 'Loading..' : 'No transactions for this address yet' }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-12 d-flex d-sm-none">
+            <a routerLink="/#" class="d-flex align-items-center justify-content-center textGreen">
+                <h3 class="m-0 me-2"> All transactions </h3>
+                <mat-icon>chevron_right</mat-icon>
+            </a>
+        </div>
+    </div>
+
+    <app-paginator
+        *ngIf="paginator.dataLength"
+        [dataLength]="paginator.dataLength"
+        [pageSizeOption]="paginator.pageSizeOption"
+        [pageSize]="paginator.pageSize"
+        (onPage)="pageChange($event)"
+    ></app-paginator>
+
+    <!-- Account info -->
+    <form (submit)="onSubmitAccountInfo($event)">
+        <div class="row accountInfo py-5" id="account-settings" #settingsSection>
+            <div class="col-12">
+                <h3 class="bold purple m-0 pt-4">
+                    Account info
+                </h3>
+            </div>
+
+            <div class="col-12 col-lg-8 pt-2 pb-3" style="position: relative" *ngIf="userInfo && isMyWallet()">
+                <div class="row" [ngClass]="{ locked: !authToken }">
+                    <div class="col-12 col-sm-6 py-3">
+                        <div class="fw-bold m-0 mb-1"> Name </div>
+                        <input type="text" placeholder="Enter your name" class="roundInput w-100" name="name" [(ngModel)]="userInfo.name">
+                    </div>
+                    <div class="col-12 col-sm-6 py-3">
+                        <div class="fw-bold m-0 mb-1"> Surname </div>
+                        <input type="text" placeholder="Enter your surname" class="roundInput w-100" name="surname" [(ngModel)]="userInfo.surname">
+                    </div>
+                    <div class="col-12 col-sm-6 py-3">
+                        <div class="fw-bold m-0 mb-1"> Email </div>
+                        <input type="text" placeholder="Enter your email" class="roundInput w-100" name="email" [(ngModel)]="userInfo.email">
+                    </div>
+                    <div class="col-12 col-sm-6 py-3">
+                        <div class="fw-bold m-0 mb-1"> Address </div>
+                        <input
+                            type="text"
+                            placeholder="Enter your address"
+                            value="{{ user?.wallet?.account?.address }}"
+                            class="roundInput address w-100"
+                            readonly
+                        >
+                    </div>
+                    <div class="col-12 col-sm-6 py-3">
+                        <div class="fw-bold m-0 mb-1"> dVita Identity </div>
+                            <mat-form-field floatLabel='never' style="width: 100%;">
+                                <input matInput type="text" placeholder="Enter dVita identity"name="identity" [(ngModel)]="userInfo.dvitaId" >
+                                <span matSuffix>.id.dvita.com</span>
+                                <span matSuffix (click)="onIdCopyClick()"><mat-icon>content_copy</mat-icon></span>
+                                <span matSuffix mat-button [matMenuTriggerFor]="dVITAMenu"><mat-icon>more_horiz</mat-icon></span>
+
+                                <mat-menu #dVITAMenu="matMenu">
+                                    <button mat-menu-item (click)="onIdCopyClick()">Copy ID</button>
+                                    <button mat-menu-item>Unregister</button>
+                                  </mat-menu>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-12 col-sm-6 py-3">
+                        <div class="fw-bold m-0 mb-1"> Twitter </div>
+                            <mat-form-field floatLabel='never' style="width: 100%;">
+                                <input readonly (click)="onTwitterInputClick()" matInput type="text" placeholder="Connect your Twitter account to receive reward" name="twitter" [(ngModel)]="userInfo.twitter" >
+                                <span matPrefix>@</span>
+                                <span matSuffix (click)="onTwitterCopyClick()"><mat-icon>content_copy</mat-icon></span>
+                                <span matSuffix (click)="onTwitterRemoveClick()"><mat-icon>remove_circle_outline</mat-icon></span>
+                                <span matSuffix mat-button [matMenuTriggerFor]="twitterMenu"><mat-icon>more_horiz</mat-icon></span>
+
+                                <mat-menu #twitterMenu="matMenu">
+                                    <button mat-menu-item (click)="onTwitterCopyClick()">Copy content</button>
+                                    <button mat-menu-item (click)="onTwitterRemoveClick()">Clear content</button>
+                                </mat-menu>
+                            </mat-form-field>
+                    </div>
+                </div>
+                <div class="decryptPasswordRow" *ngIf="!authToken">
+                    <div class="row">
+                        <div class="col-12 py-3">
+                            <div class="fw-bold m-0 mb-1"> Enter password to view or edit info </div>
+                            <input type="password" class="roundInput w-100" name="password">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 py-3" *ngIf="userInfo">
+                <div class="fitContent">
+                    <div class="d-flex align-items-center justify-content-between py-3">
+                        <div class="m-0">Avatar</div>
+                        <button mat-icon-button type="button" *ngIf="authToken && isMyWallet() && userInfo.avatar" (click)="onAvatarRemove()">
+                            <mat-icon>delete_outline</mat-icon>
+                        </button>
+                        <button mat-icon-button type="button" *ngIf="authToken && isMyWallet()">
+                            <label>
+                                <img src="assets/icons/edit.svg">
+                                <input type="file" name="avatar" accept="image/*" (change)="onAvatarChange($event)" />
+                            </label>
+                        </button>
+                    </div>
+                    <img class="avatar" [src]="userInfo.avatar || 'assets/icons/no-avatar.svg' | sanitize">
+                </div>
+            </div>
+            <div class="col-12 py-3" *ngIf="isMyWallet()">
+                <button mat-raised-button type="submit" [disabled]="userInfoFetching"> {{ userInfoFetching ? 'Please wait...' : (authToken ? 'Save' : 'Unlock') }} </button>
+            </div>
+        </div>
+    </form>
+</div>

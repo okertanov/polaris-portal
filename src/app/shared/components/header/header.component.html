@@ -1,0 +1,1559 @@
+<!--<nav class="navbar navbar-expand-lg bg-light fixed-top navbar-transparent" color-on-scroll="500">-->
+<!--    <div class="container-fluid customContainer p-0">-->
+<!--        <div class="row w-100 m-0">-->
+<!--            <div class="col-12 headerSection">-->
+<!--                <div class="row main">-->
+<!--                    <div class="col-12 d-flex align-items-center justify-content-between">-->
+<!--                        <div class="d-flex align-items-center logo">-->
+<!--                            <img src="assets/logos/logo.svg" class="me-0 me-sm-2" (click)="goHome()">-->
+
+<!--                            <div class="links d-none d-lg-flex align-items-center justify-content-between">-->
+<!--                                &lt;!&ndash; Tools &ndash;&gt;-->
+<!--                                <div class="dropdownItem mx-1">-->
+<!--                                    <button mat-raised-button (click)="bigMenu('dvita')">-->
+<!--                                        Tools-->
+<!--                                        <mat-icon class="material-icons-outlined">-->
+<!--                                            expand_more-->
+<!--                                        </mat-icon>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; Explorer &ndash;&gt;-->
+<!--                                <div class="dropdownItem mx-1">-->
+<!--                                    <button mat-raised-button (click)="bigMenu('explorer')">-->
+<!--                                        Explorer-->
+<!--                                        <mat-icon class="material-icons-outlined">-->
+<!--                                            expand_more-->
+<!--                                        </mat-icon>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; Enterprise &ndash;&gt;-->
+<!--                                <div class="dropdownItem mx-1">-->
+<!--                                    <button mat-raised-button (click)="bigMenu('enterprise')">-->
+<!--                                        Enterprise-->
+<!--                                        <mat-icon class="material-icons-outlined">-->
+<!--                                            expand_more-->
+<!--                                        </mat-icon>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; Features &ndash;&gt;-->
+<!--                                <div class="dropdownItem mx-1">-->
+<!--                                    <button mat-raised-button (click)="bigMenu('platform')">-->
+<!--                                        Features-->
+<!--                                        <mat-icon class="material-icons-outlined">-->
+<!--                                            expand_more-->
+<!--                                        </mat-icon>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; Governance &ndash;&gt;-->
+<!--                                <a routerLink="/node-election" routerLinkActive="active" class="mx-3">-->
+<!--                                    <p class="m-0"> Governance </p>-->
+<!--                                </a>-->
+<!--                                &lt;!&ndash; Developer &ndash;&gt;-->
+<!--                                <div class="dropdownItem mx-1">-->
+<!--                                    <button mat-raised-button (click)="bigMenu('developer')">-->
+<!--                                        Developers-->
+<!--                                        <mat-icon class="material-icons-outlined">-->
+<!--                                            expand_more-->
+<!--                                        </mat-icon>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; Blogs &ndash;&gt;-->
+<!--                                &lt;!&ndash;                                <a routerLink="/blogs" routerLinkActive="active" class="mx-3">&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                    <p class="m-0"> Blogs </p>&ndash;&gt;-->
+<!--                                &lt;!&ndash;                                </a>&ndash;&gt;-->
+<!--                                &lt;!&ndash; Ecosystem &ndash;&gt;-->
+<!--                                <div class="dropdownItem mx-1">-->
+<!--                                    <button mat-raised-button (click)="bigMenu('partners')">-->
+<!--                                        Ecosystem-->
+<!--                                        <mat-icon class="material-icons-outlined">-->
+<!--                                            expand_more-->
+<!--                                        </mat-icon>-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; About us &ndash;&gt;-->
+<!--                                &lt;!&ndash; <div class="dropdownItem mx-1">-->
+<!--                                    <button mat-raised-button (click)="bigMenu('about-us')">-->
+<!--                                        About us-->
+<!--                                        <mat-icon class="material-icons-outlined">-->
+<!--                                            expand_more-->
+<!--                                        </mat-icon>-->
+<!--                                    </button>-->
+<!--                                </div> &ndash;&gt;-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; Language &ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <div class="dropdownItem lang mx-1 langDropdown d-none d-lg-flex align-items-center">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                <button mat-raised-button [matMenuTriggerFor]="langMenu">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    {{ language }}&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    <mat-icon class="material-icons-outlined">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        expand_more&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    </mat-icon>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                </button>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                <mat-menu #langMenu="matMenu" xPosition="before" class="langMenu mt-3 px-3 rounded">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    <button mat-menu-item class="d-flex align-items-center p-0" (click)="setLanguage('Eng')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <p class="m-0"> English </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    </button>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    <button mat-menu-item class="d-flex align-items-center p-0" (click)="setLanguage('Spa')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <p class="m-0"> Español </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    </button>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    <button mat-menu-item class="d-flex align-items-center p-0" (click)="setLanguage('Nld')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <p class="m-0"> Nederlands </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    </button>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    <button mat-menu-item class="d-flex align-items-center p-0" (click)="setLanguage('Deu')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <p class="m-0"> Deutsch </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    </button>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    <button mat-menu-item class="d-flex align-items-center p-0" (click)="setLanguage('Fra')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <p class="m-0"> Français </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    </button>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    <button mat-menu-item class="d-flex align-items-center p-0" (click)="setLanguage('Ita')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <p class="m-0"> Italiano </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    </button>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    <button mat-menu-item class="d-flex align-items-center p-0" (click)="setLanguage('Rus')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <p class="m-0"> Русский </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    </button>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    <button mat-menu-item class="d-flex align-items-center p-0" (click)="setLanguage('Por')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <p class="m-0"> Português </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    </button>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    <button mat-menu-item class="d-flex align-items-center p-0" (click)="setLanguage('Ron')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <p class="m-0"> Română </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    </button>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                </mat-menu>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                        </div>-->
+
+<!--                        <div class="d-flex align-items-center">-->
+<!--                            <div *ngIf="user; else notLogged" class="dropdownItem">-->
+<!--                                <button mat-raised-button [matMenuTriggerFor]="userMenu"-->
+<!--                                    class="userMenuBtn d-flex align-items-center justify-content-center">-->
+<!--                                    <p class="m-0 me-2"> {{ user.wallet.account.label || user.wallet.account.address }}-->
+<!--                                    </p>-->
+<!--                                    <img src="assets/icons/no-avatar.svg" class="rounded-circle avatar">-->
+<!--                                </button>-->
+<!--                                <mat-menu #userMenu="matMenu" xPosition="before" class="userMenu mt-3 px-3 rounded">-->
+<!--                                    <button mat-menu-item class="d-flex align-items-center p-0 px-2"-->
+<!--                                        [routerLink]="['/wallet', user.wallet.account.address]">-->
+<!--                                        <img src="assets/icons/wallet.svg">-->
+<!--                                        <p class="m-0 ms-2"> My wallet </p>-->
+<!--                                    </button>-->
+<!--                                    <button mat-menu-item class="d-flex align-items-center p-0 px-2" (click)="logout()">-->
+<!--                                        <img src="assets/icons/log-out.png">-->
+<!--                                        <p class="m-0 ms-2"> Log Out </p>-->
+<!--                                    </button>-->
+<!--                                </mat-menu>-->
+<!--                            </div>-->
+<!--                            <ng-template #notLogged>-->
+<!--                                <div class="login mx-1 d-none d-sm-block">-->
+<!--                                    <a routerLink="#" (click)="goLoginConnect()">-->
+<!--                                        Log In-->
+<!--                                    </a>-->
+<!--                                </div>-->
+<!--                                <div class="connect mx-3" (click)="goLoginConnect()">-->
+<!--                                    <button mat-raised-button> Connect </button>-->
+<!--                                </div>-->
+<!--                            </ng-template>-->
+<!--                            <div class="hamburger d-flex d-lg-none align-items-center justify-content-between">-->
+<!--                                <button mat-icon-button (click)="toggle()">-->
+<!--                                    <mat-icon *ngIf="isOpen; else closed">close</mat-icon>-->
+<!--                                    <ng-template #closed>-->
+<!--                                        <img src="assets/icons/menu.svg">-->
+<!--                                    </ng-template>-->
+<!--                                </button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                <div class="row customToggle d-flex d-lg-none" *ngIf="showCustomToggle"-->
+<!--                    [@openClose]="isOpen ? 'open' : 'closed'">-->
+<!--                    <div class="col-12" [@animSlider]="counter">-->
+<!--                        <ng-container *ngFor="let o of list; let i=index">-->
+<!--                            &lt;!&ndash; Main Menu &ndash;&gt;-->
+<!--                            <div class="row d-flex align-items-center bg-white" *ngIf="i===counter && counter === 0">-->
+<!--                                <div class="col-12">-->
+<!--                                    <div class="links d-block d-lg-none align-items-center justify-content-between">-->
+<!--                                        &lt;!&ndash; Tools &ndash;&gt;-->
+<!--                                        <div class="dropdownItem">-->
+<!--                                            <button mat-raised-button (click)="onNext(1)">-->
+<!--                                                Tools-->
+<!--                                                <mat-icon class="material-icons-outlined">-->
+<!--                                                    chevron_right-->
+<!--                                                </mat-icon>-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                        &lt;!&ndash; Explorer &ndash;&gt;-->
+<!--                                        <div class="dropdownItem">-->
+<!--                                            <button mat-raised-button (click)="onNext(2)">-->
+<!--                                                Explorer-->
+<!--                                                <mat-icon class="material-icons-outlined">-->
+<!--                                                    chevron_right-->
+<!--                                                </mat-icon>-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                        &lt;!&ndash; Enterprise &ndash;&gt;-->
+<!--                                        <div class="dropdownItem">-->
+<!--                                            <button mat-raised-button (click)="onNext(3)">-->
+<!--                                                Enterprise-->
+<!--                                                <mat-icon class="material-icons-outlined">-->
+<!--                                                    chevron_right-->
+<!--                                                </mat-icon>-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                        &lt;!&ndash; Features &ndash;&gt;-->
+<!--                                        <div class="dropdownItem">-->
+<!--                                            <button mat-raised-button (click)="onNext(4)">-->
+<!--                                                Features-->
+<!--                                                <mat-icon class="material-icons-outlined">-->
+<!--                                                    chevron_right-->
+<!--                                                </mat-icon>-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                        &lt;!&ndash; Governance &ndash;&gt;-->
+<!--                                        <a class="mx-2" (click)="mobileNavigate('/node-election')">-->
+<!--                                            <p class="m-0"> Governance </p>-->
+<!--                                        </a>-->
+<!--                                        &lt;!&ndash; Developer &ndash;&gt;-->
+<!--                                        <div class="dropdownItem">-->
+<!--                                            <button mat-raised-button (click)="onNext(5)">-->
+<!--                                                Developers-->
+<!--                                                <mat-icon class="material-icons-outlined">-->
+<!--                                                    chevron_right-->
+<!--                                                </mat-icon>-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                        &lt;!&ndash; Ecosystem &ndash;&gt;-->
+<!--                                        <div class="dropdownItem">-->
+<!--                                            <button mat-raised-button (click)="onNext(6)">-->
+<!--                                                Ecosystem-->
+<!--                                                <mat-icon class="material-icons-outlined">-->
+<!--                                                    chevron_right-->
+<!--                                                </mat-icon>-->
+<!--                                            </button>-->
+<!--                                        </div>-->
+<!--                                        &lt;!&ndash; Blogs &ndash;&gt;-->
+<!--                                        &lt;!&ndash;                                        <a class="mx-2" (click)="mobileNavigate('/blogs')">&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                                            <p class="m-0"> Blogs </p>&ndash;&gt;-->
+<!--                                        &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                                        &lt;!&ndash; Partners &ndash;&gt;-->
+<!--                                        &lt;!&ndash; <div class="dropdownItem">-->
+<!--                                            <button mat-raised-button (click)="onNext(3)">-->
+<!--                                                Partners-->
+<!--                                                <mat-icon class="material-icons-outlined">-->
+<!--                                                    chevron_right-->
+<!--                                                </mat-icon>-->
+<!--                                            </button>-->
+<!--                                        </div> &ndash;&gt;-->
+<!--                                        &lt;!&ndash; About us &ndash;&gt;-->
+<!--                                        &lt;!&ndash; <div class="dropdownItem">-->
+<!--                                            <button mat-raised-button (click)="onNext(4)">-->
+<!--                                                About us-->
+<!--                                                <mat-icon class="material-icons-outlined">-->
+<!--                                                    chevron_right-->
+<!--                                                </mat-icon>-->
+<!--                                            </button>-->
+<!--                                        </div> &ndash;&gt;-->
+<!--                                    </div>-->
+
+<!--                                    <hr>-->
+
+<!--                                    &lt;!&ndash; Language &ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                    <div class="dropdownItem">&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                        <button mat-raised-button (click)="onNext(5)">&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                            {{ language }}&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                            <mat-icon class="material-icons-outlined">&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                                chevron_right&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                            </mat-icon>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                        </button>&ndash;&gt;-->
+<!--                                    &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                                    <div class="login my-3">-->
+<!--                                        <a (click)="mobileNavigate('/login')">-->
+<!--                                            Log In-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                    <div class="connect my-3">-->
+<!--                                        <button mat-raised-button> Connect </button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; dVITA Submenus &ndash;&gt;-->
+<!--                            <div class="row d-flex align-items-center bg-white" *ngIf="i===counter && counter === 1">-->
+<!--                                <div class="col-12">-->
+<!--                                    <div class="links d-block d-lg-none align-items-center justify-content-between">-->
+<!--                                        <button mat-icon-button class="backBtn" (click)="initCounter()">-->
+<!--                                            <mat-icon>chevron_left</mat-icon>-->
+<!--                                        </button>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/#')">-->
+<!--                                            <p class="m-0"> Wallets </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/assets-deploy')">-->
+<!--                                            <p class="m-0"> Assets </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/applications')">-->
+<!--                                            <p class="m-0"> Applications </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/node-election')">-->
+<!--                                            <p class="m-0"> Node Election </p>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; Explorer Submenus &ndash;&gt;-->
+<!--                            <div class="row d-flex align-items-center bg-white" *ngIf="i===counter && counter === 2">-->
+<!--                                <div class="col-12">-->
+<!--                                    <div class="links d-block d-lg-none align-items-center justify-content-between">-->
+<!--                                        <button mat-icon-button class="backBtn" (click)="initCounter()">-->
+<!--                                            <mat-icon>chevron_left</mat-icon>-->
+<!--                                        </button>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/blocks')">-->
+<!--                                            <p class="m-0"> Blocks </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/contracts')">-->
+<!--                                            <p class="m-0"> Contracts </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent disabled" (click)="mobileNavigate('/#')">-->
+<!--                                            <p class="m-0"> Transactions (Coming soon) </p>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; Enterprise Submenus &ndash;&gt;-->
+<!--                            <div class="row d-flex align-items-center bg-white" *ngIf="i===counter && counter === 3">-->
+<!--                                <div class="col-12">-->
+<!--                                    <div class="links d-block d-lg-none align-items-center justify-content-between">-->
+<!--                                        <button mat-icon-button class="backBtn" (click)="initCounter()">-->
+<!--                                            <mat-icon>chevron_left</mat-icon>-->
+<!--                                        </button>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/#')">-->
+<!--                                            <p class="m-0"> Mainnet </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/#')">-->
+<!--                                            <p class="m-0"> Privatenet </p>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; Features Submenus &ndash;&gt;-->
+<!--                            <div class="row d-flex align-items-center bg-white" *ngIf="i===counter && counter === 4">-->
+<!--                                <div class="col-12">-->
+<!--                                    <div class="links d-block d-lg-none align-items-center justify-content-between">-->
+<!--                                        <button mat-icon-button class="backBtn" (click)="initCounter()">-->
+<!--                                            <mat-icon>chevron_left</mat-icon>-->
+<!--                                        </button>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/#')">-->
+<!--                                            <p class="m-0"> Advanced smart contracts </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/#')">-->
+<!--                                            <p class="m-0"> Oracle </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/#')">-->
+<!--                                            <p class="m-0"> DFS</p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/#')">-->
+<!--                                            <p class="m-0"> DNS </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/#')">-->
+<!--                                            <p class="m-0"> ID </p>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; Developer Submenus &ndash;&gt;-->
+<!--                            <div class="row d-flex align-items-center bg-white" *ngIf="i===counter && counter === 5">-->
+<!--                                <div class="col-12">-->
+<!--                                    <div class="links d-block d-lg-none align-items-center justify-content-between">-->
+<!--                                        <button mat-icon-button class="backBtn" (click)="initCounter()">-->
+<!--                                            <mat-icon>chevron_left</mat-icon>-->
+<!--                                        </button>-->
+<!--                                        <a class="mx-2 longContent" href="https://github.com/dVita-Labs">-->
+<!--                                            <p class="m-0"> GitHub </p>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; Ecosystem Submenus &ndash;&gt;-->
+<!--                            <div class="row d-flex align-items-center bg-white" *ngIf="i===counter && counter === 6">-->
+<!--                                <div class="col-12">-->
+<!--                                    <div class="links d-block d-lg-none align-items-center justify-content-between">-->
+<!--                                        <button mat-icon-button class="backBtn" (click)="initCounter()">-->
+<!--                                            <mat-icon>chevron_left</mat-icon>-->
+<!--                                        </button>-->
+<!--                                        <a class="mx-2 longContent" (click)="popUpMessage()">-->
+<!--                                            <p class="m-0"> dVITA Foundation </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="popUpMessage()">-->
+<!--                                            <p class="m-0"> dVITA LABS </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="popUpMessage()">-->
+<!--                                            <p class="m-0"> dVITA Capital </p>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+
+<!--                            &lt;!&ndash; About us Submenus &ndash;&gt;-->
+<!--                            &lt;!&ndash; <div class="row d-flex align-items-center bg-white" *ngIf="i===counter && counter === 4">-->
+<!--                                <div class="col-12">-->
+<!--                                    <div class="links d-block d-lg-none align-items-center justify-content-between">-->
+<!--                                        <button mat-icon-button class="backBtn" (click)="initCounter()">-->
+<!--                                            <mat-icon>chevron_left</mat-icon>-->
+<!--                                        </button>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/team')">-->
+<!--                                            <p class="m-0"> Team </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" (click)="mobileNavigate('/faq')">-->
+<!--                                            <p class="m-0"> FAQ </p>-->
+<!--                                        </a>-->
+<!--                                        <a class="mx-2 longContent" target="_blank" href="assets/pdf/teaser_v1.pdf">-->
+<!--                                            <p class="m-0"> Teaser </p>-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div> &ndash;&gt;-->
+
+<!--                            &lt;!&ndash; Language Submenus &ndash;&gt;-->
+<!--                            &lt;!&ndash;                            <div class="row d-flex align-items-center bg-white" *ngIf="i===counter && counter === 5">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                <div class="col-12">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    <div class="links d-block d-lg-none align-items-center justify-content-between">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <button mat-icon-button class="backBtn" (click)="initCounter()">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                            <mat-icon>chevron_left</mat-icon>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        </button>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <a class="mx-2 longContent" (click)="setLanguage('Eng')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                            <p class="m-0"> English </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <a class="mx-2 longContent" (click)="setLanguage('Spa')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                            <p class="m-0"> Español </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <a class="mx-2 longContent" (click)="setLanguage('Nld')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                            <p class="m-0"> Nederlands </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <a class="mx-2 longContent" (click)="setLanguage('Deu')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                            <p class="m-0"> Deutsch </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <a class="mx-2 longContent" (click)="setLanguage('Fra')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                            <p class="m-0"> Français </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <a class="mx-2 longContent" (click)="setLanguage('Ita')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                            <p class="m-0"> Italiano </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <a class="mx-2 longContent" (click)="setLanguage('Rus')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                            <p class="m-0"> Русский </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <a class="mx-2 longContent" (click)="setLanguage('Por')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                            <p class="m-0"> Português </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        <a class="mx-2 longContent" (click)="setLanguage('Ron')">&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                            <p class="m-0"> Română </p>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                        </a>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                                </div>&ndash;&gt;-->
+<!--                            &lt;!&ndash;                            </div>&ndash;&gt;-->
+<!--                        </ng-container>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</nav>-->
+
+<!--<div class="bigMenu">-->
+<!--    <app-big-menu></app-big-menu>-->
+<!--</div>-->
+
+
+<nav class="navbar navbar-expand-lg" [class.switchNav]="path === '/'" [ngClass]="topBarBackground">
+  <div class="container-fluid customContainer p-0">
+    <div class="row w-100 m-0">
+      <div class="col-12 headerSection">
+        <div class="row main">
+          <div class="col-12 d-flex align-items-center justify-content-between">
+            <div class="hamburger d-flex d-lg-none align-items-center justify-content-between">
+              <button mat-icon-button (click)="toggle()">
+                <div class="d-flex align-items-center justify-content-center">
+                  <mat-icon *ngIf="isOpen; else closed">close</mat-icon>
+                  <ng-template #closed>
+                    <img src="assets/icons/menuWhite.svg" class="menuWhite">
+                    <img src="assets/icons/menu.svg" class="menuBlack">
+                  </ng-template>
+                </div>
+              </button>
+            </div>
+
+            <div class="d-flex align-items-center logo">
+              <img src="assets/imgs/header/header-white_dVITA.svg" class="header-logo logo-white me-0 me-sm-2"
+                (click)="goHome()">
+              <img src="assets/imgs/header/header_dVITA_purple.svg" class="header-logo logo-black me-0 me-sm-2"
+                (click)="goHome()">
+
+              <div class="links d-none d-lg-flex align-items-center justify-content-between">
+                <div class="dropdownItem mx-1">
+                  <button mat-button #toolsMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="toolsMenu"
+                    class="customDropdownToggle px-3" [class.opened]="toolsMenuTrigger.menuOpen">
+                    Tools
+                    <mat-icon class="material-icons-outlined mt-1">
+                      keyboard_arrow_right
+                    </mat-icon>
+                  </button>
+                  <mat-menu #toolsMenu="matMenu" class="customDropdown" [overlapTrigger]="false"
+                    backdropClass="customDropdownMenu">
+                    <div class="container-fluid customContainer">
+                      <div class="row py-3 py-sm-4 py-lg-5">
+                        <div class="col-12">
+                          <h2 class="text-light mb-3 mb-sm-4 mb-lg-5">
+                            Tools for digital life
+                            <span class="dotMark">.</span>
+                          </h2>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="w-75">
+                            <div class="linkBlock" routerLink="/wallets">
+                              <div class="d-flex align-items-center justify-content-between mb-1">
+                                <h4 class="m-0"> Wallets </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> These are our supported wallets </span>
+                            </div>
+
+                            <div class="linkBlock" routerLink="/assets-deploy">
+                              <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                                <h4 class="m-0"> Assets </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> Use dVITA one click contract form and create Your own token </span>
+                            </div>
+
+                            <div class="linkBlock" routerLink="/multisig-wallet">
+                              <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                                <h4 class="m-0"> Multi-Signature Wallet </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> Create a multi-signature wallet </span>
+                            </div>
+
+                            <div class="linkBlock" routerLink="/create-transaction">
+                              <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                                <h4 class="m-0"> Create Transaction </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> Create raw unsigned transfer transactions </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="w-75">
+                            <div class="linkBlock" routerLink="/applications">
+                              <div class="d-flex align-items-center justify-content-between mb-1">
+                                <h4 class="m-0"> Applications </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> dVITA ecosystem and supported applications </span>
+                            </div>
+
+                            <div class="linkBlock" routerLink="/node-election">
+                              <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                                <h4 class="m-0"> Node Election </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> dVITA Blockchain governance section </span>
+                            </div>
+
+                            <div class="linkBlock" routerLink="/verify">
+                              <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                                <h4 class="m-0"> Verify and Sign </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> Verify transactions and add signatures </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="mb-2 text-end">
+                            <a routerLink="">
+                              <span> How to use dVITA Wallet </span>
+                            </a>
+                          </div>
+                          <div class="mb-2 text-end">
+                            <a routerLink="">
+                              <span> How to deploy one click smart contract/NFT </span>
+                            </a>
+                          </div>
+                          <div class="mb-2 text-end">
+                            <a routerLink="">
+                              <span> How to vote </span>
+                            </a>
+                          </div>
+                          <div class="mb-2 text-end">
+                            <a routerLink="">
+                              <span> How to run from office </span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-menu>
+                </div>
+                <div class="dropdownItem mx-1">
+                  <button mat-button #explorerMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="explorerMenu"
+                    class="customDropdownToggle px-3" [class.opened]="explorerMenuTrigger.menuOpen">
+                    Explorer
+                    <mat-icon class="material-icons-outlined mt-1">
+                      keyboard_arrow_right
+                    </mat-icon>
+                  </button>
+                  <mat-menu #explorerMenu="matMenu" class="customDropdown" [overlapTrigger]="false"
+                    backdropClass="customDropdownMenu">
+                    <div class="container-fluid customContainer">
+                      <div class="row py-3 py-sm-4 py-lg-5">
+                        <div class="col-12">
+                          <h2 class="text-light mb-3 mb-sm-4 mb-lg-5">
+                            Explorer
+                            <span class="dotMark">.</span>
+                          </h2>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="w-75">
+                            <div class="linkBlock" routerLink="/blocks">
+                              <div class="d-flex align-items-center justify-content-between mb-1">
+                                <h4 class="m-0"> Blocks </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <div>
+                                <span>
+                                  List with detail of blocks
+                                </span>
+                                <br>
+                                <span>
+                                  Collected detailed information on blocks in tables
+                                </span>
+                              </div>
+                            </div>
+
+                            <div class="linkBlock" routerLink="">
+                              <!-- routerLink="/trnsactions" -->
+                              <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                                <h4 class="m-0"> Transactions (Coming soon) </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <div>
+                                <span class="">
+                                  List with all transactions
+                                </span>
+                                <br>
+                                <span>
+                                  Explore crypto and DLT World knowing your assets
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="w-75">
+                            <div class="linkBlock" routerLink="/contracts">
+                              <div class="d-flex align-items-center justify-content-between mb-1">
+                                <h4 class="m-0"> Contracts </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <div>
+                                <span class="">
+                                  List with contracts
+                                </span>
+                                <br>
+                                <span>
+                                  NXA Smart-ID is the simplest, fastest and the most secured authentification type
+                                  online!
+                                </span>
+                              </div>
+                            </div>
+                            <div class="linkBlock" routerLink="/node-election">
+                              <!-- routerLink="/trnsactions" -->
+                              <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                                <h4 class="m-0"> Governance </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <div>
+                                <span>
+                                  Each DVITA token represents one vote in the election of the DVITA Council which is
+                                  responsible for making decisions on the DVITA blockchain
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="mb-2 text-end">
+                            <a routerLink="">
+                              <span> Go to Explorer </span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-menu>
+                </div>
+                <div class="dropdownItem mx-1">
+                  <button mat-button #enterpriseMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="enterpriseMenu"
+                    class="customDropdownToggle px-3" [class.opened]="enterpriseMenuTrigger.menuOpen">
+                    Enterprise
+                    <mat-icon class="material-icons-outlined mt-1">
+                      keyboard_arrow_right
+                    </mat-icon>
+                  </button>
+                  <mat-menu #enterpriseMenu="matMenu" class="customDropdown" [overlapTrigger]="false"
+                    backdropClass="customDropdownMenu">
+                    <div class="container-fluid customContainer">
+                      <div class="row py-3 py-sm-4 py-lg-5">
+                        <div class="col-12">
+                          <h2 class="text-light mb-3 mb-sm-4 mb-lg-5">
+                            Enterprise
+                            <span class="dotMark">.</span>
+                          </h2>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <div class="w-75">
+                            <div class="linkBlock d-flex align-items-center justify-content-between mb-1" routerLink="">
+                              <h4 class="m-0"> Mainnet </h4>
+                              <button mat-icon-button>
+                                <mat-icon>arrow_forward</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <div class="w-75">
+                            <div class="linkBlock d-flex align-items-center justify-content-between mb-1" routerLink="">
+                              <h4 class="m-0"> Testnet </h4>
+                              <button mat-icon-button>
+                                <mat-icon>arrow_forward</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <div class="w-75">
+                            <div class="linkBlock d-flex align-items-center justify-content-between mb-1" routerLink="">
+                              <h4 class="m-0"> Privatenet </h4>
+                              <button mat-icon-button>
+                                <mat-icon>arrow_forward</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                          <div class="w-75">
+                            <div class="linkBlock d-flex align-items-center justify-content-between mb-1" routerLink="">
+                              <h4 class="m-0"> Parachains and Side chains </h4>
+                              <button mat-icon-button>
+                                <mat-icon>arrow_forward</mat-icon>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-menu>
+                </div>
+                <div class="dropdownItem mx-1">
+                  <button mat-button class="features customDropdownToggle px-3" (click)="features()">
+                    Features
+                  </button>
+                  <!-- <button mat-button #featuresMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="featuresMenu"
+                    class="customDropdownToggle px-3" [class.opened]="featuresMenuTrigger.menuOpen">
+                    Features
+                    <mat-icon class="material-icons-outlined mt-1">
+                      keyboard_arrow_right
+                    </mat-icon>
+                  </button> -->
+                  <!-- <mat-menu #featuresMenu="matMenu" class="customDropdown" [overlapTrigger]="false"
+                    backdropClass="customDropdownMenu">
+                    <div class="container-fluid customContainer">
+                      <div class="row py-3 py-sm-4 py-lg-5">
+                        <div class="col-12">
+                          <h2 class="text-light mb-3 mb-sm-4 mb-lg-5">
+                            Features
+                            <span class="dotMark">.</span>
+                          </h2>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="w-75">
+                            <div class="linkBlock" routerLink="">
+                              <div class="d-flex align-items-center justify-content-between mb-1">
+                                <h4 class="m-0"> Advanced smart contracts </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> Capable of being scripted by multiple development languages </span>
+                            </div>
+
+                            <div class="linkBlock" routerLink="">
+                              <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                                <h4 class="m-0"> DFS </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> Integrated decentralized storage solution </span>
+                            </div>
+
+                            <div class="linkBlock" routerLink="">
+                              <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                                <h4 class="m-0"> ID </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> Integrated digital identity solution that can enhance user security and privacy
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="w-75">
+                            <div class="linkBlock" routerLink="">
+                              <div class="d-flex align-items-center justify-content-between mb-2">
+                                <h4 class="m-0"> Oracle </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> Integrated, built-in Oracle functionality </span>
+                            </div>
+
+                            <div class="linkBlock" routerLink="">
+                              <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                                <h4 class="m-0"> DNS </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> Integrated domain name service, permitting dVITA users to establish and use
+                                internet-friendly domain name-type addresses </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-menu> -->
+                </div>
+
+                <div class="dropdownItem mx-1">
+                  <button mat-button #developersMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="developersMenu"
+                    class="customDropdownToggle px-3" [class.opened]="developersMenuTrigger.menuOpen">
+                    Developers
+                    <mat-icon class="material-icons-outlined mt-1">
+                      keyboard_arrow_right
+                    </mat-icon>
+                  </button>
+                  <mat-menu #developersMenu="matMenu" class="customDropdown" [overlapTrigger]="false"
+                    backdropClass="customDropdownMenu">
+                    <div class="container-fluid customContainer">
+                      <div class="row py-3 py-sm-4 py-lg-5">
+                        <div class="col-12">
+                          <h2 class="text-light mb-3 mb-sm-4 mb-lg-5">
+                            Developers
+                            <span class="dotMark">.</span>
+                          </h2>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="w-75">
+                            <div class="linkBlock" routerLink="">
+                              <div class="d-flex align-items-center justify-content-between mb-1">
+                                <h4 class="m-0"> GitHub </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> Open source tools and applications </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="mb-2 text-end">
+                            <a routerLink="">
+                              <span> Deploy a smart contract </span>
+                            </a>
+                          </div>
+                          <div class="mb-2 text-end">
+                            <a routerLink="">
+                              <span> Create a local test network </span>
+                            </a>
+                          </div>
+                          <div class="mb-2 text-end">
+                            <a routerLink="">
+                              <span> API </span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-menu>
+                </div>
+                <div class="dropdownItem mx-1">
+                  <button mat-button #ecosystemMenuTrigger="matMenuTrigger" [matMenuTriggerFor]="ecosystemMenu"
+                    class="customDropdownToggle px-3" [class.opened]="ecosystemMenuTrigger.menuOpen">
+                    Ecosystem
+                    <mat-icon class="material-icons-outlined mt-1">
+                      keyboard_arrow_right
+                    </mat-icon>
+                  </button>
+                  <mat-menu #ecosystemMenu="matMenu" class="customDropdown" [overlapTrigger]="false"
+                    backdropClass="customDropdownMenu">
+                    <div class="container-fluid customContainer">
+                      <div class="row py-3 py-sm-4 py-lg-5">
+                        <div class="col-12">
+                          <h2 class="text-light mb-3 mb-sm-4 mb-lg-5">
+                            We are dVITA.
+                            <span class="dotMark">.</span>
+                          </h2>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="w-75">
+                            <div class="linkBlock" (click)="navigateFoundation()" routerLink="#">
+                              <div class="d-flex align-items-center justify-content-between mb-1">
+                                <h4 class="m-0"> dVITA Foundation </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <div>
+                                <span> Grant Program </span>
+                              </div>
+                            </div>
+
+                            <div class="linkBlock" (click)="popUpMessage()" routerLink="#">
+                              <div class="d-flex align-items-center justify-content-between mb-1">
+                                <h4 class="m-0"> dVITA Capital </h4>
+                                <button mat-icon-button>
+                                  <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                              </div>
+                              <span> Investment arm </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="linkBlock" (click)="popUpMessage()" routerLink="#">
+                            <div class="d-flex align-items-center justify-content-between mb-1">
+                              <h4 class="m-0"> dVITA LABS </h4>
+                              <button mat-icon-button>
+                                <mat-icon>arrow_forward</mat-icon>
+                              </button>
+                            </div>
+                            <div>
+                              <span> Enterprise solutions </span>
+                            </div>
+                            <div>
+                              <span> Start up solutions </span>
+                            </div>
+                            <div>
+                              <span> Preferred Partner Program </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                          <div class="mb-2 text-end">
+                            <a routerLink="">
+                              <span> About us </span>
+                            </a>
+                          </div>
+                          <div class="mb-2 text-end">
+                            <a routerLink="">
+                              <span> FAQ </span>
+                            </a>
+                          </div>
+                          <div class="mb-2 text-end">
+                            <a routerLink="">
+                              <span> Community </span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-menu>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-none d-sm-flex align-items-center">
+              <div *ngIf="user; else notLogged" class="dropdownItem">
+                <button mat-raised-button [matMenuTriggerFor]="userMenu"
+                  class="userMenuBtn d-flex align-items-center justify-content-center">
+                  <p class="m-0 me-2"> {{ user.wallet.account.label || user.wallet.account.address }}
+                  </p>
+                  <img src="assets/icons/no-avatar.svg" class="rounded-circle avatar">
+                </button>
+                <mat-menu #userMenu="matMenu" xPosition="before" class="userMenu mt-3 px-3 rounded">
+                  <button mat-menu-item class="d-flex align-items-center p-0 px-2" routerLink="/wallet">
+                    <img src="assets/icons/wallet.svg">
+                    <p class="m-0 ms-2"> My W3 account </p>
+                  </button>
+                  <button mat-menu-item class="d-flex align-items-center p-0 px-2" (click)="logout()">
+                    <img src="assets/icons/log-out.png">
+                    <p class="m-0 ms-2"> Log Out </p>
+                  </button>
+                </mat-menu>
+              </div>
+              <ng-template #notLogged>
+                <!-- <div class="login mx-1 d-none d-sm-block">
+                  <a routerLink="#" class="btn px-3 d-flex align-items-center border-0"
+                    (click)="goLoginConnect('login')">
+                    <h5 class="m-0"> Log In </h5>
+                  </a>
+                </div> -->
+                <div class="connect" (click)="goLoginConnect('login')">
+                  <button mat-raised-button> Connect </button>
+                </div>
+              </ng-template>
+            </div>
+
+            <div class="d-block d-sm-none">
+              <button mat-icon-button class="userBtn d-flex align-items-center justify-content-center"
+                (click)="mobileNavigate('/login')">
+                <img src="assets/imgs/header/userWhite.svg" class="userWhite">
+                <img src="assets/imgs/header/userBlack.svg" class="userBlack">
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="customToggle d-flex d-lg-none" *ngIf="showCustomToggle" [class.openedToggle]="showCustomToggle"
+    [@openClose]="isOpen ? 'open' : 'closed'">
+    <div [@animSlider]="counter">
+      <ng-container *ngFor="let o of list; let i=index">
+        <!-- Main Menu -->
+        <div class="d-flex align-items-center" *ngIf="i===counter && counter === 0">
+          <div class="links d-block d-lg-none align-items-center justify-content-between w-100">
+            <hr class="my-1 bg-light">
+            <div class="navItem px-3">
+              <a class="d-flex align-items-center justify-content-between w-100" (click)="onNext(1)">
+                Tools
+                <button mat-icon-button class="d-flex align-items-center justify-content-center">
+                  <mat-icon>arrow_forward</mat-icon>
+                </button>
+              </a>
+            </div>
+            <hr class="my-1 bg-light">
+            <div class="navItem px-3">
+              <a class="d-flex align-items-center justify-content-between w-100" (click)="onNext(2)">
+                Explorer
+                <button mat-icon-button class="d-flex align-items-center justify-content-center">
+                  <mat-icon>arrow_forward</mat-icon>
+                </button>
+              </a>
+            </div>
+            <hr class="my-1 bg-light">
+            <div class="navItem px-3">
+              <a class="d-flex align-items-center justify-content-between w-100" (click)="onNext(3)">
+                Enterprise
+                <button mat-icon-button class="d-flex align-items-center justify-content-center">
+                  <mat-icon>arrow_forward</mat-icon>
+                </button>
+              </a>
+            </div>
+            <hr class="my-1 bg-light">
+            <div class="navItem px-3">
+              <a class="d-flex align-items-center justify-content-between w-100">
+                Features
+                <!-- <button mat-icon-button class="d-flex align-items-center justify-content-center">
+                  <mat-icon>arrow_forward</mat-icon>
+                </button> -->
+              </a>
+            </div>
+            <!-- <hr class="my-1 bg-light">
+            <div class="navItem px-3">
+              <a (click)="mobileNavigate('/node-election')">
+                Governance
+              </a>
+            </div> -->
+            <hr class="my-1 bg-light">
+            <div class="navItem px-3">
+              <a class="d-flex align-items-center justify-content-between w-100" (click)="onNext(5)">
+                Developers
+                <button mat-icon-button class="d-flex align-items-center justify-content-center">
+                  <mat-icon>arrow_forward</mat-icon>
+                </button>
+              </a>
+            </div>
+            <hr class="my-1 bg-light">
+            <div class="navItem px-3">
+              <a class="d-flex align-items-center justify-content-between w-100" (click)="onNext(6)">
+                Ecosystem
+                <button mat-icon-button class="d-flex align-items-center justify-content-center">
+                  <mat-icon>arrow_forward</mat-icon>
+                </button>
+              </a>
+            </div>
+            <hr class="my-1 bg-light">
+            <div class="text-white px-3">
+              <p class="my-4"> info@dvita.com </p>
+              <p class="my-4"> Contact us </p>
+              <div class="w-50">
+                <span> dVITA Foundation Silicon Avenue 40 Cybercity. #207FL 272201 Ebene, Mauritius </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools Submenus -->
+        <div *ngIf="i===counter && counter === 1">
+          <div class="container-fluid customContainer px-3">
+            <div class="row">
+              <div class="col-12">
+                <div>
+                  <button mat-icon-button class="backBtn" (click)="initCounter()">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <mat-icon class="me-2">arrow_back</mat-icon>
+                      <span> Back </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12">
+                <h2 class="text-light mb-5">
+                  Tools for digital life
+                  <span class="dotMark">.</span>
+                </h2>
+              </div>
+
+              <div class="col-12 col-sm-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0"> Wallets </h4>
+                  <button mat-icon-button (click)="mobileNavigate('/wallet')">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <span> These are our supported wallets </span>
+
+                <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                  <h4 class="m-0"> Assets </h4>
+                  <button mat-icon-button (click)="mobileNavigate('/assets-deploy')">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <span> Use dVITA one click contract form and create Your own token </span>
+              </div>
+
+              <div class="col-12 col-sm-4 mt-4 mb-2">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0"> Applications </h4>
+                  <button mat-icon-button (click)="mobileNavigate('/applications')">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <span> dVITA ecosystem and supported applications </span>
+
+                <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                  <h4 class="m-0"> Node Election </h4>
+                  <button mat-icon-button (click)="mobileNavigate('/node-election')">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <span> dVITA Blockchain governance section </span>
+              </div>
+
+              <div class="col-12 col-sm-4 pt-4">
+                <div class="mb-2 text-end">
+                  <a (click)="mobileNavigate('')">
+                    <span> How to use dVITA Wallet </span>
+                  </a>
+                </div>
+                <div class="mb-2 text-end">
+                  <a (click)="mobileNavigate('')">
+                    <span> How to deploy one click smart contract/NFT </span>
+                  </a>
+                </div>
+                <div class="mb-2 text-end">
+                  <a (click)="mobileNavigate('')">
+                    <span> How to vote </span>
+                  </a>
+                </div>
+                <div class="mb-2 text-end">
+                  <a (click)="mobileNavigate('')">
+                    <span> How to run from office </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Explorer Submenus -->
+        <div *ngIf="i===counter && counter === 2">
+          <div class="container-fluid customContainer px-3">
+            <div class="row">
+              <div class="col-12">
+                <div>
+                  <button mat-icon-button class="backBtn" (click)="initCounter()">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <mat-icon class="me-2">arrow_back</mat-icon>
+                      <span> Back </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12">
+                <h2 class="text-light mb-5">
+                  Explorer
+                  <span class="dotMark">.</span>
+                </h2>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0"> Blocks </h4>
+                  <button mat-icon-button (click)="mobileNavigate('/blocks')">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <div>
+                  <span class="fw-bold">
+                    List with detail of blocks
+                  </span>
+                  <br>
+                  <span>
+                    Collected detailed information on blocks in tables
+                  </span>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                  <h4 class="m-0"> Transactions (Coming soon) </h4>
+                  <button mat-icon-button (click)="mobileNavigate('/transactions')">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <div>
+                  <span class="">
+                    List with all transactions
+                  </span>
+                  <br>
+                  <span>
+                    Explore crypto and DLT World knowing your assets
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 pt-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0"> Contracts </h4>
+                  <button mat-icon-button (click)="mobileNavigate('/contracts')">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <div>
+                  <span class="">
+                    List with contracts
+                  </span>
+                  <br>
+                  <span>
+                    NXA Smart-ID is the simplest, fastest and the most secured authentification type online!
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 pt-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0"> Governance </h4>
+                  <button mat-icon-button (click)="mobileNavigate('/node-election')">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <div>
+                  <span>
+                    Each DVITA token represents one vote in the election of the DVITA Council which is
+                    responsible for making decisions on the DVITA blockchain
+                  </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 pt-4">
+                <div class="mb-2 text-end">
+                  <a (click)="mobileNavigate('')">
+                    <span> Go to Explorer </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Enterprise Submenus -->
+        <div *ngIf="i===counter && counter === 3">
+          <div class="container-fluid customContainer px-3">
+            <div class="row">
+              <div class="col-12">
+                <div>
+                  <button mat-icon-button class="backBtn" (click)="initCounter()">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <mat-icon class="me-2">arrow_back</mat-icon>
+                      <span> Back </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12">
+                <h2 class="text-light mb-5">
+                  Enterprise
+                  <span class="dotMark">.</span>
+                </h2>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0"> Mainnet </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 pt-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0"> Testnet </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 pt-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0"> Privatenet </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 pt-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0"> Parachains and Side chains </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About us Submenus -->
+        <!-- <div *ngIf="i===counter && counter === 4">
+          <div class="container-fluid customContainer px-3">
+            <div class="row">
+              <div class="col-12">
+                <div>
+                  <button mat-icon-button class="backBtn" (click)="initCounter()">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <mat-icon class="me-2">arrow_back</mat-icon>
+                      <span> Back </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12">
+                <h2 class="text-light mb-5">
+                  Featurs
+                  <span class="dotMark">.</span>
+                </h2>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0"> Advanced smart contracts </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <span> Capable of being scripted by multiple development languages </span>
+
+                <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                  <h4 class="m-0"> DFS </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <span> Integrated decentralized storage solution </span>
+
+                <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                  <h4 class="m-0"> ID </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <span> Integrated digital identity solution that can enhance user security and privacy </span>
+              </div>
+              <div class="col-12 col-sm-4 pt-4">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <h4 class="m-0"> Oracle </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <span> Integrated, built-in Oracle functionality </span>
+
+                <div class="d-flex align-items-center justify-content-between mt-4 mb-2">
+                  <h4 class="m-0"> DNS </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <span> Integrated domain name service, permitting dVITA users to establish and use internet-friendly
+                  domain name-type addresses </span>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- Developers Submenus -->
+        <div *ngIf="i===counter && counter === 5">
+          <div class="container-fluid customContainer px-3">
+            <div class="row">
+              <div class="col-12">
+                <div>
+                  <button mat-icon-button class="backBtn" (click)="initCounter()">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <mat-icon class="me-2">arrow_back</mat-icon>
+                      <span> Back </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12">
+                <h2 class="text-light mb-5">
+                  Developers
+                  <span class="dotMark">.</span>
+                </h2>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0"> GitHub </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <span> Open source tools and applications </span>
+              </div>
+              <div class="col-12 col-sm-4"></div>
+              <div class="col-12 col-sm-4 pt-4">
+                <div class="mb-2 text-end">
+                  <a routerLink="">
+                    <span> Deploy a smart contract </span>
+                  </a>
+                </div>
+                <div class="mb-2 text-end">
+                  <a routerLink="">
+                    <span> Create a local test network </span>
+                  </a>
+                </div>
+                <div class="mb-2 text-end">
+                  <a routerLink="">
+                    <span> API </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ecosystem Submenus -->
+        <div *ngIf="i===counter && counter === 6">
+          <div class="container-fluid customContainer px-3">
+            <div class="row">
+              <div class="col-12">
+                <div>
+                  <button mat-icon-button class="backBtn" (click)="initCounter()">
+                    <div class="d-flex align-items-center justify-content-center">
+                      <mat-icon class="me-2">arrow_back</mat-icon>
+                      <span> Back </span>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="col-12">
+                <h2 class="text-light mb-5">
+                  We are dVITA.
+                  <span class="dotMark">.</span>
+                </h2>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="d-flex align-items-center justify-content-between mb-1" (click)="navigateFoundation()">
+                  <h4 class="m-0"> dVITA Foundation </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <div>
+                  <span> Grant Program </span>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0 mt-4"> dVITA Capital </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <span> Investment arm </span>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <h4 class="m-0 mt-4"> dVITA LABS </h4>
+                  <button mat-icon-button routerLink="">
+                    <mat-icon>arrow_forward</mat-icon>
+                  </button>
+                </div>
+                <div>
+                  <span> Enterprise solutions </span>
+                </div>
+                <div>
+                  <span> Start up solutions </span>
+                </div>
+                <div>
+                  <span> Preferred Partner Program </span>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4 pt-4">
+                <div class="mb-2 text-end">
+                  <a routerLink="">
+                    <span> About us </span>
+                  </a>
+                </div>
+                <div class="mb-2 text-end">
+                  <a routerLink="">
+                    <span> FAQ </span>
+                  </a>
+                </div>
+                <div class="mb-2 text-end">
+                  <a routerLink="">
+                    <span> Community </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,79 @@
+.customPaginator {
+    //Buttons
+    .first, .last {
+        background: white;
+        border: 1px solid var(--grey-color);
+        
+        width: 48px;
+        height: 48px;
+    }
+    .last {
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px;
+    }
+
+    .prev, .next {
+        background: white;
+        border: 1px solid var(--grey-color);
+        
+        width: 48px;
+        height: 48px;
+    }
+    .first {
+        border-bottom-left-radius: 4px;
+        border-top-left-radius: 4px;
+    }
+    .prev, .next, .first, .last {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        padding-bottom: 8px;
+        color: var(--dark-grey);
+
+    }
+
+    select {
+        border: 1px solid var(--grey);
+        background-color: var(--grey-color);
+        border-radius: 4px;
+        width: 64px;
+        height: 48px;
+        color: var(--dark-grey);
+        option {
+            background-color: var(--grey-color);
+            color: var(--dark-grey);
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-top: none;
+        }
+    }
+    
+    h4 {
+        font-weight: 400 !important;
+        font-size: 16px !important;
+        color: var(--dark-grey);
+        text-decoration: none;
+    }
+
+    button.pages {
+        .mat-button-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        background: white;
+        width: 48px;
+        height: 48px;
+        border: 1px solid var(--grey-color);
+        color: var(--dark-grey);
+        float: left;
+        text-decoration: none;
+    }
+
+    button.pages.active {
+        border: 1px solid #43AE44;
+        background-color: #43AE44;
+        color: white;
+    }
+}

@@ -1,0 +1,67 @@
+:root {
+  --general-font-size: 18px;
+  --general-mobile-font-size: 14px;
+
+  --lg-font-size: 5rem;
+  --md-font-size: 3.1rem;
+  --sm-font-size: 2rem;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.purple {
+  color: var(--purple-color);
+}
+
+.font-base {
+  line-height: 100%;
+  margin: 0;
+
+  &.purple {
+    @extend .purple;
+  }
+
+  &.bold {
+    @extend .bold;
+  }
+}
+
+.mat-typography {
+  font-size: var(--general-font-size);
+  line-height: normal;
+
+  h1 {
+    font-size: var(--lg-font-size);
+    @extend .font-base;
+  }
+
+  h2 {
+    font-size: var(--md-font-size);
+    @extend .font-base;
+  }
+
+  h3 {
+    font-size: var(--sm-font-size);
+    @extend .font-base;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .mat-typography {
+    font-size: var(--general-mobile-font-size);
+
+    h1 {
+      font-size: 16vw;
+    }
+
+    h2 {
+      font-size: 9vw;
+    }
+
+    h3 {
+      font-size: 8vw;
+    }
+  }
+}

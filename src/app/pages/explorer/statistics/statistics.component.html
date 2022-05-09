@@ -1,0 +1,347 @@
+<div class="container-fluid customContainer">
+    <!-- Top Section -->
+    <div class="row my-3 py-3 py-lg-4">
+        <div class="col-12 col-lg-6">
+            <div class="largeText mt-3"> Statistics </div>
+        </div>
+        <div class="col-12 col-lg-6 text-start text-sm-end d-block d-sm-flex d-lg-block align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-end my-2">
+                <div class="input-group search">
+                    <input type="text" class="form-control" placeholder="Block height, hash, adress or transaction id">
+                    <span class="input-group-text">
+                        <mat-icon>search</mat-icon>
+                    </span>
+                </div>
+            </div>
+            <div class="dropdownDiv">
+                <app-network-select></app-network-select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Section -->
+    <div class="row pb-5">
+        <div class="col-12 col-sm-6 col-lg-4 p-3">
+            <div class="grayCard p-3">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h5 class="m-0"> Total Transactions </h5>
+                    <a routerLink="#" class="goToLink textGreen d-flex align-items-center">
+                        <h5 class="m-0 me-1"> Go to </h5>
+                        <mat-icon>chevron_right</mat-icon>
+                    </a>
+                </div>
+                <h4 class="m-0 fw-bold"> 66 728 630 </h4>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 p-3">
+            <div class="grayCard p-3">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h5 class="m-0"> Total Contracts </h5>
+                    <a routerLink="#" class="goToLink textGreen d-flex align-items-center">
+                        <h5 class="m-0 me-1"> Go to </h5>
+                        <mat-icon>chevron_right</mat-icon>
+                    </a>
+                </div>
+                <h4 class="m-0 fw-bold"> 1 468 876 </h4>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 p-3">
+            <div class="grayCard p-3">
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h5 class="m-0"> Total Assets </h5>
+                    <a routerLink="#" class="goToLink textGreen d-flex align-items-center">
+                        <h5 class="m-0 me-1"> Go to </h5>
+                        <mat-icon>chevron_right</mat-icon>
+                    </a>
+                </div>
+                <h4 class="m-0 fw-bold"> 23 456 784 </h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart Section -->
+    <div class="row chartSection pb-5">
+        <!-- Chart Header -->
+        <div class="col-12 p-3">
+            <div class="grayCard p-3">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-4 d-flex align-items-center justify-content-between">
+                        <div>
+                            <h5> Transactions </h5>
+                            <h5 class="m-0 fw-bold"> 630 </h5>
+                        </div>
+                        <div>
+                            <h5> Contracts </h5>
+                            <h5 class="m-0 fw-bold"> 30 </h5>
+                        </div>
+                        <div>
+                            <h5> Assets </h5>
+                            <h5 class="m-0 fw-bold"> 67 </h5>
+                        </div>
+                    </div>
+                    <div class="col-4 d-none d-lg-block "></div>
+                    <div class="col-12 col-sm-6 col-lg-4 p-3">
+                        <div class="chartBtns d-flex align-items-center justify-content-between">
+                            <button mat-raised-button [class.active]="chartType === 'day'" (click)="chartType = 'day'"> Day </button>
+                            <button mat-raised-button [class.active]="chartType === 'week'" (click)="chartType = 'week'"> Week </button>
+                            <button mat-raised-button [class.active]="chartType === 'month'" (click)="chartType = 'month'"> Month </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-12">
+                        <img src="assets/imgs/statistics/chart.png" class="w-100">
+                        <!-- <igx-category-chart height="400px" width="100%"
+                            [dataSource]="data"
+                            [legend]="legend"
+                            [chartType]="categoryChartType"
+                            [outlines] = "outlines"
+                            [brushes]="brushes"
+                            [markerBrushes] =  "markerBrushes"
+                            [markerOutlines]="brushes"
+                            [markerTypes]="markerTypes">
+                        </igx-category-chart>
+                        <div class="options vertical pt-3">
+                            <igx-legend #legend [orientation]="orientation"></igx-legend>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transactions Table Section -->
+    <div class="row transactions">
+        <div class="col-12 d-flex align-items-center justify-content-between">
+            <h3 class="fw-bold"> Transactions </h3>
+            <a routerLink="/transactions" class="d-none d-sm-flex align-items-center justify-content-center textGreen">
+                <h3 class="m-0 me-2"> All transactions </h3>
+                <mat-icon>chevron_right</mat-icon>
+            </a>
+        </div>
+        <div class="col-12">
+            <table mat-table [dataSource]="transactionsDataSource" class="mat-elevation-z8 w-100 my-2">
+                <!-- Name Column -->
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center text-truncate">
+                            <div class="leftMark" [class]="element.icon"></div>
+                            <img [src]="'assets/icons/' + element.icon + '.svg'" class="me-2">
+                            {{element.type}}
+                        </div>
+                    </td>
+                </ng-container>
+
+                <!-- Type Column -->
+                <ng-container matColumnDef="transactionId">
+                    <th mat-header-cell *matHeaderCellDef> Transaction ID </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center justify-content-between w-100">
+                            <div>
+                                {{element.transactionId}}
+                            </div>
+                            <button mat-icon-button class="d-flex d-sm-none">
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <!-- Blocks Column -->
+                <ng-container matColumnDef="size">
+                    <th mat-header-cell *matHeaderCellDef> Size </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.size}}
+                    </td>
+                </ng-container>
+
+                <!-- Transactions Column -->
+                <ng-container matColumnDef="completedOn">
+                    <th mat-header-cell *matHeaderCellDef> Completed on </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center justify-content-between w-100">
+                            <div>
+                                {{element.completedOn}}
+                            </div>
+                            <button mat-icon-button (click)="goSubPage('/transaction-info')">
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="transactionsDisplayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: transactionsDisplayedColumns;"></tr>
+            </table>
+        </div>
+        <div class="col-12 d-flex d-sm-none">
+            <a routerLink="/#" class="d-flex align-items-center justify-content-center textGreen">
+                <h3 class="m-0 me-2"> All transactions </h3>
+                <mat-icon>chevron_right</mat-icon>
+            </a>
+        </div>
+    </div>
+
+    <!-- Contracts Table Section -->
+    <div class="row assetsList">
+        <div class="col-12 d-flex align-items-center justify-content-between pt-5">
+            <h3 class="fw-bold"> Contracts </h3>
+            <a routerLink="/contracts" class="d-none d-sm-flex align-items-center justify-content-center textGreen">
+                <h3 class="m-0 me-2"> All contracts </h3>
+                <mat-icon>chevron_right</mat-icon>
+            </a>
+        </div>
+        <div class="col-12">
+            <table mat-table [dataSource]="assetsDataSource" class="mat-elevation-z8 w-100 my-2">
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center text-truncate">
+                            <div class="leftMark" [class]="element.icon"></div>
+                            <img [src]="'assets/icons/' + element.icon + '.svg'" class="me-2">
+                            {{element.name}}
+                        </div>
+                    </td>
+                </ng-container>
+
+                <!-- Type Column -->
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center justify-content-between w-100">
+                            <div>
+                                {{element.type}}
+                            </div>
+                            <button mat-icon-button class="d-flex d-sm-none">
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <!-- Blocks Column -->
+                <ng-container matColumnDef="blocks">
+                    <th mat-header-cell *matHeaderCellDef> Blocks </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.blocks}}
+                    </td>
+                </ng-container>
+
+                <!-- Created on Column -->
+                <ng-container matColumnDef="createdOn">
+                    <th mat-header-cell *matHeaderCellDef> Created on </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.createdOn}}
+                    </td>
+                </ng-container>
+
+                <!-- Transactions Column -->
+                <ng-container matColumnDef="transactions">
+                    <th mat-header-cell *matHeaderCellDef> Transactions </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center justify-content-between w-100">
+                            <div>
+                                {{element.transactions}}
+                            </div>
+                            <button mat-icon-button (click)="goSubPage('/contract-info')">
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="assetsDisplayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: assetsDisplayedColumns;"></tr>
+            </table>
+        </div>
+        <div class="col-12 d-flex d-sm-none">
+            <a routerLink="/#" class="d-flex align-items-center justify-content-center textGreen">
+                <h3 class="m-0 me-2"> All contracts </h3>
+                <mat-icon>chevron_right</mat-icon>
+            </a>
+        </div>
+    </div>
+
+    <!-- Assets Table Section-->
+    <div class="row assetsList">
+        <div class="col-12 d-flex align-items-center justify-content-between pt-5">
+            <h3 class="fw-bold"> Assets </h3>
+            <a routerLink="/#" class="d-none d-sm-flex align-items-center justify-content-center textGreen">
+                <h3 class="m-0 me-2"> All assets </h3>
+                <mat-icon>chevron_right</mat-icon>
+            </a>
+        </div>
+        <div class="col-12">
+            <table mat-table [dataSource]="assetsDataSource" class="mat-elevation-z8 w-100 my-2">
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center text-truncate">
+                            <div class="leftMark" [class]="element.icon"></div>
+                            <img [src]="'assets/icons/' + element.icon + '.svg'" class="me-2">
+                            {{element.name}}
+                        </div>
+                    </td>
+                </ng-container>
+
+                <!-- Type Column -->
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center justify-content-between w-100">
+                            <div>
+                                {{element.type}}
+                            </div>
+                            <button mat-icon-button class="d-flex d-sm-none">
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <!-- Blocks Column -->
+                <ng-container matColumnDef="blocks">
+                    <th mat-header-cell *matHeaderCellDef> Blocks </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.blocks}}
+                    </td>
+                </ng-container>
+
+                <!-- Created on Column -->
+                <ng-container matColumnDef="createdOn">
+                    <th mat-header-cell *matHeaderCellDef> Created on </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{element.createdOn}}
+                    </td>
+                </ng-container>
+
+                <!-- Transactions Column -->
+                <ng-container matColumnDef="transactions">
+                    <th mat-header-cell *matHeaderCellDef> Transactions </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center justify-content-between w-100">
+                            <div>
+                                {{element.transactions}}
+                            </div>
+                            <button mat-icon-button>
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="assetsDisplayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: assetsDisplayedColumns;"></tr>
+            </table>
+        </div>
+        <div class="col-12 d-flex d-sm-none">
+            <a routerLink="/#" class="d-flex align-items-center justify-content-center textGreen">
+                <h3 class="m-0 me-2"> All assets </h3>
+                <mat-icon>chevron_right</mat-icon>
+            </a>
+        </div>
+    </div>
+</div>

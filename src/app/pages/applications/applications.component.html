@@ -1,0 +1,30 @@
+<div class="container-fluid customContainer">
+  <div class="row">
+    <div class="col-12 my-4">
+      <app-page-title>Applications</app-page-title>
+    </div>
+  </div>
+
+  <div class="application row">
+    <div class="col-12 col-sm-6 col-lg-4 p-3" *ngFor="let app of appsList">
+      <div class="card p-3">
+        <div class="logo d-flex align-items-center py-3">
+          <img [src]="app.logo">
+        </div>
+        <div class="align-self-start">
+          <h3 class="fw-bold textPurple"> {{ app.name }} </h3>
+          <p>
+            {{ app.description }}
+          </p>
+        </div>
+        <div class="app-footer d-flex justify-content-between align-self-end align-items-center w-100">
+          <a *ngIf="app?.link" [href]="app.link" class="goto d-flex align-items-center px-2 py-2">
+            Go to
+          </a>
+          <span class="developed">Developed By:<br><strong>{{app.devBy}}</strong></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

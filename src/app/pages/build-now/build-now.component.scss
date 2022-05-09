@@ -1,0 +1,92 @@
+.grayCards {
+    text-align:center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--grey-color);
+    height: 186px;
+    border-radius: 4px;
+    a {
+      text-decoration: none;
+      outline: 0;
+      color:#36163C;
+    }
+}
+
+.codeLine {
+    background: var(--grey-color);
+    overflow:auto;
+    width:auto;
+    border:solid #e6e6e6;
+    border-width:.1em .1em .1em .8em;
+    padding:.2em .6em;
+    pre {
+        margin: 0;
+        line-height: 125%;
+        white-space: nowrap;
+    }
+}
+
+button {
+  background: linear-gradient(90deg, #43AE44 0.04%, #B9D577 100%);
+  border-radius: 3px;
+  border: 0;
+  padding: 12px 36px;
+  font-family: "FuturaPT" !important;
+}
+
+.urls {
+  li {
+    a {
+      color: #43AE44;
+    }
+    .code {
+      color: black;
+    }
+  }
+}
+
+.textGreen {
+  color: #43AE44;
+  text-decoration: none;
+  outline: 0;
+}
+
+.textBlue {
+  color: #4c9aff;
+  text-decoration: none;
+  outline: 0;
+}
+
+.textCyan {
+  color: #00b8d9;
+  text-decoration: none;
+  outline: 0;
+}
+
+.textOrange {
+  color: #ffc400;
+  text-decoration: none;
+  outline: 0;
+}
+
+.textRed {
+  color: #ff5630;
+  text-decoration: none;
+  outline: 0;
+}
+
+.text-url {
+  font-weight: 400;
+  font-size: 18px;
+  color: #43AE44;
+}
+
+.code {
+  color: black;
+  background-color: #e6e6e6;
+  text-decoration: none;
+  outline: 0;
+  padding: 1px 4px;
+}

@@ -1,0 +1,46 @@
+<div class="container-fluid customContainer multisig-wallet">
+  <div class="row my-3 py-3 py-lg-4">
+    <div class="col-12 col-lg-12">
+      <app-page-title>Create transaction</app-page-title>
+      <h5 class="textPurple my-4">This tool allows to create a raw unsigned transfer transaction</h5>
+    </div>
+  </div>
+  <div class="row">
+    <form (submit)="submit($event)" ngNativeValidate (input)="resetValidity($event)">
+      <div class="col-12 mb-4">
+        <h5 class="textPurple fw-bold">From address</h5>
+        <input type="text" placeholder="Enter sender address" class="roundInput w-100" name="sender" />
+      </div>
+      <div class="col-12 mb-4">
+        <h5 class="textPurple fw-bold">To address</h5>
+        <input type="text" placeholder="Enter recipient address" class="roundInput w-100" name="recipient" />
+      </div>
+      <div class="col-12 mb-4">
+        <h5 class="textPurple fw-bold">Asset</h5>
+        <input type="text" placeholder="Enter asset smart contract address" class="roundInput w-100" name="asset" />
+      </div>
+      <div class="col-12 mb-4">
+        <h5 class="textPurple fw-bold">Amount without decimals <span class="fw-normal">(e.g. if sending 1.5 units of asset which has 4 decimals, enter 15000)</span></h5>
+        <input type="number" placeholder="Enter amount" class="roundInput w-100" name="amount" min="0" step="1" pattern="[0-9]" required />
+      </div>
+      <div class="col-12 mb-4">
+        <label>
+          <p>
+            <input type="checkbox" name="isFromMultiSig" />
+            <span class="fw-normal" class="px-2">Transfer is from a multi-signature address (it requires larger network fee)</span>
+          </p>
+        </label>
+      </div>
+      <button mat-raised-button type="submit">Create transaction</button>
+    </form>
+  </div>
+  <div #result>
+    <div class="row my-4" *ngIf="serializedTransaction">
+      <div class="col-12 mb-4">
+        <p class="fw-bold">Transaction created</p>
+        <textarea class="roundInput flex-grow-1 col-lg-9 col-12" disabled>{{serializedTransaction}}</textarea>
+      </div>
+    </div>
+    <button mat-raised-button type="submit" (click)="copy()" *ngIf="serializedTransaction">Copy</button>
+  </div>
+</div>

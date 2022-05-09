@@ -1,0 +1,28 @@
+<form>
+  <h2 mat-dialog-title class="purple">📥 Import private key</h2>
+  <mat-dialog-content class="mat-typography">
+    <p class="message">
+      Enter private key in WIF format or in encrypted format.<br />
+      After import, wallet will be encrypted and stored in browser's local storage.
+    </p>
+    <div>
+      <p class="bold">Enter private key</p>
+      <input type="password" name="privateKey" class="w-100" (input)="onKeyInput($event)" autocomplete="off" />
+    </div>
+    <div *ngIf="type === 'unencrypted'" class="my-2">
+      <p><span class="bold">Create passphrase </span> <span> (required to encrypt the wallet)</span></p>
+      <input type="password" name="passphrase" class="w-100" autocomplete="off" />
+    </div>
+    <div *ngIf="type === 'encrypted'" class="py-2">
+      <p class="bold">Enter passphrase</p>
+      <input type="password" name="passphrase" class="w-100" autocomplete="off" minlength="8" />
+    </div>
+    <div class="loading" *ngIf="crypting">
+      <mat-spinner></mat-spinner>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close type="button">Cancel</button>
+    <button mat-raised-button cdkFocusInitial type="submit" [disabled]="crypting" (click)="onConfirm($event)">Import</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,62 @@
+<div class="container-fluid customContainer multisig-wallet">
+  <div class="row my-3 py-3 py-lg-4">
+    <div class="col-12 col-lg-12">
+      <app-page-title>Multi-Signature Wallet</app-page-title>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="textPurple col-12 col-lg-8 my-2">
+      <h5>To create a multi signature wallet, enter the <strong>public keys</strong> of all the participants. The order does not matter because the keys will be automatically sorted before creating wallet.</h5>
+      <form class="my-4" (submit)="submit($event)" ngNativeValidate (input)="resetValidity($event)">
+        <ul>
+          <li *ngFor="let pubKey of publicKeys; let i = index" class="col-12 col-lg-9 my-2 item">
+            <button mat-icon-button type="button" (click)="removeKey(i)" title="Remove this public key">
+              <mat-icon>remove_circle_outline</mat-icon>
+            </button>
+            <input type="text" [name]="'publicKey' + i" placeholder="Enter public key" [value]="pubKey" class="roundInput" />
+          </li>
+          <button mat-icon-button type="button" (click)="addKey()" title="Add another public key" *ngIf="publicKeys.length <= 10">
+            <mat-icon>add_circle_outline</mat-icon>
+          </button>
+        </ul>
+        <h5 class="textPurple my-3">Enter the amount of signatures required to access the wallet and release funds:</h5>
+        <input type="number" name="threshold" value="2" class="roundInput" min="1" max="10" />
+        <div class="my-4">
+          <button mat-raised-button type="submit">Create multi-signature wallet</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div #result>
+    <div class="row" *ngIf="verificationScript">
+      <div class="col-12 my-4">
+        <h2 class="bold purple">Multi-Signature Wallet Created!</h2>
+        <div class="my-4">
+          <p class="col-12 col-lg-9">
+            <b>Address</b><br />
+            <small>Payment should be made to this address</small>
+          </p>
+          <div class="col-12 col-lg-6 d-flex align-items-center">
+            <input type="text" [value]="getAddress()" disabled class="roundInput flex-grow-1" />
+            <button mat-icon-button (click)="copy(getAddress())">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="my-4">
+          <p class="col-12 col-lg-9">
+            <b>Verification Script</b><br />
+            <small>This script should should be saved and shared with all the participants before a payment is made, so they may validate the authenticity of the address. This script will also be used to access the wallet and release funds</small>
+          </p>
+          <div class="col-12 col-lg-6 d-flex align-items-center">
+            <textarea disabled class="roundInput flex-grow-1">{{ verificationScript }}</textarea>
+            <button mat-icon-button (click)="copy(verificationScript)">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

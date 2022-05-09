@@ -1,0 +1,32 @@
+.container-fluid {
+    .largeText {
+        font-size: 96px !important;
+    }
+    button.mat-icon-button {
+        width: 48px;
+        height: 48px;
+        img {
+            width: 48px;
+            height: 48px;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .container-fluid {
+        .largeText {
+            font-size: 72px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .container-fluid {
+        .largeText {
+            font-size: 48px !important;
+        }
+        img.mobileImg {
+            width: 100%;
+        }
+    }
+}

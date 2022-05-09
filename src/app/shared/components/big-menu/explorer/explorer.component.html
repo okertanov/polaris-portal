@@ -1,0 +1,90 @@
+<div class="topSection">
+    <div class="container-fluid customContainer">
+        <div class="row py-0 py-lg-5 pb-5">
+            <div class="col-12 col-lg-6 d-block d-sm-flex d-lg-block align-items-center justify-content-between">
+                <h1 class="bold purple my-3 my-sm-4 my-lg-5">
+                    Explorer
+                </h1>
+                <a routerLink="/#" class="d-flex align-items-center my-4">
+                    <div class="m-0 me-2"> Go to Explorer </div>
+                    <mat-icon>arrow_forward</mat-icon>
+                </a>
+            </div>
+
+            <div class="col-12 col-lg-6">
+                <mat-radio-group aria-label="Select an option" [(ngModel)]="subItem">
+                    <div class="block">
+                        <div class="head d-flex align-items-center mt-4 my-3" (click)="goNavigate('/blocks')">
+                            <mat-radio-button value="/blocks">
+                                <h3 class="bold purple m-0"> Blocks </h3>
+                            </mat-radio-button>
+                        </div>
+                        <div class="d-flex">
+                            <div class="left"></div>
+                            <div>
+                                <div class="fw-bold mb-2"> List with detail of blocks </div>
+                                <p class="mb-4"> Collected detailed information on blocks in tables </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="head d-flex align-items-center mt-4 my-3" (click)="goNavigate('/contracts')">
+                            <mat-radio-button value="/contracts">
+                                <h3 class="bold purple m-0"> Contracts </h3>
+                            </mat-radio-button>
+                        </div>
+                        <div class="d-flex">
+                            <div class="left"></div>
+                            <div>
+                                <div class="fw-bold mb-2"> List with contracts </div>
+                                <p class="mb-4"> NXA Smart-ID is the simplest, fastest and the most secured authentification type online! </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block disabled">
+                        <div class="head d-flex align-items-center mt-4 my-3" (click)="goNavigate('/transactions')">
+                            <mat-radio-button value="/transactions">
+                                <h3 class="bold m-0"> Transactions (Coming soon) </h3>
+                            </mat-radio-button>
+                        </div>
+                        <div class="d-flex">
+                            <div class="left"></div>
+                            <div>
+                                <div class="fw-bold mb-2"> List with all transactions </div>
+                                <p class="mb-4"> Explore crypto and DLT World knowing your assets </p>
+                            </div>
+                        </div>
+                    </div>
+<!--                    <div class="block disabled">-->
+<!--                        <div class="head d-flex align-items-center mt-4 my-3" (click)="goNavigate('/monitor')">-->
+<!--                            <mat-radio-button value="/monitor">-->
+<!--                                <h3 class="m-0"> Monitor (Coming soon) </h3>-->
+<!--                            </mat-radio-button>-->
+<!--                        </div>-->
+<!--                        <div class="d-flex">-->
+<!--                            <div class="left"></div>-->
+<!--                            <div>-->
+<!--                                <h5 class="fw-bold"> List of servers online </h5>-->
+<!--                                <p class="mb-4"> Check out the list of servers </p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="block disabled">-->
+<!--                        <div class="head d-flex align-items-center mt-4 my-3" (click)="goNavigate('/statistics')">-->
+<!--                            <mat-radio-button value="/statistics">-->
+<!--                                <h3 class="m-0"> Statistics (Coming soon)</h3>-->
+<!--                            </mat-radio-button>-->
+<!--                        </div>-->
+<!--                        <div class="d-flex">-->
+<!--                            <div class="left"></div>-->
+<!--                            <div>-->
+<!--                                <h5 class="fw-bold"> Overview of blockchain parameters: </h5>-->
+<!--                                <p class="mb-4"> Transactions/day, Number of contracts, Number of assets </p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+</div>

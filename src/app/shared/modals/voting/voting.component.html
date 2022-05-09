@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="close">
+        <mat-icon (click)="close()">close</mat-icon>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2> Voting to Node Election </h2>
+            <h5>
+                One HT represents 1 vote, and please enter an integer multiple of 1; please reserve at least 0.01 HT as
+                gas fee; redemption of votes must be locked in about 3 days after the account
+            </h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h5 class="fw-bold mt-3 mb-0"> Transaction amount </h5>
+            <input type="number" placeholder="Please enter an integer">
+            <div class="my-2 d-flex align-items-center justify-content-between">
+                <h5 class="leftText m-0"> Available 0.0000 BTC </h5>
+                <a routerLink="#">
+                    <div class="d-flex align-items-center">
+                        <h5 class="m-0"> Buy BTC </h5>
+                        <mat-icon>chevron_right</mat-icon>
+                    </div>
+                </a>
+            </div>
+            <div class="text-center my-4">
+                <button mat-raised-button (click)="connectWallet()"> Connect Wallet </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,635 @@
+<div class="container-fluid customContainer">
+    <div class="row">
+        <div class="col-12 py-3 py-lg-4">
+            <app-page-title>Build on dVITA</app-page-title>
+
+            <div class="fw-bold textPurple mb-3">A developer and eco-friendly Proof-of-Stake smart contract platform for
+                rapid Web3 development</div>
+        </div>
+    </div>
+
+    <div class="container-fluid customContainer py-2">
+        <div class="row py-sm-2 py-lg-2">
+            <div class="col-12 pt-sm-2 pt-lg-2">
+                <div class="row">
+                    <div class="col-12 col-sm-12 my-3">
+                        <app-details-title>For regular users who transfer assets</app-details-title>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-6 p-1">
+                        <div class="grayCards p-3 p-sm-4">
+                            <h5 class="fw-bold">
+                                dVITA Light wallet and wallet plugin links
+                            </h5>
+                            <a
+                                href="https://chrome.google.com/webstore/detail/dvita-wallet/nggheophiekocmlbklkefdenogendehj">
+                                https://chrome.google.com/webstore/detail/dvita-wallet/nggheophiekocmlbklkefdenogendehj
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-6 p-1">
+                        <div class="grayCards p-3 p-sm-4">
+                            <h5 class="fw-bold">
+                                xDaro Custodian link
+                            </h5>
+                            <a href="https://xdaro.com/"> https://xdaro.com/ </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 mt-5">
+                        <div class="tool">
+                            <app-details-title>For node keepers and voting enthusiasts</app-details-title>
+                            <h4 class="fw-bold">
+                                Public Node run instructions
+                            </h4>
+                            <div class="codeLine my-3">
+                                <pre>
+                                        <span># For testnet<br>
+                                            docker run --name dvita-testnet-node -d -e "NODE_TYPE=public" -v nxa-node-data:/nxa-node-data -p 20332-20334:20332-20334 registry.team11.lv/public/nxa-testnet-node:latest
+                                        </span>
+                                    </pre>
+                            </div>
+
+                            <h4 class="fw-bold">
+                                How to interact with a running node
+                            </h4>
+                            <h5 class="fw-bold">
+                                Following commands are executed directly on inside Docker container:
+                            </h5>
+                            <div class="codeLine my-3">
+                                <pre>
+                                        <span>screen -ls<br>
+                                            screen -r 1
+                                        </span>
+                                    </pre>
+                            </div>
+                            <h5 class="fw-bold">
+                                Node commands are executed inside DVITA node CLI, for example:
+                            </h5>
+                            <div class="codeLine my-3">
+                                <pre>
+                                        <span>show state<br>
+                                            show pool<br>
+                                            open wallet (path)<br>
+                                            list asset<br>
+                                            <br>
+                                            #To view all available node commands, type:<br>
+                                            help<br>
+                                        </span>
+                                    </pre>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 mt-5 my-3">
+                        <app-details-title>For the corporate customers</app-details-title>
+                        <h4 class="fw-bold">
+                            Partner On Premises Node instructions
+                        </h4>
+                        <h5 class="fw-bold">
+                            Use the following command to run node depending on type:
+                        </h5>
+                        <div class="codeLine my-3">
+                            <pre>
+                                    <span># For testnet<br>
+                                        docker run --name dvita-testnet-node -d -e "NODE_TYPE=partner" -v nxa-node-data:/nxa-node-data -p 20332-20334:20332-20334 registry.team11.lv/public/nxa-testnet-node:latest<br>
+                                    </span>
+                                </pre>
+                        </div>
+                        <h4 class="fw-bold">
+                            In-node (e.g on-chain) Web management interface for dVITA node
+                        </h4>
+                        <ul>
+                            <li>Pluggable node module</li>
+                            <li>HTTP/SSL listener</li>
+                            <li>REST API handlers</li>
+                            <li>Node Start/Stop</li>
+                            <li>Read/Write node config</li>
+                            <li>Generate Wallets/PK infrastructure</li>
+                            <li>Status monitoring for: Sync status, current block, Peers, Network reachability,
+                                system status like disk/mem/cpu</li>
+                            <li>Auth/Lock for admins</li>
+                            <li>Initial config master: Node type, Generate Wallet/PK, Connectivity, P2P, Company
+                                info, Consensus plugin</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-sm-12 mt-5 my-3">
+                        <app-details-title>For integrators like Exchanges or 3rd party services</app-details-title>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-6 p-1">
+                        <div class="grayCards p-3 p-sm-4">
+                            <h5 class="fw-bold">
+                                Documentation for application developers and integrators
+                            </h5>
+                            <a href="https://github.com/dVita-Labs/dvita-foundation-framework">
+                                https://github.com/dVita-Labs/dvita-foundation-framework
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-6 p-1">
+                        <div class="grayCards p-3 p-sm-4">
+                            <h5 class="fw-bold">
+                                dVITA Labs GitHub repository
+                            </h5>
+                            <a href="https://github.com/dVita-Labs"> https://github.com/dVita-Labs </a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 mt-5">
+                        <div class="tool">
+                            <app-details-title>For developers</app-details-title>
+                            <h4 class="fw-bold mt-3">
+                                Development process
+                            </h4>
+                            <h5 class="fw-bold">
+                                All dVITA token holders will have the right to vote and participate in dVITA’s
+                                technical governance and development process by electing qualified dVITA holders to
+                                become consensus node operators and members of dVITA’s technical governing body.
+                                Active participation in dVITA’s governance will entitle token holders to earn
+                                incentive rewards in the form of DVG.
+                            </h5>
+                            <h4 class="fw-bold mt-3">
+                                Local dVITA node development setup
+                            </h4>
+                            <h5 class="fw-bold">
+                                Requirements
+                            </h5>
+                            <ul class="urls">
+                                <li>Dev account in <a href="https://gitlab.team11.lv">https://gitlab.team11.lv</a>
+                                </li>
+                                <li><a href="https://www.microsoft.com/en-us/windows?r=1">Windows</a>, <a
+                                        href="https://www.apple.com/macos/monterey/">MacOS</a> or <a
+                                        href="https://ubuntu.com/">Linux</a> developer station</li>
+                                <li><a href="https://www.docker.com/">Docker</a> & <a
+                                        href="https://docs.docker.com/compose/">Docker Compose</a></li>
+                            </ul>
+
+                            <h5 class="fw-bold">
+                                To check if Docker and Docker Compose are installed, use commands:
+                            </h5>
+                            <div class="codeLine my-3">
+                                <pre>
+                                        <span>docker --version</span>
+                                    </pre>
+                                <pre>
+                                        <span>docker-compose --version</span>
+                                    </pre>
+                            </div>
+
+                            <ul class="urls">
+                                <li><a href="https://dotnet.microsoft.com/en-us/">.NET6 SDK & Runtime</a></li>
+                            </ul>
+
+                            <h5 class="fw-bold">
+                                To check .NET version, use command:
+                            </h5>
+                            <div class="codeLine my-3">
+                                <pre>
+                                        <span>dotnet --info</span>
+                                    </pre>
+                            </div>
+
+                            <ul class="urls">
+                                <li><a href="https://git-scm.com/">GIT</a> Client</li>
+                            </ul>
+
+                            <h5 class="fw-bold">
+                                To check if GIT is installed, use command:
+                            </h5>
+                            <div class="codeLine my-3">
+                                <pre>
+                                        <span>git --version</span>
+                                    </pre>
+                            </div>
+
+                            <ul class="urls">
+                                <li><a href="https://www.gnu.org/software/make/">GNU Make</a></li>
+                            </ul>
+
+                            <h5 class="fw-bold">
+                                To check if GNU Make is installed, use command:
+                            </h5>
+                            <div class="codeLine my-3">
+                                <pre>
+                                        <span>make --version</span>
+                                    </pre>
+                            </div>
+
+                            <h4 class="fw-bold">
+                                Development environment setup
+                            </h4>
+
+                        </div>
+                        <app-expansion-panel>
+                            <div class="codeLine my-3">
+                                <pre>
+                                    <span># Clone all following repositories inside one directorly like:<br>
+                                            mkdir -p ~/projects/nxa-project<br>
+                                            cd nxa-project<br>
+                                            git clone https://gitlab.team11.lv/nxa/nxa-node-infra.git<br>
+                                            git clone https://gitlab.team11.lv/nxa/mirrors/neo-vm.git<br>
+                                            git clone https://gitlab.team11.lv/nxa/mirrors/neo.git<br>
+                                            git clone https://gitlab.team11.lv/nxa/mirrors/neo-modules.git<br>
+                                            git clone https://gitlab.team11.lv/nxa/mirrors/neo-node.git<br>
+                                            git clone https://gitlab.team11.lv/nxa/nxa-modules.git<br>
+                                            git clone https://gitlab.team11.lv/nxa/nxa-dev-solution.git<br>
+                                            <br>
+                                            # Pre-build modules<br>
+                                            cd neo-modules<br>
+                                            make build<br>
+                                            <br>
+                                            # Build node<br>
+                                            cd ../neo-node/neo-cli<br>
+                                            make build<br>
+                                            <br>
+                                            # Copy binary deps<br>
+                                            cp ../nxa-dev-solution/libleveldb.dll ./<br>
+                                            <br>
+                                            # Install default modules that have been build above<br>
+                                            mkdir ./dist/Plugins<br>
+                                            cp -a ../../neo-modules/dist/* dist/Plugins<br>
+                                            <br>
+                                            # Remove 'Storage' and 'Logger' sections<br>
+                                            vim dist/config.json<br>
+                                            <br>
+                                            # Run it locally<br>
+                                            dotnet dist/neo-cli.dll<br>
+                                    </span>
+                                </pre>
+                            </div>
+                        </app-expansion-panel>
+                    </div>
+                    <h4 class="fw-bold my-3">
+                        How to perform Blockchain transactions
+                    </h4>
+                    <app-expansion-panel>
+                        <h5 class="fw-bold">
+                            1. Install wallet plugin and generate new address <a class="textBlue">[A]</a>
+                        </h5>
+                        <ul class="urls">
+                            <li>Git clone <a
+                                    href="https://gitlab.team11.lv/nxa/mirrors/neoline.git">https://gitlab.team11.lv/nxa/mirrors/neoline.git</a>
+                            </li>
+                            <li>Run npm install to install dependencies.</li>
+                            <li>Run npm run build to build release assets for chrome extension debug.</li>
+                            <li>Open google chrome manage extensions page chrome://extensions/</li>
+                            <li>Turn on developer mode</li>
+                            <li>Drag & drop neoline dist folder </li>
+                            <li>Create wallet through installed Chrome plugin</li>
+                        </ul>
+
+                        <h5 class="fw-bold">
+                            2. Run node instance and create wallet <a class="textGreen">[B]</a> through node CLI
+                        </h5>
+                        <ul class="urls">
+                            <li>Run node following instructions described on How to run dVITA node instances</li>
+                            <li>Inside node CLI create wallet:</li>
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>create wallet wallet.json</span>
+                            </pre>
+                        </div>
+                        <ul>
+                            and input a password for the wallet
+                            <li>Returned values: </li>
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    Address: NQD93fVJqr5YLm7jYZaVnPQbsXPc7jFzpv<br>
+                                    Pubkey: 025999b89e08b0bcaf4dbb5a82180dba7ffbd1d51000c71c7a2103ac35b2968d15<br>
+                                    ScriptHash: 0x458de6187b6347b9bbc905b605c99f5c3cce1f2f<br>
+                                    DVITA hash: 0xb34e1025391e953a918231df11478ec21b039e5f<br>
+                                    DVG hash:   0xd2a4cff31913016155e38e474a2c06d08be276cf<br>
+                                </span>
+                            </pre>
+                        </div>
+
+                        <h5 class="fw-bold">
+                            3. Deposit DVITA and DVG to <a class="textBlue">[A]</a> via <a
+                                href="https://foundation.dvita.com/" class="text-url">https://foundation.dvita.com/</a>
+                        </h5>
+
+                        <h5 class="fw-bold mt-5">
+                            4. Send <a class="textBlue">[A]</a> → <a class="textGreen">[B]</a> DVG and DVITAs
+                        </h5>
+                        <ul>
+                            Using wallet plugin, transfer chosen amount to <a
+                                class="code">NQD93fVJqr5YLm7jYZaVnPQbsXPc7jFzpv</a>
+                        </ul>
+
+                        <h5 class="fw-bold mt-5">
+                            5. Check <a class="textGreen">[B]</a> balance
+                        </h5>
+                        <ul>
+                            a. Using list asset command
+                            <li>In CLI type <a class="code">list asset</a></li>
+                            b. Using balanceof command
+                            <li>For DVITA balance <a class="code">balanceof 0xb34e1025391e953a918231df11478ec21b039e5f
+                                    NQD93fVJqr5YLm7jYZaVnPQbsXPc7jFzpv</a></li>
+                            or <a class="code">balanceof DVITA NQD93fVJqr5YLm7jYZaVnPQbsXPc7jFzpv</a>
+                            <li>For DVG balance <a class="code">balanceof 0xd2a4cff31913016155e38e474a2c06d08be276cf
+                                    NQD93fVJqr5YLm7jYZaVnPQbsXPc7jFzpv</a></li>
+                            c. Through smart contract invocation
+                        </ul>
+
+                        <h5 class="fw-bold">
+                            Parse address
+                        </h5>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    parse NQD93fVJqr5YLm7jYZaVnPQbsXPc7jFzpv
+                                </span>
+                            </pre>
+                        </div>
+                        <h5 class="fw-bold">
+                            To get values
+                        </h5>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    Address to ScriptHash&nbsp;0x458de6187b6347b9bbc905b605c99f5c3cce1f2f<br>
+                                    Address to Base64&nbsp;Lx/OPFyfyQW2Bcm7uUdjexjmjUU=<br>
+                                    String to Hex String&nbsp;4e5144393366564a717235594c6d376a595a61566e50516273585063376a467a7076<br>
+                                    String to Base64&nbsp;TlFEOTNmVkpxcjVZTG03allaYVZuUFFic1hQYzdqRnpwdg==<br>
+                                </span>
+                            </pre>
+                        </div>
+                        <h5 class="fw-bold">
+                            Run
+                        </h5>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    invoke 0xb34e1025391e953a918231df11478ec21b039e5f balanceOf [&#123;"type":"ByteArray","value":"Lx/OPFyfyQW2Bcm7uUdjexjmjUU="&#125;]
+                                </span>
+                            </pre>
+                        </div>
+                        <h5 class="fw-bold">
+                            or
+                        </h5>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    invoke 0xb34e1025391e953a918231df11478ec21b039e5f balanceOf [&#123;"type":"Hash160","value":"0x458de6187b6347b9bbc905b605c99f5c3cce1f2f"&#125;]
+                                </span>
+                            </pre>
+                        </div>
+
+                        <h5 class="fw-bold mt-5">
+                            6. Destroy <a class="textBlue">[A]</a> and <a class="textGreen">[B]</a> and restore/reimport
+                            them again
+                        </h5>
+                        <ul>
+                            For <a class="textBlue">[A]</a>
+                            <li>Open Chrome plugin</li>
+                            <li>Account details</li>
+                            <li>Show Private Key</li>
+                            <li>Save Private Key</li>
+                            <li>Remove account</li>
+                            <li>Import an existing wallet</li>
+                            <li>Input wallet name, Private Key and password</li>
+                        </ul>
+                        <ul>
+                            For <a class="textGreen">[B]</a>
+                            <li>In CLI type <a class="code">close wallet</a></li>
+                            <li><a class="code">open wallet wallet.json</a></li>
+                            <li>Input password</li>
+                            <li><a class="code">import key &lt;Private key&gt;</a></li>
+                        </ul>
+
+                        <h5 class="fw-bold mt-5">
+                            7. Compile and deploy token through CLI
+                        </h5>
+                        <ul class="urls">
+                            <li>Create Smart Contract</li>
+                            <li>Compile it using PUT <a
+                                    href="https://caas.testnet.dvita.com/api/Compiler">https://caas.testnet.dvita.com/api/Compiler</a>
+                                or Neo.Compiler.CSharp</li>
+                            <li>Create sc directory</li>
+                            <li>TokenName.nef and TokenName.manifest.json into sc directory</li>
+                            <li>Copy this directory inside docker container <a class="code">docker cp ./sc
+                                    dvita-testnet-node:sc</a></li>
+                            <li>Run deploy command inside node CLI <a class="code">deploy ../sc/TokenName.nef
+                                    ../sc/TokenName.manifest.json</a></li>
+                            and as a response get <a class="code">Contract hash:
+                                0x1c6c0fb668ca7282601c7891416dcdaaf2e41ae1</a>
+                            <li>Create wallet through installed Chrome plugin</li>
+                        </ul>
+
+                        <h5 class="fw-bold mt-5">
+                            8. Interact with this contract
+                        </h5>
+                        <ul>
+                            To check owners balance (in this case owner is wallet <a class="textBlue">[A]</a>)
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    invoke 0x1c6c0fb668ca7282601c7891416dcdaaf2e41ae1 balanceOf [&#123;"type":"ByteArray","value":"VG+BzgJJ6nloPjmnqMntguZhS/o="&#125;]<br>
+                                    Result Stack: [&#123;"type":"Integer","value":"1000000"&#125;]<br>
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            Mint additional 2000000 coins to wallet <a class="textBlue">[A]</a>
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    invoke 0x1c6c0fb668ca7282601c7891416dcdaaf2e41ae1 mint [&#123;"type":"ByteArray","value":"VG+BzgJJ6nloPjmnqMntguZhS/o="&#125;,&#123;"type":"Integer","value":"2000000"&#125;] NTcRXWqsRbR3XqtZWWVunxV7CGph27dMAY
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            Check total coin supply after minting additional coins
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    invoke 0x1c6c0fb668ca7282601c7891416dcdaaf2e41ae1 totalSupply<br>
+                                    Result Stack: [&#123;"type":"Integer","value":"3000000"&#125;]
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            Burn 1000000 coins
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    invoke 0x1c6c0fb668ca7282601c7891416dcdaaf2e41ae1 burn [&#123;"type":"ByteArray","value":"VG+BzgJJ6nloPjmnqMntguZhS/o="&#125;,&#123;"type":"Integer","value":"1000000"&#125;] NTcRXWqsRbR3XqtZWWVunxV7CGph27dMAY
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            Check total coin supply after burning 1000000 coins
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    invoke 0x1c6c0fb668ca7282601c7891416dcdaaf2e41ae1 totalSupply<br>
+                                    Result Stack: [&#123;"type":"Integer","value":"2000000"&#125;]
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            Update the contract:
+                            <li>if contracts update methods input parameters are : <a class="code">public static bool
+                                    Update(ByteString nefFile, string manifest)</a></li>
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    update 0x1c6c0fb668ca7282601c7891416dcdaaf2e41ae1 ../sc/Team11Token.nef ../sc/Team11Token.manifest.json NTcRXWqsRbR3XqtZWWVunxV7CGph27dMAY NTcRXWqsRbR3XqtZWWVunxV7CGph27dMAY
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            <li>if contracts update methods input parameters are : <a class="code">public static bool
+                                    Update(ByteString nefFile, string manifest, object data = null)</a> then additional
+                                parameter needed</li>
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    update 0x1c6c0fb668ca7282601c7891416dcdaaf2e41ae1 ../sc/Team11Token.nef ../sc/Team11Token.manifest.json NTcRXWqsRbR3XqtZWWVunxV7CGph27dMAY NTcRXWqsRbR3XqtZWWVunxV7CGph27dMAY &#123;"type":"Any","value":null&#125;
+                                </span>
+                            </pre>
+                        </div>
+
+                        <h5 class="fw-bold mt-5">
+                            9. Using new partner on premises instances <a class="textCyan">[C]</a> and <a
+                                class="textOrange">[D]</a> create Multisig address <a class="textRed">[M]</a>
+                        </h5>
+                        <ul>
+                            Repeat step 2 to run nodes and create wallets for them
+                            <li>In this example wallet <a class="textCyan">[C]</a></li>
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    Address: Nb92Je2NHHqSrX85aaqoCU1ikShECBjZPk<br>
+                                    Pubkey: 0332f47bda0f5a23e5575ca81701958b39eb8065c857e200c6e981c3c57f1c9112<br>
+                                    ScriptHash: 0x1fb6dedcc8aaa32e29c9b05ceec67114c9e501a7<br>
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            <li>wallet <a class="textOrange">[D]</a></li>
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    Address: NT8xUgtm9BUtWyVrAoqt6JJ3VupKZ4dWbi<br>
+                                    Pubkey: 035ff6493211c6f84e7edfed87cfca4cc36c1454fc6f56120bc76aab1456febcb5<br>
+                                    ScriptHash: 0xc1b656fcad6fce13ccf06ec1971417356ab23d4f<br>
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            <li>Run this command on both wallets <a class="textCyan">[C]</a> and <a
+                                    class="textOrange">[D]</a></li>
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    import multisigaddress 2 0332f47bda0f5a23e5575ca81701958b39eb8065c857e200c6e981c3c57f1c9112 035ff6493211c6f84e7edfed87cfca4cc36c1454fc6f56120bc76aab1456febcb5
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            <li>And get <a class="textRed">[M]</a> address value as a response</li>
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    Multisig. Addr.: NcPAULw7tuad8eKzQ1fnFZg4jbHrGa8SAZ
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            a. Deposit <a class="textBlue">[A]</a> → <a class="textRed">[M]</a>
+                            <li>Follow step 4. to address <a class="code">NcPAULw7tuad8eKzQ1fnFZg4jbHrGa8SAZ</a></li>
+                            b. Withdraw <a class="textRed">[M]</a> → <a class="textGreen">[B]</a>
+                            Run send command inside wallet <a class="textOrange">[D]</a>
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    end 0xb34e1025391e953a918231df11478ec21b039e5f NQD93fVJqr5YLm7jYZaVnPQbsXPc7jFzpv 2 NcPAULw7tuad8eKzQ1fnFZg4jbHrGa8SAZ null NcPAULw7tuad8eKzQ1fnFZg4jbHrGa8SAZ
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            or
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    send DVITA NQD93fVJqr5YLm7jYZaVnPQbsXPc7jFzpv 2 NcPAULw7tuad8eKzQ1fnFZg4jbHrGa8SAZ null NcPAULw7tuad8eKzQ1fnFZg4jbHrGa8SAZ
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            And get as a response
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    Incomplete signature:<br>
+                                    &#123;"type":"Neo.Network.P2P.Payloads.Transaction","hash":"0x31782ba202f5730d786f6c15e912a4abf9cc92c7c31ab71a889ce6c938ccd5ac","data":"AKWV0nqGQJgAAAAAAORmIwAAAAAA1b0EAAG0pqoi4/IAuU2itcwjHb3gV\u002B/CfwEAXAwEbnVsbBIMFC8fzjxcn8kFtgXJu7lHY3sY5o1FDBS0pqoi4/IAuU2itcwjHb3gV\u002B/CfxTAHwwIdHJhbnNmZXIMFF\u002BeAxvCjkcR3zGCkTqVHjklEE6zQWJ9W1I5","items":&#123;"0x7fc2ef57e0bd1d23ccb5a24db900f2e322aaa6b4":&#123;"script":"EgwhAzL0e9oPWiPlV1yoFwGViznrgGXIV\u002BIAxumBw8V/HJESDCEDX/ZJMhHG\u002BE5\u002B3\u002B2Hz8pMw2wUVPxvVhILx2qrFFb\u002BvLUSQZ7Q3Do=","parameters":[&#123;"type":"Signature"&#125;,&#123;"type":"Signature"&#125;],"signatures":&#123;"035ff6493211c6f84e7edfed87cfca4cc36c1454fc6f56120bc76aab1456febcb5":"5b9TDz0t/n3okWuD4G/qVsrzW0rwg5Oj9/d4bsgyaSuc4B00f9MSKJ9VyWKIPOqTLQqzTv/tzD4S3bwhZQYl1A=="&#125;&#125;&#125;,"network":199&#125;
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            Run sign command inside wallet <a class="textCyan">[C]</a> using send commands response as
+                            argument
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    sign &#123;"type":"Neo.Network.P2P.Payloads.Transaction","hash":"0x31782ba202f5730d786f6c15e912a4abf9cc92c7c31ab71a889ce6c938ccd5ac","data":"AKWV0nqGQJgAAAAAAORmIwAAAAAA1b0EAAG0pqoi4/IAuU2itcwjHb3gV\u002B/CfwEAXAwEbnVsbBIMFC8fzjxcn8kFtgXJu7lHY3sY5o1FDBS0pqoi4/IAuU2itcwjHb3gV\u002B/CfxTAHwwIdHJhbnNmZXIMFF\u002BeAxvCjkcR3zGCkTqVHjklEE6zQWJ9W1I5","items":&#123;"0x7fc2ef57e0bd1d23ccb5a24db900f2e322aaa6b4":&#123;"script":"EgwhAzL0e9oPWiPlV1yoFwGViznrgGXIV\u002BIAxumBw8V/HJESDCEDX/ZJMhHG\u002BE5\u002B3\u002B2Hz8pMw2wUVPxvVhILx2qrFFb\u002BvLUSQZ7Q3Do=","parameters":[&#123;"type":"Signature"&#125;,&#123;"type":"Signature"&#125;],"signatures":&#123;"035ff6493211c6f84e7edfed87cfca4cc36c1454fc6f56120bc76aab1456febcb5":"5b9TDz0t/n3okWuD4G/qVsrzW0rwg5Oj9/d4bsgyaSuc4B00f9MSKJ9VyWKIPOqTLQqzTv/tzD4S3bwhZQYl1A=="&#125;&#125;&#125;,"network":199&#125;
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            Get a response
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    Signed Output:<br>
+                                    &#123;"type":"Neo.Network.P2P.Payloads.Transaction","hash":"0x31782ba202f5730d786f6c15e912a4abf9cc92c7c31ab71a889ce6c938ccd5ac","data":"AKWV0nqGQJgAAAAAAORmIwAAAAAA1b0EAAG0pqoi4/IAuU2itcwjHb3gV\u002B/CfwEAXAwEbnVsbBIMFC8fzjxcn8kFtgXJu7lHY3sY5o1FDBS0pqoi4/IAuU2itcwjHb3gV\u002B/CfxTAHwwIdHJhbnNmZXIMFF\u002BeAxvCjkcR3zGCkTqVHjklEE6zQWJ9W1I5","items":&#123;"0x7fc2ef57e0bd1d23ccb5a24db900f2e322aaa6b4":&#123;"script":"EgwhAzL0e9oPWiPlV1yoFwGViznrgGXIV\u002BIAxumBw8V/HJESDCEDX/ZJMhHG\u002BE5\u002B3\u002B2Hz8pMw2wUVPxvVhILx2qrFFb\u002BvLUSQZ7Q3Do=","parameters":[&#123;"type":"Signature","value":"5b9TDz0t/n3okWuD4G/qVsrzW0rwg5Oj9/d4bsgyaSuc4B00f9MSKJ9VyWKIPOqTLQqzTv/tzD4S3bwhZQYl1A=="&#125;,&#123;"type":"Signature","value":"BA01GjnaAL3XXfb112a/aPXD3gWd0UUmKKyR1Pt\u002BhOGd13X2/2Ck1ybcjGxqrQiZZO\u002BvT571hclviOn9oS5XRQ=="&#125;],"signatures":&#123;"035ff6493211c6f84e7edfed87cfca4cc36c1454fc6f56120bc76aab1456febcb5":"5b9TDz0t/n3okWuD4G/qVsrzW0rwg5Oj9/d4bsgyaSuc4B00f9MSKJ9VyWKIPOqTLQqzTv/tzD4S3bwhZQYl1A==","0332f47bda0f5a23e5575ca81701958b39eb8065c857e200c6e981c3c57f1c9112":"BA01GjnaAL3XXfb112a/aPXD3gWd0UUmKKyR1Pt\u002BhOGd13X2/2Ck1ybcjGxqrQiZZO\u002BvT571hclviOn9oS5XRQ=="&#125;&#125;&#125;,"network":199&#125;
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            Run relay command inside wallet <a class="textCyan">[C]</a> using sign commands response as
+                            argument
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    relay &#123;"type":"Neo.Network.P2P.Payloads.Transaction","hash":"0x31782ba202f5730d786f6c15e912a4abf9cc92c7c31ab71a889ce6c938ccd5ac","data":"AKWV0nqGQJgAAAAAAORmIwAAAAAA1b0EAAG0pqoi4/IAuU2itcwjHb3gV\u002B/CfwEAXAwEbnVsbBIMFC8fzjxcn8kFtgXJu7lHY3sY5o1FDBS0pqoi4/IAuU2itcwjHb3gV\u002B/CfxTAHwwIdHJhbnNmZXIMFF\u002BeAxvCjkcR3zGCkTqVHjklEE6zQWJ9W1I5","items":&#123;"0x7fc2ef57e0bd1d23ccb5a24db900f2e322aaa6b4":&#123;"script":"EgwhAzL0e9oPWiPlV1yoFwGViznrgGXIV\u002BIAxumBw8V/HJESDCEDX/ZJMhHG\u002BE5\u002B3\u002B2Hz8pMw2wUVPxvVhILx2qrFFb\u002BvLUSQZ7Q3Do=","parameters":[&#123;"type":"Signature","value":"5b9TDz0t/n3okWuD4G/qVsrzW0rwg5Oj9/d4bsgyaSuc4B00f9MSKJ9VyWKIPOqTLQqzTv/tzD4S3bwhZQYl1A=="&#125;,&#123;"type":"Signature","value":"BA01GjnaAL3XXfb112a/aPXD3gWd0UUmKKyR1Pt\u002BhOGd13X2/2Ck1ybcjGxqrQiZZO\u002BvT571hclviOn9oS5XRQ=="&#125;],"signatures":&#123;"035ff6493211c6f84e7edfed87cfca4cc36c1454fc6f56120bc76aab1456febcb5":"5b9TDz0t/n3okWuD4G/qVsrzW0rwg5Oj9/d4bsgyaSuc4B00f9MSKJ9VyWKIPOqTLQqzTv/tzD4S3bwhZQYl1A==","0332f47bda0f5a23e5575ca81701958b39eb8065c857e200c6e981c3c57f1c9112":"BA01GjnaAL3XXfb112a/aPXD3gWd0UUmKKyR1Pt\u002BhOGd13X2/2Ck1ybcjGxqrQiZZO\u002BvT571hclviOn9oS5XRQ=="&#125;&#125;&#125;,"network":199&#125;
+                                </span>
+                            </pre>
+                        </div>
+                        <ul>
+                            Get transaction hash as a response
+                        </ul>
+                        <div class="codeLine my-3">
+                            <pre>
+                                <span>
+                                    Data relay success, the hash is shown as follows:<br>
+                                    0x31782ba202f5730d786f6c15e912a4abf9cc92c7c31ab71a889ce6c938ccd5ac
+                                </span>
+                            </pre>
+                        </div>
+                    </app-expansion-panel>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

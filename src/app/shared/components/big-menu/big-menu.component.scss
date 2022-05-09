@@ -1,0 +1,12 @@
+.topSection {
+    position: fixed;
+    width: 100%;
+    background: white;
+    z-index: 99;
+}
+
+@media screen and (max-width: 575px) {
+    .topSection {
+        position: absolute;
+    }
+}

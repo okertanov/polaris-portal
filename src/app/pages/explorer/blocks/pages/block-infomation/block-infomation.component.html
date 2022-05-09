@@ -1,0 +1,201 @@
+<div class="container-fluid customContainer">
+  <!-- Block Information Section -->
+  <div class="row py-3 py-lg-5">
+    <div class="col-12 col-lg-4 px-0">
+      <app-page-title>Block information</app-page-title>
+    </div>
+    <div
+      class="col-12 col-lg-8 text-start text-sm-end d-block d-sm-flex d-lg-block align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-end my-3">
+        <div class="input-group search">
+          <input type="text" class="form-control" placeholder="Block height, hash, adress or transaction id"
+            [(ngModel)]="searchValue" (keydown.enter)="makeSearch()">
+          <span class="input-group-text">
+            <mat-icon (click)="makeSearch()">search</mat-icon>
+          </span>
+        </div>
+        <div class="dropdownDiv">
+          <app-network-select></app-network-select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Details Section -->
+  <div class="row" *ngIf="blockInfo$ | async as info">
+    <div class="col-12 py-4 px-0">
+      <app-details-title>Details</app-details-title>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3 p-sm-4">
+        <div class="mb-3"> Block index </div>
+        <div class="fw-bold textPurple m-0"> {{info.index}} </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3 p-sm-4">
+        <div class="mb-3"> Transactions </div>
+        <div class="fw-bold textPurple m-0"> {{info.transactions?.length}} </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3 p-sm-4">
+        <div class="mb-3"> Size </div>
+        <div class="fw-bold textPurple m-0"> {{info.size}} Bytes </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3 p-sm-4">
+        <div class="mb-3"> Time </div>
+        <div class="fw-bold textPurple m-0"> {{info.time}}</div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3 p-sm-4">
+        <div class="mb-3"> Version </div>
+        <div class="fw-bold textPurple m-0"> {{info.version}} </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3 p-sm-4">
+        <div class="mb-3"> Created on </div>
+        <div class="fw-bold textPurple m-0">{{info.createdOn}}</div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4 p-3 pt-4 px-1">
+      <div class="bold"> Hash </div>
+      <div class="cardSection hoverCard p-3 p-sm-4">
+        <h4 class="m-0">
+          {{info.hash}}
+        </h4>
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <mat-icon [cdkCopyToClipboard]="info.hash">content_copy</mat-icon>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4 p-3 pt-4 px-1">
+      <div class="bold"> Merkle root </div>
+      <div class="cardSection hoverCard p-3 p-sm-4">
+        <h4 class="m-0">
+          0x37c80e34716abcbfd6485740d97c51f431f7cd3dc87b2daaa322a1ce58db42d2
+        </h4>
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <mat-icon [cdkCopyToClipboard]="'0x37c80e34716abcbfd6485740d97c51f431f7cd3dc87b2daaa322a1ce58db42d2'">
+            content_copy</mat-icon>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4 p-3 pt-4 px-1">
+      <div class="bold"> Validator </div>
+      <div class="cardSection hoverCard p-3 p-sm-4">
+        <h4 class="m-0">
+          AWjvTDuUHQLReAKj5ppqsvRRNtu4GhWmbU
+        </h4>
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <mat-icon [cdkCopyToClipboard]="'AWjvTDuUHQLReAKj5ppqsvRRNtu4GhWmbU'">content_copy</mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Transactions Table Section -->
+  <div class="row">
+    <div class="col-12 mt-5 pt-4 px-2">
+      <app-details-title>Transactions</app-details-title>
+    </div>
+    <div class="col-12">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-100">
+        <!-- Type Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef> Type</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex align-items-center text-truncate">
+              <div class="leftMark" [class]="'user'"></div>
+              <img [src]="'assets/icons/user.svg'" class="me-2">
+              {{'invocation'}}
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Transaction ID Column -->
+        <ng-container matColumnDef="transactionId">
+          <th mat-header-cell *matHeaderCellDef> Transaction ID</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="transactionId d-flex align-items-center justify-content-between">
+              <div class="transactionId">
+                {{element.hash}}
+              </div>
+              <button mat-icon-button class="d-block d-sm-none">
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <!-- Size Column -->
+        <ng-container matColumnDef="size">
+          <th mat-header-cell *matHeaderCellDef> Size</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.size}} Bytes
+          </td>
+        </ng-container>
+
+        <!-- Completed on Column -->
+        <ng-container matColumnDef="completedOn">
+          <th mat-header-cell *matHeaderCellDef> Completed on</th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                {{element.timestamp | date: 'DD.MM.YYYY | HH:MM:SS'}}
+              </div>
+              <button mat-icon-button>
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="row?.hash && navigateTo(row.hash)"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="pageSizeOption" [showFirstLastButtons]="true"></mat-paginator>
+      <app-paginator [dataLength]="dataLength" [pageSizeOption]="pageSizeOption" [pageSize]="pageSize"
+        (onPage)="pageChange($event)"></app-paginator>
+    </div>
+  </div>
+
+  <!-- Bytecode Section -->
+  <div class="row">
+    <div class="col-12">
+      <app-details-title>Bytecode</app-details-title>
+    </div>
+    <div class="col-12 col-lg-6 p-3">
+      <div class="fw-bold m-0"> Invocation Script </div>
+      <div class="bytecodeCard p-3">
+        <h4 class="code m-0">
+          {{invocationScript}}
+        </h4>
+        <div class="align-self-center mb-2">
+          <button mat-icon-button>
+            <mat-icon [cdkCopyToClipboard]="invocationScript">content_copy</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-lg-6 p-3">
+      <div class="fw-bold m-0"> Verification Script </div>
+      <div class="bytecodeCard p-3">
+        <h4 class="code m-0">
+          {{verificationScript}}
+        </h4>
+        <div class="align-self-center mb-2">
+          <button mat-icon-button>
+            <mat-icon [cdkCopyToClipboard]="verificationScript">content_copy</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

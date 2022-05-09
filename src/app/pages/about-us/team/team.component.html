@@ -1,0 +1,112 @@
+<div class="container-fluid customContainer">
+  <div class="row pt-5 pb-3">
+    <div class="col-12 col-lg-6">
+      <app-page-title>We are dVITA</app-page-title>
+    </div>
+  </div>
+  <div class="col-12 col-lg-4 pb-4">
+    We are platform for an inclusive global economy and digital assets
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-lg-4">
+      <div class="fw-bold textPurple mb-2">
+        Who are we?
+      </div>
+      <div>
+        We are learners and doers that don’t shy away from complexity. We make things happen with teams that
+        trust, respect and count on each other. We are passionate about the different aspects of
+        cryptocurrencies as we are about our clients.
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="fw-bold textPurple mb-2">
+        What do we do?
+      </div>
+      <div>
+        We equip our clients with the high-quality tools to safely, easily and reliably invest and use
+        cryptocurrencies. For our clients, we provide integrated access to decentralized assets and new
+        developments in the crypto space.
+      </div>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="fw-bold textPurple mb-2">
+        What do we believe?
+      </div>
+      <div>
+        We strongly believe that
+        an economy based on cryptocurrencies, distributed trust and decentralized financial ecosystems creates a
+        fairer and more efficient world.
+      </div>
+    </div>
+  </div>
+
+  <!--    <div class="row">-->
+  <!--        <div class="col-12 col-lg-6 py-3 py-lg-5">-->
+  <!--            <div class="largeText my-3 my-sm-4"> We are dVITA </div>-->
+  <!--        </div>-->
+  <!--        <div class="col-12 col-lg-6 py-3 py-lg-5">-->
+  <!--            <h3 class="subTitle mt-3 mt-lg-5">-->
+  <!--                We are platform for an inclusive global economy and digital assets-->
+  <!--            </h3>-->
+  <!--            <h5 class="textPurple fw-bold my-3 my-sm-4"> Our mission is: </h5>-->
+  <!--            <div class="d-flex align-items-center my-3">-->
+  <!--                <div class="checkIcon d-flex align-items-center justify-content-center me-4">-->
+  <!--                    <mat-icon>done</mat-icon>-->
+  <!--                </div>-->
+  <!--                <h5 class="m-0"> To improve financial inclusion </h5>-->
+  <!--            </div>-->
+  <!--            <div class="d-flex align-items-center my-3">-->
+  <!--                <div class="checkIcon d-flex align-items-center justify-content-center me-4">-->
+  <!--                    <mat-icon>done</mat-icon>-->
+  <!--                </div>-->
+  <!--                <h5 class="m-0"> Transparency and the UN’s SDGs (Sustainable Development Goals) </h5>-->
+  <!--            </div>-->
+  <!--        </div>-->
+  <!--    </div>-->
+
+  <div class="row py-4 py-lg-5">
+    <div class="col-12 col-sm-6">
+      <app-page-title>Our Team</app-page-title>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-sm-6 col-lg-4 py-3">
+      <div class="section p-3">
+        <div class="mb-3"> Founded </div>
+        <div class="m-0 textPurple fw-bold"> 13 January 2019 </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4 py-3">
+      <div class="section p-3">
+        <div class="mb-3"> Team members </div>
+        <div class="m-0 textPurple fw-bold"> {{'30 +'}} </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-4 py-3">
+      <div class="section p-3">
+        <div class="mb-3"> Careers </div>
+        <!--                    <a routerLink="/careers" class="d-flex align-items-center textGreen">-->
+        <!--                        <h5 class="m-0 me-2">-->
+        <!--                            Go to-->
+        <!--                        </h5>-->
+        <!--                        <mat-icon>chevron_right</mat-icon>-->
+        <!--                    </a>-->
+        <div class="m-0 textPurple fw-bold"> Yes, we are always hiring </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row py-4 py-lg-5">
+    <div class="col-12 col-sm-6 col-lg-3 py-3" *ngFor="let member of teamMembers">
+      <div class="photoSection p-4">
+        <div class="p-2">
+          <img [src]="member.photo" class="w-100">
+          <h3 class="mt-3"> {{ member.name }} </h3>
+          <p class="m-0 textGrey"> {{ member.position }} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

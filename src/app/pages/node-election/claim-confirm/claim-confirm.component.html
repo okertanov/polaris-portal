@@ -1,0 +1,14 @@
+<h5 class="m-0 mb-4">
+  <app-message-title end="?">Are you sure</app-message-title>
+</h5>
+<mat-dialog-content class="mat-typography">
+  <p>It's not required to explicitly claim your unclaimed DVG, it will never disappear.</p>
+  <p>Your unclaimed DVG is claimed automatically with every DVITA transfer <i>to</i> or <i>from</i> your address.</p>
+  <p>Note that a claim transaction is just a transfer of 1 DVITA to your own address.</p>
+  <p>if you really wish to make a claim transaction, it will require a fee (just like any other transfer).</p>
+  <p>Claim transaction fee: <b class="fee">{{ fee || '⏳' }} DVG</b></p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close type="button">Cancel</button>
+  <button mat-raised-button cdkFocusInitial type="submit" (click)="onConfirm()">Claim</button>
+</mat-dialog-actions>

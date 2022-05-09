@@ -1,0 +1,15 @@
+diff --git a/node_modules/@cityofzion/neon-core/lib/logging.d.ts b/node_modules/@cityofzion/neon-core/lib/logging.d.ts
+index 1627493..7960410 100644
+--- a/node_modules/@cityofzion/neon-core/lib/logging.d.ts
++++ b/node_modules/@cityofzion/neon-core/lib/logging.d.ts
+@@ -1,6 +1,6 @@
+-import loglevel, { Logger } from "loglevel";
+-export declare function setAll(lvl: loglevel.LogLevelDesc): void;
++import { Logger, RootLogger, LogLevelDesc } from "loglevel";
++export declare function setAll(lvl: LogLevelDesc): void;
+ declare const _default: (label: string) => Logger;
+ export default _default;
+-export declare const logger: loglevel.RootLogger;
++export declare const logger: RootLogger;
+ //# sourceMappingURL=logging.d.ts.map
+\ No newline at end of file

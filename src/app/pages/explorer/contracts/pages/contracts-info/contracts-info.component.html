@@ -1,0 +1,89 @@
+<div class="container-fluid customContainer">
+  <!-- Top Section -->
+  <div class="row my-3 py-3 py-lg-5">
+    <div class="col-12 col-lg-4">
+      <app-page-title>Contract information</app-page-title>
+    </div>
+    <div
+      class="col-12 col-lg-8 text-start text-sm-end d-block d-sm-flex d-lg-block align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-end my-2">
+        <div class="input-group search">
+          <input type="text" class="form-control" placeholder="Block height, hash, adress or transaction id"
+            [(ngModel)]="searchValue" (keydown.enter)="makeSearch()">
+          <span class="input-group-text">
+            <mat-icon (click)="makeSearch()">search</mat-icon>
+          </span>
+        </div>
+        <div class="dropdownDiv">
+          <app-network-select></app-network-select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contract hash Section -->
+  <div class="row">
+    <div class="col-12">
+      <div class="grayCard flex-column d-sm-flex p-5 py-4">
+        <div class="m-0 me-3 label"> Contract hash </div>
+        <div class="m-0 fw-bold textPurple"> bdf847dffa966ac61de8cd70ef2aa2756346da13 </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail Section -->
+  <div class="row">
+    <div class="col-12 pt-5">
+      <app-details-title>Details</app-details-title>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-3"> Block index </div>
+        <div class="m-0 fw-bold textPurple value"> 59467 </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-3"> Transactions </div>
+        <div class="m-0 fw-bold textPurple value"> 0 </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-3"> Size </div>
+        <div class="m-0 fw-bold textPurple value"> 458 Bytes </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-3"> Time </div>
+        <div class="m-0 fw-bold textPurple value"> a few seconds ago </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-3"> Version </div>
+        <div class="m-0 fw-bold textPurple value"> 0 </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-2 col-lg-2 p-1">
+      <div class="grayCards p-3">
+        <div class="label mb-0"> Created on </div>
+        <div class="m-0 fw-bold textPurple value"> 15.12.2021 01:24:07 </div>
+      </div>
+    </div>
+    <div class="col-12 py-5">
+      <div class="m-0 fw-bold label"> Script </div>
+      <div class="scriptCard p-3">
+        <div class="m-0 breakWord label">
+          4d00015f7f02599d5361810a22bc9ef1e48827b42d11ad355332f87f3649ff20c5f85e44659651af7f5b9f7d229459f04638adf95b3783b54ccc0b4c0ada670a6261442a5d5a8b4d367735d1713013bed90738fd9b05c48d75a8f7998b04a5a5f3951ac0502e92ecac5fc3e402b1431cb84c7202a2696e5d9cb6b5b562f2c131d18fdddc15526eaa744b503c41e08bc365dae03f92a2038a27bd249a79dd89ba9d911272d3670766dec88e5619321bbc2af1508711829f2f8c53b4572ed43196c1959eb0cd18effdd37a61c914ac70f5a2676f888d02a91bf1e3e580b3af380997f79483936aee120152b49621d61be0e2bfb5c664a809bfec82bfea326f4a2342573275043852dd6414b6cb731f90cefebbd4f9cedd0cf56bd1e21967f4143c45a5bf36577453799f3e9ae9bf5bd569f6a83614a7c292d7903918a9e973a9fbfeab1b0b1793a81a14b6cb731f90cefebbd4f9cedd0cf56bd1e21967f454c105c97687c90005c97687c90014bd6530a0753da2afd9add8c5677e0afc16212ec855c11673776170546f6b656e496e466f72546f6b656e4f757467aa47e2a95cc9ea59700144dd9f38ab356286a25e
+        </div>
+        <div class="align-self-center mb-2">
+          <button mat-icon-button>
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

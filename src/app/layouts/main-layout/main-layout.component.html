@@ -1,0 +1,6 @@
+<app-top-bar class="fixed-top" [isLanding]="isLanding"></app-top-bar>
+<div class="main-wrapper" [class.not-landing]="!isLanding">
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>
