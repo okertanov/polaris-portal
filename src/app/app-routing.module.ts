@@ -6,7 +6,7 @@ import { MainLayoutService } from './layouts/main-layout/main-layout.service';
 
 // prettier-ignore
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '', redirectTo: '/assets/deploy', pathMatch: 'full' },
   MainLayoutService.childRoutes([
     { path: '', loadChildren: () => import('./pages/landing/landing.module').then(m => m.LandingModule) },
     /** Main sections */
