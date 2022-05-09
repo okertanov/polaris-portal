@@ -1,5 +1,5 @@
 ##
-## Copyright (c) 2021 - Team11. All rights reserved.
+## Copyright (c) 2022 - Team11. All rights reserved.
 ##
 
 ##
@@ -35,9 +35,31 @@ clean:
 distclean: clean
 	-@rm -rf ./node_modules
 
+##
+## Docker targets
+##
+docker-build:
+	docker-compose build --parallel
+
+##
+## Publish targets
+##
+
+PROJECT_NAME=polaris-portal
+HUB_REGISTRY_NAME=${PROJECT_NAME}
+HUB_REGISTRY_USER=okertanov
+HUB_REGISTRY_TOKEN=5bd37ac1-045d-4923-8c94-b0f9fbfbe19b
+
+docker-publish: docker-build
+	@echo ${HUB_REGISTRY_TOKEN} | docker login --username ${HUB_REGISTRY_USER} --password-stdin
+	docker tag ${PROJECT_NAME}:latest ${HUB_REGISTRY_USER}/${HUB_REGISTRY_NAME}:latest
+	docker push ${HUB_REGISTRY_USER}/${HUB_REGISTRY_NAME}:latest
+
 .PHONY: all build install \
 		start start-dev \
 		test e2e \
-		clean distclean
+		clean distclean \
+		docker-build \
+		docker-publish
 
 .SILENT: clean docker-clean distclean

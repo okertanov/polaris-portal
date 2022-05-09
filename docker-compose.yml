@@ -1,0 +1,16 @@
+##
+## Copyright (c) 2022 - Team11. All rights reserved.
+##
+
+version: '3.7'
+
+services:
+
+  polaris-portal:
+    image: polaris-portal:latest
+    container_name: polaris-portal
+    hostname: "polaris-portal"
+    build:
+      dockerfile: Dockerfile
+      target: production
+      context: .
