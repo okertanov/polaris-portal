@@ -15,8 +15,22 @@
 
         <div class="d-flex align-items-center logo">
           <img src="assets/imgs/header/header_dVITA_purple.svg" class="header-logo me-sm-2" (click)="goHome()">
-
         </div>
+
+        <div class="d-none d-lg-flex align-items-center justify-content-between">
+          <div class="connect">
+            <button mat-raised-button class="px-3 mx-1" routerLink="/assets/deploy">
+              Assets
+            </button>
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="connect">
+            <button mat-raised-button class="px-3 mx-1" routerLink="/blocks">
+              Blocks
+            </button>
+          </div>
+        </div>
+
         <div class="d-none d-sm-flex align-items-center">
           <div *ngIf="user; else notLogged" class="dropdownItem">
             <button mat-raised-button [matMenuTriggerFor]="userMenu"
