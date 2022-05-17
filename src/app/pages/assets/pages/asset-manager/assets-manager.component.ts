@@ -13,7 +13,7 @@ import { from, Observable, Subject } from 'rxjs';
 import { distinctUntilChanged, map, startWith, takeUntil, tap } from 'rxjs/operators';
 
 const tokenPaymentRecipient = 'NZJsKhsKzi9ipzjC57zU53EVMC97zqPDKG';
-const tokenPaymentAmount = '500000000'; // 5 DVG (with 8 decimals)
+const tokenPaymentAmount = '100000000'; // 1 DVG (with 8 decimals)
 
 @Component({
   selector: 'app-assets-manager',
@@ -125,7 +125,7 @@ export class AssetsManagerComponent implements OnInit, OnDestroy {
         sendData.ownerAddress = this.user?.wallet?.account?.address;
         this.assetsService.sendForm(this.submitType, sendData).subscribe(
           () => {
-            this.sendFormSuccess()
+            this.sendFormSuccess();
           },
           err => this.sendFormError(err)
         );
