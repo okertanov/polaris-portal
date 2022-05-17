@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { environment } from '@app/../environments/environment';
 import { APIService } from '@app/shared/services/api.service';
 import { WebWalletStorageService } from '@app/shared/services/web-wallet-storage.service';
 import { tx, u, wallet } from '@cityofzion/neon-core';
@@ -9,10 +10,10 @@ import { WalletProviderDvitaWebPopupDestroyComponent } from './wallet-provider-d
 import { WalletProviderDvitaWebPopupImportComponent } from './wallet-provider-dvita-web-popup-import.component';
 import { WalletProviderDvitaWebPopupUnlockComponent } from './wallet-provider-dvita-web-popup-unlock.component';
 
-const MAGIC_NUMBER_TESTNET = 199;
-
 @Injectable({ providedIn: 'root' })
 export class WalletProviderDvitaWeb implements WalletProvider {
+  private static readonly MAGIC_NUMBER_TESTNET = parseInt(environment.blockchainNetworkId, 10);
+
   private wallet: wallet.Account | null = null;
 
   constructor(
@@ -166,7 +167,7 @@ export class WalletProviderDvitaWeb implements WalletProvider {
       throw new Error('Please log in first');
     }
     await this.confirm(rest);
-    txInstance.sign(this.wallet.privateKey, MAGIC_NUMBER_TESTNET);
+    txInstance.sign(this.wallet.privateKey, WalletProviderDvitaWeb.MAGIC_NUMBER_TESTNET);
     return this.broadcast(txInstance);
   }
 
@@ -176,7 +177,7 @@ export class WalletProviderDvitaWeb implements WalletProvider {
     }
     await this.walletUnlocked('Your wallet must be unlocked to sign this transaction.');
     const newTx = tx.Transaction.deserialize(txInstance.serialize(true)); // create a copy to avoid mutating argument
-    newTx.sign(this.wallet.privateKey, MAGIC_NUMBER_TESTNET);
+    newTx.sign(this.wallet.privateKey, WalletProviderDvitaWeb.MAGIC_NUMBER_TESTNET);
     return newTx.serialize(true);
   }
 
@@ -186,7 +187,7 @@ export class WalletProviderDvitaWeb implements WalletProvider {
     }
     await this.confirm(params);
     const txn = tx.Transaction.fromJson(params);
-    txn.sign(this.wallet.privateKey, MAGIC_NUMBER_TESTNET);
+    txn.sign(this.wallet.privateKey, WalletProviderDvitaWeb.MAGIC_NUMBER_TESTNET);
     return this.broadcast(txn);
   }
 

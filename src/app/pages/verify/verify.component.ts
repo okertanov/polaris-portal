@@ -7,18 +7,18 @@ import { tx, u, wallet } from '@cityofzion/neon-core';
 import Decimal from 'decimal.js';
 import { disassemble } from './disassemble';
 
-const knownNetworks: [label: string, networkMagic: number][] = [
-  ['dVITA TestNet', 199],
-  ['NEO3 MainNet', 860833102],
-  ['NEO3 TestNet', 877933390],
-];
-
 @Component({
   selector: 'app-verify',
   templateUrl: './verify.component.html',
   styleUrls: ['./verify.component.scss'],
 })
 export class VerifyComponent {
+  private readonly knownNetworks: [label: string, networkMagic: number][] = [
+    ['dVITA TestNet', 199],
+    ['NEO3 MainNet', 860833102],
+    ['NEO3 TestNet', 877933390],
+  ];
+
   transaction: tx.Transaction | null = null;
   transactionJSON: tx.TransactionJson | null = null;
   transfer: { from: string; to: string; amountFormatted: string; assetHash: string } | null = null;
@@ -94,7 +94,7 @@ export class VerifyComponent {
       this.transactionJSON = this.transaction.toJson();
 
       const hash = this.transaction.hash();
-      const signedMessages = knownNetworks.map(
+      const signedMessages = this.knownNetworks.map(
         ([, networkMagic]) => u.num2hexstring(networkMagic, 4, true) + u.reverseHex(hash)
       );
 
@@ -116,7 +116,7 @@ export class VerifyComponent {
             }
           }
 
-          return { signature, pubKey, valid: validIndex === -1 ? false : knownNetworks[validIndex] };
+          return { signature, pubKey, valid: validIndex === -1 ? false : this.knownNetworks[validIndex] };
         });
       });
     } catch (err: any) {
