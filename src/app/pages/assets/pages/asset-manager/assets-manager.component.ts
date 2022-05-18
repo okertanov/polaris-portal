@@ -88,7 +88,7 @@ export class AssetsManagerComponent implements OnInit, OnDestroy {
     console.log(page);
   }
 
-  fileUpload(e: Event, formType: 'token' | 'nft'): void {
+  fileUpload(e: Event, formType: 'token' | 'nft' | 'code'): void {
     const target = e.target as HTMLInputElement;
     const file: File = (target.files as FileList)[0];
     this.assetsService.uploadToAws(file, formType);

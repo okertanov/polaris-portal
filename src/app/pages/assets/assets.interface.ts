@@ -2,7 +2,7 @@ import { AssetsFormType } from '@app/pages/assets/assets.service';
 
 export interface FormTypesData {
   name: string;
-  type: AssetsFormType.TOKEN | AssetsFormType.NFT;
+  type: AssetsFormType;
 }
 
 export interface AssetData {

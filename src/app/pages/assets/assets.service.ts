@@ -11,11 +11,13 @@ import { environment } from '../../../environments/environment';
 export enum AssetsFormType {
   TOKEN = 'token',
   NFT = 'nft',
+  CODE = 'code',
 }
 
 export enum SubmitBtnName {
   TOKEN = 'Create Token',
-  NFT = 'Create Application',
+  NFT = 'Create Token',
+  CODE = 'Create Token',
 }
 
 enum FormEndpoints {
@@ -32,7 +34,8 @@ export class AssetsService {
   private formBuilder: FormBuilder = new FormBuilder();
   private formTypes: FormTypesData[] = [
     { name: 'Token Smart Contract', type: AssetsFormType.TOKEN },
-    // { name: 'NFT Smart Contract', type: AssetsFormType.NFT },
+    { name: 'NFT Smart Contract', type: AssetsFormType.NFT },
+    { name: 'Source Code', type: AssetsFormType.CODE },
   ];
 
   constructor(private readonly http: HttpClient, private readonly api: APIService) {
@@ -68,11 +71,15 @@ export class AssetsService {
     return this.formTypes;
   }
 
-  getSubmitBtnName(data: 'token' | 'nft'): string {
-    return data === AssetsFormType.TOKEN ? SubmitBtnName.TOKEN : SubmitBtnName.NFT;
+  getSubmitBtnName(data: 'token' | 'nft' | 'code'): string {
+    return data === AssetsFormType.TOKEN
+      ? SubmitBtnName.TOKEN
+      : data === AssetsFormType.NFT
+      ? SubmitBtnName.NFT
+      : SubmitBtnName.CODE;
   }
 
-  uploadToAws(file: File, formType: 'token' | 'nft'): void {
+  uploadToAws(file: File, formType: 'token' | 'nft' | 'code'): void {
     this.http
       .get<{ Key: string; uploadURL: string }>(environment.fileUploadAwsUrl, {
         params: new HttpParams().set('name', file.name).set('type', file.type),
@@ -111,6 +118,9 @@ export class AssetsService {
         name: ['', Validators.required],
         symbol: ['', Validators.required],
         iconUrl: ['', Validators.required],
+        description: [''],
+      }),
+      [AssetsFormType.CODE]: this.formBuilder.group({
         description: [''],
       }),
       type: ['token', Validators.required],

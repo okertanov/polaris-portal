@@ -207,6 +207,15 @@
       @extend .field;
       resize: none;
     }
+
+    textarea.code {
+      display: flex;
+      @extend .field;
+      resize: none;
+      height: 400px !important;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: small;
+    }
   
     .upload-input {
       display: flex;

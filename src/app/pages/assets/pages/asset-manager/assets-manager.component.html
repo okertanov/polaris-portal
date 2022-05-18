@@ -21,6 +21,7 @@
         </select>
       </div>
 
+      <!-- Token Form -->
       <ng-container *ngSwitchCase="'token'" formGroupName="token">
         <div class="form-field" [class.error]="tokenForm.name?.errors && tokenForm.name.touched">
           <label for="name">Name of Token</label>
@@ -59,8 +60,14 @@
           <label for="description">Description</label>
           <textarea id="description" formControlName="description" placeholder="Description"></textarea>
         </div>
+
+        <div class="form-field" [class.error]="tokenForm.description?.errors && tokenForm.symbol.touched">
+          <label for="nft-description">Description</label>
+          <textarea id="nft-description" formControlName="description" placeholder="Description"></textarea>
+        </div>
       </ng-container>
 
+      <!-- NFT Form Form -->
       <ng-container *ngSwitchCase="'nft'" formGroupName="nft">
         <div class="form-field" [class.error]="nftForm.name?.errors && nftForm.name?.touched">
           <label for="token-name">Name of Token</label>
@@ -87,6 +94,13 @@
         <div class="form-field" [class.error]="tokenForm.description?.errors && tokenForm.symbol.touched">
           <label for="nft-description">Description</label>
           <textarea id="nft-description" formControlName="description" placeholder="Description"></textarea>
+        </div>
+      </ng-container>
+
+      <!-- Source Code Form -->
+      <ng-container *ngSwitchCase="'code'" formGroupName="code">
+        <div class="form-field" [class.error]="tokenForm.description?.errors && tokenForm.symbol.touched">
+          <textarea class="code" id="nft-description" formControlName="description" placeholder="Source Code"></textarea>
         </div>
       </ng-container>
 
