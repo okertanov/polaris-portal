@@ -64,6 +64,15 @@
         h5 {
             padding-right: 1rem;
         }
+        .boxScroll {
+            padding-top: 0.5rem;
+            padding-right: 1rem;
+            overflow: auto;
+            scroll-behavior: smooth;
+        }
+        .boxScroll::-webkit-scrollbar {
+            display: none;
+        }
         mat-icon:hover {
             color: #43AE44;
             cursor: pointer;

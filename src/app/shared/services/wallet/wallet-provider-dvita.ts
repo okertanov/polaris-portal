@@ -1,5 +1,5 @@
 import { tx } from '@cityofzion/neon-core';
-import { AccountInfo, AnnounceTXParams, WalletBalance, WalletInfo, WalletProvider } from './types';
+import { AccountInfo, AnnounceTXParams, WalletInfo, WalletProvider } from './types';
 
 export class WalletProviderDvita implements WalletProvider {
   private dVITAWalletPromise: Promise<DVITAWallet>;
@@ -90,18 +90,4 @@ interface DVITAWallet {
   getBlock: () => Promise<any>;
   send(params: { rawTx: string; broadcastOverride: true }): Promise<{ signedTx: string }>;
   send(params: Omit<AnnounceTXParams, 'txInstance'>): Promise<{ txid: string }>;
-}
-
-function dvgBalance(balances: Record<string, Balance[]>): WalletBalance {
-  const out: WalletBalance = {};
-  for (const address in balances) {
-    if (balances.hasOwnProperty(address)) {
-      const gasBalance = balances[address].find(acc => acc.symbol === 'DVG');
-      out[address] = {
-        ...(gasBalance ? gasBalance : { symbol: 'DVG', amount: '0' }),
-        icon: 'assets/icons/token_dvita.png',
-      };
-    }
-  }
-  return out;
 }

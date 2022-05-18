@@ -120,6 +120,7 @@ export class AssetsManagerComponent implements OnInit, OnDestroy {
         return this.walletPluginService.signAndAnnounceTx(this.authService.user.wallet.providerName, txn);
       })
       .then(({ txid }) => {
+        console.dir(txid);
         this.formState = 'waitingForConfirmation';
         const sendData = this.completedForm?.value;
         sendData.ownerAddress = this.user?.wallet?.account?.address;
@@ -131,6 +132,7 @@ export class AssetsManagerComponent implements OnInit, OnDestroy {
         );
       })
       .catch(err => {
+        console.error(err);
         this.formState = 'idle';
         this.snackBarService.show(`Payment failed: ${err.message}`);
       });
