@@ -16,7 +16,7 @@
 
       <div class="form-field" [class.error]="tokenForm.type?.errors && tokenForm.symbol.touched">
         <label for="type">Type</label>
-        <select class="disabled" name="select" formControlName="type" id="type" required>
+        <select name="select" formControlName="type" id="type" required>
           <option *ngFor="let data of formTypes" [value]="data.type">{{data.name}}</option>
         </select>
       </div>
@@ -56,18 +56,15 @@
           </div>
         </div>
 
+        <!-- Description is common for all -->
         <div class="form-field" [class.error]="tokenForm.description?.errors && tokenForm.symbol.touched">
           <label for="description">Description</label>
           <textarea id="description" formControlName="description" placeholder="Description"></textarea>
         </div>
 
-        <div class="form-field" [class.error]="tokenForm.description?.errors && tokenForm.symbol.touched">
-          <label for="nft-description">Description</label>
-          <textarea id="nft-description" formControlName="description" placeholder="Description"></textarea>
-        </div>
       </ng-container>
 
-      <!-- NFT Form Form -->
+      <!-- NFT Form -->
       <ng-container *ngSwitchCase="'nft'" formGroupName="nft">
         <div class="form-field" [class.error]="nftForm.name?.errors && nftForm.name?.touched">
           <label for="token-name">Name of Token</label>
@@ -80,29 +77,31 @@
         </div>
 
         <div class="form-field" [class.error]="nftForm.iconUrl?.errors && nftForm.iconUrl?.touched">
-          <label for="nft-token">Token Icon URL</label>
+          <label for="nft-token">NFT Resource link</label>
           <div class="upload-input">
             <label for="icon-upload">Choose File</label>
             <input type="file" class="d-none"
                    id="icon-upload"
                    accept="image/png, image/gif, image/jpeg"
                    (change)="fileUpload($event, 'nft')">
-            <input type="text" id="nft-token" formControlName="iconUrl" placeholder="Token Icon URL"/>
+            <input type="text" id="nft-token" formControlName="iconUrl" placeholder="NFT Resource link"/>
           </div>
         </div>
 
+        <!-- Description is common for all -->
         <div class="form-field" [class.error]="tokenForm.description?.errors && tokenForm.symbol.touched">
-          <label for="nft-description">Description</label>
-          <textarea id="nft-description" formControlName="description" placeholder="Description"></textarea>
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description" placeholder="Description"></textarea>
         </div>
+
       </ng-container>
 
       <!-- Source Code Form -->
-      <ng-container *ngSwitchCase="'code'" formGroupName="code">
+      <!-- <ng-container *ngSwitchCase="'code'" formGroupName="code">
         <div class="form-field" [class.error]="tokenForm.description?.errors && tokenForm.symbol.touched">
           <textarea class="code" id="nft-description" formControlName="description" placeholder="Source Code"></textarea>
         </div>
-      </ng-container>
+      </ng-container> -->
 
 
       <button mat-raised-button type="submit" class="submit-btn" [disabled]="formState !== 'idle'">

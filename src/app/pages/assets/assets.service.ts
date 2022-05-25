@@ -23,6 +23,7 @@ export enum SubmitBtnName {
 enum FormEndpoints {
   TOKEN = 'contracts/create/token',
   NFT = 'contracts/create/nft',
+  CODE = 'contracts/create/source',
 }
 
 @Injectable({
@@ -35,7 +36,7 @@ export class AssetsService {
   private formTypes: FormTypesData[] = [
     { name: 'Token Smart Contract', type: AssetsFormType.TOKEN },
     { name: 'NFT Smart Contract', type: AssetsFormType.NFT },
-    { name: 'Source Code', type: AssetsFormType.CODE },
+    /*{ name: 'Source Code', type: AssetsFormType.CODE },*/
   ];
 
   constructor(private readonly http: HttpClient, private readonly api: APIService) {
@@ -51,7 +52,12 @@ export class AssetsService {
   }
 
   sendForm(submitType: string, data: any): Observable<any> {
-    const endpoint = submitType === AssetsFormType.TOKEN ? FormEndpoints.TOKEN : FormEndpoints.NFT;
+    const endpoint =
+      submitType === AssetsFormType.TOKEN
+        ? FormEndpoints.TOKEN
+        : submitType === AssetsFormType.NFT
+        ? FormEndpoints.NFT
+        : FormEndpoints.CODE;
     return this.post(endpoint, data);
   }
 
